@@ -1,4 +1,4 @@
-name: Publish package to registry
+name: Publish @recidiviz/eslint-config to registry
 
 on:
   push:
@@ -13,7 +13,6 @@ defaults:
 
 jobs:
   publish:
-    name: Publish @recidiviz/eslint-config to registry
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
