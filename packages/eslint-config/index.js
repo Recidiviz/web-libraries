@@ -110,7 +110,7 @@ module.exports = {
       },
     },
     {
-      files: ["**.test.js"],
+      files: ["**.test.js", "**.test.ts", "**.test.tsx"],
       env: {
         jest: true,
       },
