@@ -23,21 +23,14 @@ module.exports = {
   ignorePatterns: ["node_modules/", "build/", "public/"],
   plugins: ["simple-import-sort"],
   rules: {
-    "react/jsx-filename-extension": ["error", { extensions: [".tsx", ".js"] }],
-    "import/no-extraneous-dependencies": ["error", { packageDir: "./" }],
-    "no-new": 1,
-    "react/jsx-props-no-spreading": 0,
     "func-names": 0,
-    "react/jsx-wrap-multilines": [
+    // don't require extensions for typescript modules
+    "import/extensions": [
       "error",
-      { declaration: false, assignment: false },
+      "always",
+      { js: "never", ts: "never", tsx: "never" },
     ],
-    // these rules conflict with prettier; let prettier win
-    "react/jsx-one-expression-per-line": 0,
-    "react/jsx-curly-newline": 0,
-
-    // ---------------------------
-    // rules from pulse dashboard start here
+    "import/no-extraneous-dependencies": ["error", { packageDir: "./" }],
     "import/prefer-default-export": "off",
     "jsx-a11y/label-has-associated-control": [
       "error",
@@ -55,21 +48,7 @@ module.exports = {
         },
       },
     ],
-
-    // ---------------------------
-    // spotlight client config starts here
-    // This is a living list! If an eslint rule does more harm than good, just
-    // add it below to override it. Write a comment above each rule explaining
-    // why the exception is made, so we know whether to keep it in the future.
-
-    // don't require extensions for typescript modules
-    "import/extensions": [
-      "error",
-      "always",
-      { js: "never", ts: "never", tsx: "never" },
-    ],
-
-    // make sure we are using the Babel macro for styled-components
+    "no-new": 1,
     "no-restricted-imports": [
       "error",
       {
@@ -84,6 +63,11 @@ module.exports = {
               "For IE 11 support, please import from react-spring/web.cjs",
           },
           {
+            name: "react-spring/web",
+            message:
+              "For IE 11 support, please import from react-spring/web.cjs",
+          },
+          {
             name: "react-spring/renderprops",
             message:
               "For IE 11 support, please import from react-spring/renderprops.cjs",
@@ -92,26 +76,34 @@ module.exports = {
       },
     ],
 
-    // this can conflict with Prettier
+    // we are only targeting es5 environments so we don't have to pass 10
+    radix: ["error", "as-needed"],
+    // conflicts with prettier
+    "react/jsx-curly-newline": 0,
+    "react/jsx-filename-extension": ["error", { extensions: [".tsx", ".js"] }],
+    // conflicts with prettier
     "react/jsx-indent": "off",
+    // conflicts with prettier
+    "react/jsx-one-expression-per-line": 0,
+    "react/jsx-props-no-spreading": 0,
+    "react/jsx-wrap-multilines": [
+      "error",
+      { declaration: false, assignment: false },
+    ],
   },
   overrides: [
     {
-      extends: [
-        // From @typescript-eslint/eslint-plugin
-        "plugin:@typescript-eslint/recommended",
-      ],
+      extends: ["plugin:@typescript-eslint/recommended"],
       files: ["**.ts", "**.tsx"],
       parser: "@typescript-eslint/parser",
       rules: {
         // with static typing this rule is not so useful
         "consistent-return": "off",
         // these bare ESLint rules are superseded by TS equivalents
-        "no-use-before-define": "off",
-        "@typescript-eslint/no-use-before-define": ["error"],
         "no-shadow": "off",
         "@typescript-eslint/no-shadow": "error",
-
+        "no-use-before-define": "off",
+        "@typescript-eslint/no-use-before-define": ["error"],
         // TypeScript makes these redundant
         "react/prop-types": "off",
         "react/require-default-props": "off",
@@ -127,7 +119,6 @@ module.exports = {
       },
     },
   ],
-  plugins: ["@typescript-eslint"],
   settings: {
     "import/resolver": {
       // use <root>/tsconfig.json
