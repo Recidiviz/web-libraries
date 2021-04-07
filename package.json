@@ -1,0 +1,11 @@
+{
+  "name": "@recidiviz/libraries",
+  "version": "0.0.0",
+  "description": "Packages shared across the Recidiviz web platform",
+  "author": "Recidiviz <team@recidiviz.org>",
+  "license": "GPL-3.0-only",
+  "private": true,
+  "devDependencies": {
+    "lerna": "^4.0.0"
+  }
+}
