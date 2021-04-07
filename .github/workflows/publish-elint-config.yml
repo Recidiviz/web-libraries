@@ -22,9 +22,11 @@ jobs:
           node-version: 14.x
           registry-url: https://registry.npmjs.org
           scope: "@recidiviz"
-      - uses: c-hive/gha-yarn-cache@v1
-      - name: Yarn install
-        run: yarn install --frozen-lockfile
+      - name: Yarn install with cache
+      - uses: bahmutov/npm-install@v1
+        with:
+          working-directory: packages/eslint-config
+          install-command: yarn --frozen-lockfile
       - name: Publish
         run: npm publish --verbose --access public
         env:
