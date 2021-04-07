@@ -23,7 +23,7 @@ jobs:
           registry-url: https://registry.npmjs.org
           scope: "@recidiviz"
       - name: Yarn install with cache
-      - uses: bahmutov/npm-install@v1
+        uses: bahmutov/npm-install@v1
         with:
           working-directory: packages/eslint-config
           install-command: yarn --frozen-lockfile
