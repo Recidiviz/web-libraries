@@ -1,0 +1,32 @@
+name: Publish package to registry
+
+on:
+  push:
+    tags:
+      - eslint-config@*
+    branches:
+      - main
+
+defaults:
+  run:
+    working-directory: packages/eslint-config
+
+jobs:
+  publish:
+    name: Publish @recidiviz/eslint-config to registry
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node 14
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14.x
+          registry-url: https://registry.npmjs.org
+          scope: "@recidiviz"
+      - uses: c-hive/gha-yarn-cache@v1
+      - name: Yarn install
+        run: yarn install --frozen-lockfile
+      - name: Publish
+        run: npm publish --verbose --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
