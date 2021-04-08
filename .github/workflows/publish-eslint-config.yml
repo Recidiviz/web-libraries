@@ -1,19 +1,17 @@
-name: Publish @recidiviz/eslint-config to registry
+name: Publish tagged packages
 
 on:
-  push:
-    tags:
-      - eslint-config@*
-    branches:
-      - main
-
-defaults:
-  run:
-    working-directory: packages/eslint-config
+  release:
+    types: [published]
 
 jobs:
-  publish:
+  publish-eslint-config:
+    name: Publish eslint-config package
     runs-on: ubuntu-latest
+    if: ${{ startsWith(github.ref, 'refs/tags/eslint-config@') }}
+    defaults:
+      run:
+        working-directory: packages/eslint-config
     steps:
       - uses: actions/checkout@v2
       - name: Use Node 14
