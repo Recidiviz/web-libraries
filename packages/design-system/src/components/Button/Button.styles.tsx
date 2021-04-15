@@ -84,6 +84,7 @@ export const LinkButton = styled.button.attrs({
   border: none;
   color: ${palette.signal.links};
   cursor: pointer;
+  font-family: ${fonts.body};
   padding: 0;
 
   &:active,
