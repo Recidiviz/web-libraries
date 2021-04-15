@@ -1,10 +1,10 @@
-# case-triage
+# Recidiviz Design System
 
-A tool to improve outcomes for people under supervision
+UI components and styles for Recidiviz web products.
 
 ## Development
 
-The bulk of this repository is a component library for use within the Case Triage tool.
+This package is a component library for use within the web applications that make up the Recidiviz web platform.
 We support two local development flows:
 
 ### 1. Development within Storybook
