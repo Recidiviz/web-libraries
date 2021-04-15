@@ -8,6 +8,8 @@ This is a multi-package repository. The individual packages (found in `packages/
 
 All npm packages should be scoped to the `@recidiviz` organization.
 
+[@recidiviz/design-system](./packages/design-system/README.md)
+
 [@recidiviz/eslint-config](./packages/eslint-config/README.md)
 
 ## Development
