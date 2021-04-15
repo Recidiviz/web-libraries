@@ -1,0 +1,48 @@
+name: CI Tests
+
+on: push
+
+jobs:
+  lint-design-system:
+    name: Lint design-system package
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: packages/design-system
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node 14
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14.x
+          registry-url: https://registry.npmjs.org
+          scope: "@recidiviz"
+      - name: Yarn install with cache
+        uses: bahmutov/npm-install@v1
+        with:
+          working-directory: packages/design-system
+          install-command: yarn --frozen-lockfile
+      - name: Yarn lint
+        run: yarn lint
+  # We want to make sure we're always able to build our artifacts.
+  build-design-system:
+    name: Build design-system package
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: packages/design-system
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node 14
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14.x
+          registry-url: https://registry.npmjs.org
+          scope: "@recidiviz"
+      - name: Yarn install with cache
+        uses: bahmutov/npm-install@v1
+        with:
+          working-directory: packages/design-system
+          install-command: yarn --frozen-lockfile
+      - name: Yarn build
+        run: yarn build

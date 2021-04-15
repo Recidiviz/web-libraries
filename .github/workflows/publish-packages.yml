@@ -29,3 +29,27 @@ jobs:
         run: npm publish --verbose --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+  publish-design-system:
+    name: Publish design-system package
+    runs-on: ubuntu-latest
+    if: ${{ startsWith(github.ref, 'refs/tags/design-system@') }}
+    defaults:
+      run:
+        working-directory: packages/design-system
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node 14
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14.x
+          registry-url: https://registry.npmjs.org
+          scope: "@recidiviz"
+      - name: Yarn install with cache
+        uses: bahmutov/npm-install@v1
+        with:
+          working-directory: packages/design-system
+          install-command: yarn --frozen-lockfile
+      - name: Publish
+        run: npm publish --verbose --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

@@ -1,0 +1,7 @@
+*.svg
+*.ttf
+*.eot
+*.woff
+*.log
+assets
+fonts
