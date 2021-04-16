@@ -49,6 +49,8 @@ jobs:
         with:
           working-directory: packages/design-system
           install-command: yarn --frozen-lockfile
+      - name: Yarn build
+        run: yarn build
       - name: Publish
         run: npm publish --verbose --access public
         env:
