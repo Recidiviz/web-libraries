@@ -30,10 +30,19 @@ export const Header = styled.div`
   margin-bottom: ${rem(spacing.xl)};
 `;
 
-export const HeaderSection = styled.div`
+const HeaderSection = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   height: 40px;
+`;
+
+export const OuterHeaderSection = styled(HeaderSection)`
+  flex-shrink: 0;
+  margin: 0 ${rem(spacing.sm)};
+`;
+
+export const MiddleHeaderSection = styled(HeaderSection)`
+  flex-grow: 1;
 `;

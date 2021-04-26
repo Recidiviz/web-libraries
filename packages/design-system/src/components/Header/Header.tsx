@@ -16,7 +16,11 @@
 // =============================================================================
 import React, { FunctionComponent } from "react";
 import PropTypes, { InferProps } from "prop-types";
-import { Header as StyledHeader, HeaderSection } from "./Header.styles";
+import {
+  Header as StyledHeader,
+  MiddleHeaderSection,
+  OuterHeaderSection,
+} from "./Header.styles";
 
 const HeaderPropTypes = {
   left: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node])
@@ -39,9 +43,9 @@ export const Header: FunctionComponent<HeaderProps> = ({
   right,
 }) => (
   <StyledHeader>
-    <HeaderSection>{left}</HeaderSection>
-    {center ? <HeaderSection>{center}</HeaderSection> : undefined}
-    <HeaderSection>{right}</HeaderSection>
+    <OuterHeaderSection>{left}</OuterHeaderSection>
+    {center ? <MiddleHeaderSection>{center}</MiddleHeaderSection> : undefined}
+    <OuterHeaderSection>{right}</OuterHeaderSection>
   </StyledHeader>
 );
 
