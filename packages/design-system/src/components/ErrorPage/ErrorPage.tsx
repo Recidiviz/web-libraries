@@ -37,7 +37,7 @@ export const ErrorPage = ({
   return (
     <OuterErrorPageContainer>
       <InnerErrorPageContainer>
-        <img src={Assets.LOGO} alt="Recidiviz - Case Triage" />
+        <img src={Assets.LOGO} alt="Recidiviz" />
         <ErrorPageHeader>{headerText}</ErrorPageHeader>
         <ErrorPageBody>{children}</ErrorPageBody>
       </InnerErrorPageContainer>
