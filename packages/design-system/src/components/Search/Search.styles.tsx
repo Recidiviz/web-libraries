@@ -26,7 +26,7 @@ export const SearchContainer = styled.div`
   flex-directions: row;
   align-items: center;
 
-  max-width: 408px;
+  max-width: ${rem(408)};
   width: 100%;
 
   padding-left: ${rem(spacing.md)};
@@ -37,10 +37,10 @@ export const SearchInput = styled.input.attrs({
 })`
   background-color: ${palette.marble3};
   border: 1px solid ${palette.slate20};
-  height: 48px;
+  height: ${rem(48)};
   width: 100%;
-  min-width: 120px;
-  border-radius: 999px;
+  min-width: ${rem(120)};
+  border-radius: ${rem(999)};
   outline: 0;
   padding-left: ${rem(spacing.lg)};
 
