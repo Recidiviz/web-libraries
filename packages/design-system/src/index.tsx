@@ -17,6 +17,7 @@
 import { GlobalStyle } from "./styles/GlobalStyle";
 import { Button, ButtonKind, ButtonProps } from "./components/Button/Button";
 import { Card, CardSection } from "./components/Card/Card";
+import { ErrorPage } from "./components/ErrorPage/ErrorPage";
 import { Header } from "./components/Header/Header";
 import { Icon } from "./components/Icon/Icon";
 import { IconSVG } from "./components/Icon/IconSVG";
@@ -42,8 +43,7 @@ export {
   Button,
   Card,
   CardSection,
-  TitleXXL,
-  TitleXL,
+  ErrorPage,
   H1,
   H2,
   H3,
@@ -58,6 +58,8 @@ export {
   Need,
   NeedState,
   Search,
+  TitleXL,
+  TitleXXL,
   fonts,
   palette,
   spacing,
