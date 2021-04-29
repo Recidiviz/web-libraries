@@ -16,7 +16,7 @@
 // =============================================================================
 import { GlobalStyle } from "./styles/GlobalStyle";
 import { Button, ButtonKind, ButtonProps } from "./components/Button/Button";
-import Dropdown from "./components/Dropdown/Dropdown";
+import Dropdown from "./components/Dropdown";
 import { Card, CardSection } from "./components/Card/Card";
 import { ErrorPage } from "./components/ErrorPage/ErrorPage";
 import { Header } from "./components/Header/Header";

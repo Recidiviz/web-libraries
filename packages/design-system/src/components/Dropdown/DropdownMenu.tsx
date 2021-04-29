@@ -19,7 +19,7 @@ import { KeyboardEventHandler, useContext } from "react";
 import { MenuElement, MenuItemElement, ToggleElement } from "./Dropdown.styles";
 import DropdownContext from "./DropdownContext";
 
-interface MenuProps {
+export interface MenuProps {
   className?: string;
   children?: React.ReactChild | React.ReactChildren | JSX.Element[];
 }

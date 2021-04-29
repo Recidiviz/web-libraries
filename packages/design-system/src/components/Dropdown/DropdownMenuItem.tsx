@@ -19,7 +19,7 @@ import * as React from "react";
 import { MenuItemElement } from "./Dropdown.styles";
 import DropdownContext from "./DropdownContext";
 
-interface MenuItemProps {
+export interface MenuItemProps {
   className?: string;
   label: string;
   onClick: React.MouseEventHandler<HTMLButtonElement>;

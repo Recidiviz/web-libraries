@@ -21,7 +21,7 @@ import { ToggleElement } from "./Dropdown.styles";
 import { Icon } from "../Icon/Icon";
 import { palette } from "../../styles";
 
-interface ToggleProps {
+export interface ToggleProps {
   borderless?: boolean;
   className?: string;
   label?: string;
