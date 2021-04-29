@@ -17,19 +17,11 @@
 import * as React from "react";
 import { Story, Meta } from "@storybook/react";
 import Dropdown from "./Dropdown";
-import Toast, { ToastProvider, useToasts } from "../Toast/Toast";
+import { ToastProvider, useToasts } from "../Toast/Toast";
 
 export default {
   title: "Design System/Atoms/ButtonDropdown",
-  component: Dropdown.Toggle,
-  argTypes: {
-    kind: {
-      control: {
-        type: "radio",
-        options: ["primary", "secondary", "link"],
-      },
-    },
-  },
+  component: Dropdown,
   decorators: [
     (BaseStory) => (
       <ToastProvider>
