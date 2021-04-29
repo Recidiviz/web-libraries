@@ -52,30 +52,23 @@ const Menu = ({ className, children }: MenuProps): JSX.Element => {
     }
   };
 
-  const onFocusOut: React.FocusEventHandler<HTMLDivElement> = (
-    event: React.FocusEvent<HTMLDivElement>
-  ) => {
-    // Blurred from the menu, but is not focusing a different element
-    if (event.relatedTarget === null) {
-      setShown(false);
-      focusManager.focusToggle();
-      return;
-    }
+  React.useEffect(() => {
+    const handleFocus = (event: FocusEvent) => {
+      const target = event.target as HTMLElement;
 
-    const related = event.relatedTarget as HTMLElement;
-    // Focus has left the menu, don't re-focus toggle
-    if (!related.matches(`${MenuItemElement}, ${ToggleElement}`)) {
-      setShown(false);
-    }
-  };
+      if (!focusManager.dropdown?.current?.contains(target)) {
+        setShown(false);
+      }
+    };
+
+    document.addEventListener("click", handleFocus);
+    return () => {
+      document.removeEventListener("click", handleFocus);
+    };
+  });
 
   return (
-    <MenuElement
-      className={className}
-      onKeyDown={onKeyPress}
-      onBlur={onFocusOut}
-      shown={shown}
-    >
+    <MenuElement className={className} onKeyDown={onKeyPress} shown={shown}>
       {children}
     </MenuElement>
   );

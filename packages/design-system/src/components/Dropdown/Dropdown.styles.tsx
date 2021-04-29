@@ -96,7 +96,7 @@ export const MenuElement = styled.div.attrs({
     css`
       z-index: 1;
       opacity: 1;
-      pointer-events: auto;
+      pointer-events: all;
       transform: translateY(0);
     `}
 `;
