@@ -56,7 +56,4 @@ const Template: Story = ({ children, kind, disabled, onClick }) => {
   );
 };
 
-export const PrimaryButton = Template.bind({});
-PrimaryButton.args = {
-  children: "Add to Calendar",
-};
+export const DropdownStory = Template.bind({});

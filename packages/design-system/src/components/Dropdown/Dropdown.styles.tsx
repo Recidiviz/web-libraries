@@ -62,7 +62,8 @@ export const MenuItemElement = styled.button.attrs({
   }
 `;
 
-interface MenuElementProps {
+export interface MenuElementProps {
+  alignment?: "left" | "right";
   shown: boolean;
 }
 
@@ -75,7 +76,7 @@ export const MenuElement = styled.div.attrs({
   min-width: 193px;
   padding: 0;
   margin-top: ${rem(spacing.xs)};
-  right: 0;
+  ${(props: MenuElementProps) => props.alignment || "left"}: 0;
 
   background: ${palette.marble1};
   box-shadow: 0px 15px 40px rgba(53, 83, 98, 0.3),
@@ -113,8 +114,8 @@ export const ToggleElement = styled.button.attrs({
   position: relative;
   background: white;
   cursor: pointer;
-
-  width: ${rem(32)};
+  color: ${palette.pine4};
+  min-width: ${rem(32)};
   height: ${rem(32)};
   min-height: initial;
   min-width: initial;
@@ -132,6 +133,8 @@ export const ToggleElement = styled.button.attrs({
     props.shown &&
     css`
       background-color: ${palette.pine4};
+      color: white;
+
       &:hover {
         background-color: ${palette.pine4};
       }

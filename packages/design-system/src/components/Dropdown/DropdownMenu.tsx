@@ -16,15 +16,16 @@
 // =============================================================================
 import * as React from "react";
 import { KeyboardEventHandler, useContext } from "react";
-import { MenuElement, MenuItemElement, ToggleElement } from "./Dropdown.styles";
+import { MenuElement } from "./Dropdown.styles";
 import DropdownContext from "./DropdownContext";
 
 export interface MenuProps {
+  alignment?: "left" | "right";
   className?: string;
   children?: React.ReactChild | React.ReactChildren | JSX.Element[];
 }
 
-const Menu = ({ className, children }: MenuProps): JSX.Element => {
+const Menu = ({ alignment, className, children }: MenuProps): JSX.Element => {
   const { focusManager, shown, setShown } = useContext(DropdownContext);
   const onKeyPress: KeyboardEventHandler<HTMLDivElement> = (
     event: React.KeyboardEvent<HTMLDivElement>
@@ -62,13 +63,19 @@ const Menu = ({ className, children }: MenuProps): JSX.Element => {
     };
 
     document.addEventListener("click", handleFocus);
+
     return () => {
       document.removeEventListener("click", handleFocus);
     };
   });
 
   return (
-    <MenuElement className={className} onKeyDown={onKeyPress} shown={shown}>
+    <MenuElement
+      alignment={alignment}
+      className={className}
+      onKeyDown={onKeyPress}
+      shown={shown}
+    >
       {children}
     </MenuElement>
   );

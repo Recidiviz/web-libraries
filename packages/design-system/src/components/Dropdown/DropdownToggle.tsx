@@ -23,12 +23,14 @@ import { palette } from "../../styles";
 
 export interface ToggleProps {
   borderless?: boolean;
+  children?: React.ReactChild | null;
   className?: string;
   label?: string;
   icon?: IconSVGMap[keyof IconSVGMap];
 }
 
 const Toggle = ({
+  children,
   className,
   borderless = false,
   icon = IconSVG.DownChevron,
@@ -51,6 +53,7 @@ const Toggle = ({
       aria-haspopup="menu"
       aria-expanded={shown}
     >
+      {children}
       <Icon
         kind={icon}
         size={borderless ? 14 : 8}
