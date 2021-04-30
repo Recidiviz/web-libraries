@@ -36,7 +36,10 @@ const prop = (name: keyof IconSVGProps): string | undefined => {
 };
 
 /* eslint-disable max-len */
-const IconSVG: { [name: string]: React.FC } = {};
+export type IconSVGMap = {
+  [name: string]: React.FC;
+};
+const IconSVG: IconSVGMap = {};
 
 const BaseSVG = ({ children, viewBox }: React.SVGProps<SVGSVGElement>) => (
   <svg
