@@ -19,17 +19,7 @@ import { Story, Meta } from "@storybook/react";
 import ReactModal from "react-modal";
 import { rem } from "polished";
 import styled from "styled-components";
-import {
-  Title,
-  Subtitle,
-  Description as StoryDescription,
-  Primary,
-  ArgsTable,
-  Stories,
-  PRIMARY_STORY,
-} from "@storybook/addon-docs/blocks";
 import { Modal as ModalComponent, ModalHeading, ModalProps } from "./Modal";
-import { Link } from "../Typography/Link";
 
 ReactModal.setAppElement("#root");
 

@@ -14,6 +14,8 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 // =============================================================================
+
+import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
 import { rgba } from "polished";
 import * as React from "react";
 import styled from "styled-components";
@@ -36,20 +38,47 @@ export const ModalHeading = styled(H3)`
 const UnstyledModal: React.FC<ModalProps> = ({
   children,
   className,
+  onAfterOpen,
+  onAfterClose,
   ...rest
-}) => (
-  <ReactModal {...rest} portalClassName={className} closeTimeoutMS={300}>
-    {children}
-  </ReactModal>
-);
+}) => {
+  const modalContentRef = React.useRef<HTMLDivElement | null>(null);
+
+  return (
+    <ReactModal
+      {...rest}
+      onAfterClose={() => {
+        if (modalContentRef.current) {
+          enableBodyScroll(modalContentRef.current);
+        }
+        if (onAfterClose) {
+          onAfterClose();
+        }
+      }}
+      onAfterOpen={(opts) => {
+        if (modalContentRef.current) {
+          disableBodyScroll(modalContentRef.current);
+        }
+        if (onAfterOpen) {
+          onAfterOpen(opts);
+        }
+      }}
+      portalClassName={className}
+      closeTimeoutMS={300}
+    >
+      {children}
+    </ReactModal>
+  );
+};
 
 const overlayColor = palette.marble5;
 
 /**
- * This is a styled wrapper around the
+ * This component is a wrapper around the
  * [React Modal]({https://www.npmjs.com/package/react-modal) package.
  * It expects to be controlled by its parent component.
- * It will dim and blur the page behind it while open.
+ * It will dim and blur the page behind it while open, and prevent the page from scrolling
+ * using the [Body Scroll Lock](https://www.npmjs.com/package/body-scroll-lock) package.
  *
  * The `isOpen` prop controls modal visibility, and the `onRequestClose`
  * prop is a hook that should set `isOpen` to `false`.
