@@ -110,7 +110,11 @@ export const spacing = {
 
 export const zindex = {
   modal: {
-    backdrop: 1,
-    content: 2,
+    backdrop: 1000,
+    content: 1001,
   },
+};
+
+export const animation = {
+  defaultDurationMs: 500,
 };

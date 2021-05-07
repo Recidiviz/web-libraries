@@ -83,7 +83,7 @@ const TexturedBackground = styled.div`
       0 64px;
   background-color: #708090;
   background-size: 64px 128px;
-  width: 100vw;
+  width: 100%;
   height: 150vh;
 `;
 

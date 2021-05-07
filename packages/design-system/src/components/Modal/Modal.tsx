@@ -14,18 +14,18 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 // =============================================================================
+import { rgba } from "polished";
 import * as React from "react";
 import styled from "styled-components";
 import ReactModal from "react-modal";
 import { H3 } from "../Typography/Headings";
-import { palette, zindex } from "../../styles";
+import { animation, palette, zindex } from "../../styles";
 
 // Reset default `react-modal` styles
 ReactModal.defaultStyles.content = {};
 ReactModal.defaultStyles.overlay = {};
 
 export interface ModalProps extends ReactModal.Props {
-  children: React.ReactChild | React.ReactChild[];
   className?: string;
 }
 
@@ -33,14 +33,17 @@ export const ModalHeading = styled(H3)`
   margin-top: 0;
 `;
 
-// Disable ESLint rule, as we are forwarding all props from the `react-modal` library
-/* eslint-disable react/jsx-props-no-spreading */
-const UnstyledModal = ({ children, className, ...rest }: ModalProps) => (
+const UnstyledModal: React.FC<ModalProps> = ({
+  children,
+  className,
+  ...rest
+}) => (
   <ReactModal {...rest} portalClassName={className} closeTimeoutMS={300}>
     {children}
   </ReactModal>
 );
-/* eslint-enable react/jsx-props-no-spreading */
+
+const overlayColor = palette.marble5;
 
 /**
  * This is a styled wrapper around the
@@ -56,12 +59,26 @@ const UnstyledModal = ({ children, className, ...rest }: ModalProps) => (
  */
 export const Modal = styled(UnstyledModal)`
   .ReactModal__Overlay {
+    background-color: ${rgba(overlayColor, 0)};
+    height: 100%;
+    left: 0;
     position: fixed;
     top: 0;
-    left: 0;
+    transition: background-color ${animation.defaultDurationMs}ms,
+      backdrop-filter ${animation.defaultDurationMs}ms;
     width: 100%;
-    height: 100%;
     z-index: ${zindex.modal.backdrop};
+
+    &.ReactModal__Overlay--after-open {
+      /* not all browsers support backdrop-filter but it's a nice progressive enhancement */
+      backdrop-filter: blur(4px);
+      background: ${rgba(overlayColor, 0.7)};
+    }
+
+    &.ReactModal__Overlay--before-close {
+      backdrop-filter: none;
+      background: ${rgba(overlayColor, 0)};
+    }
   }
 
   .ReactModal__Content {
