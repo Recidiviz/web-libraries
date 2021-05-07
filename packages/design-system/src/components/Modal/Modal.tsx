@@ -42,6 +42,18 @@ const UnstyledModal = ({ children, className, ...rest }: ModalProps) => (
 );
 /* eslint-enable react/jsx-props-no-spreading */
 
+/**
+ * This is a styled wrapper around the
+ * [React Modal]({https://www.npmjs.com/package/react-modal) package.
+ * It expects to be controlled by its parent component.
+ * It will dim and blur the page behind it while open.
+ *
+ * The `isOpen` prop controls modal visibility, and the `onRequestClose`
+ * prop is a hook that should set `isOpen` to `false`.
+ *
+ * When using this component, you should make sure to [set the React Modal app element](
+ * https://reactcommunity.org/react-modal/accessibility/#the-app-element).
+ */
 export const Modal = styled(UnstyledModal)`
   .ReactModal__Overlay {
     position: fixed;
