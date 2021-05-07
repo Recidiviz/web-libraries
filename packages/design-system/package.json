@@ -1,6 +1,6 @@
 {
   "name": "@recidiviz/design-system",
-  "version": "0.4.9",
+  "version": "0.5.0",
   "description": "UI components and styles for Recidiviz web products.",
   "author": "Recidiviz <team@recidiviz.org>",
   "license": "GPL-3.0-only",
@@ -22,6 +22,7 @@
   "dependencies": {
     "@fontsource/libre-baskerville": "^4.1.0",
     "@fontsource/libre-franklin": "^4.1.0",
+    "@types/body-scroll-lock": "^2.6.1",
     "body-scroll-lock": "^3.1.5",
     "polished": "^4.1.0",
     "prop-types": "^15.7.2",
@@ -46,7 +47,6 @@
     "@storybook/addons": "^6.1.15",
     "@storybook/node-logger": "^6.1.15",
     "@storybook/react": "^6.1.15",
-    "@types/body-scroll-lock": "^2.6.1",
     "@types/jest": "^26.0.18",
     "@types/node": "^14.14.11",
     "@types/prop-types": "^15.7.3",
