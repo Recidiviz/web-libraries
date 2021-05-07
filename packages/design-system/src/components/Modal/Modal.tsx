@@ -111,19 +111,22 @@ export const Modal = styled(UnstyledModal)`
   }
 
   .ReactModal__Content {
-    transform: translate(-50%, -50%) scale(0.75);
-    transition: transform 300ms ease-in-out;
-    position: fixed;
-    width: 462px;
-    left: 50%;
-    top: 50%;
-    z-index: ${zindex.modal.content};
-    padding: 40px;
     background: ${palette.white};
+    border-radius: 8px;
     box-shadow: 0px 15px 40px rgba(22, 26, 33, 0.3),
       inset 0px -1px 1px rgba(19, 44, 82, 0.2);
-    border-radius: 8px;
+    left: 50%;
+    max-height: 90vh;
+    max-width: 90vw;
     outline: none;
+    overflow: auto;
+    padding: 40px;
+    position: fixed;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(0.75);
+    transition: transform 300ms ease-in-out;
+    width: 462px;
+    z-index: ${zindex.modal.content};
   }
   .ReactModal__Overlay[class*="--after-open"] .ReactModal__Content {
     transform: translate(-50%, -50%) scale(1);
