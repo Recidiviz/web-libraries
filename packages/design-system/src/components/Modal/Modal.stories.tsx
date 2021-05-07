@@ -47,6 +47,8 @@ export default {
   },
 } as Meta;
 
+// CSS texture from https://projects.verou.me/css3patterns/
+// helps make the overlay's blur effect more apparent
 const TexturedBackground = styled.div`
   background: linear-gradient(
       135deg,
@@ -74,7 +76,7 @@ const TexturedBackground = styled.div`
   background-color: #708090;
   background-size: 64px 128px;
   width: 100%;
-  height: 150vh;
+  height: calc(100vh - 20px);
 `;
 
 const Description = styled.span`
