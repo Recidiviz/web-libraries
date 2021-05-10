@@ -71,8 +71,6 @@ const UnstyledModal: React.FC<ModalProps> = ({
   );
 };
 
-const overlayColor = palette.marble5;
-
 /**
  * This component is a wrapper around the
  * [React Modal]({https://www.npmjs.com/package/react-modal) package.
@@ -88,25 +86,24 @@ const overlayColor = palette.marble5;
  */
 export const Modal = styled(UnstyledModal)`
   .ReactModal__Overlay {
-    background-color: ${rgba(overlayColor, 0)};
+    /* not all browsers support backdrop-filter but it's a nice progressive enhancement */
+    backdrop-filter: blur(4px);
+    background-color: ${rgba(palette.marble5, 0.7)};
     height: 100%;
     left: 0;
+    opacity: 0;
     position: fixed;
     top: 0;
-    transition: background-color ${animation.defaultDurationMs}ms,
-      backdrop-filter ${animation.defaultDurationMs}ms;
+    transition: opacity ${animation.defaultDurationMs}ms;
     width: 100%;
     z-index: ${zindex.modal.backdrop};
 
     &.ReactModal__Overlay--after-open {
-      /* not all browsers support backdrop-filter but it's a nice progressive enhancement */
-      backdrop-filter: blur(4px);
-      background: ${rgba(overlayColor, 0.7)};
+      opacity: 1;
     }
 
     &.ReactModal__Overlay--before-close {
-      backdrop-filter: none;
-      background: ${rgba(overlayColor, 0)};
+      opacity: 0;
     }
   }
 
