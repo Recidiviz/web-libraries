@@ -19,17 +19,7 @@ import { Story, Meta } from "@storybook/react";
 import ReactModal from "react-modal";
 import { rem } from "polished";
 import styled from "styled-components";
-import {
-  Title,
-  Subtitle,
-  Description as StoryDescription,
-  Primary,
-  ArgsTable,
-  Stories,
-  PRIMARY_STORY,
-} from "@storybook/addon-docs/blocks";
 import { Modal as ModalComponent, ModalHeading, ModalProps } from "./Modal";
-import { Link } from "../Typography/Link";
 
 ReactModal.setAppElement("#root");
 
@@ -41,34 +31,6 @@ export default {
       // Render modal inside an iframe so that `position: fixed`; is contained
       inlineStories: false,
       iframeHeight: "300px",
-      page: () => (
-        <>
-          <Title />
-          <Subtitle>
-            <>
-              <p>
-                The <strong>Modal</strong> component utilizes{" "}
-                <Link href="https://www.npmjs.com/package/react-modal">
-                  react-modal
-                </Link>
-                . for focus management and a basic modal implementation.
-              </p>
-              <p>
-                The modal is expected to be controlled by its enclosing
-                component. <br />
-                <strong>isOpen</strong> determines whether the modal is
-                shown/hidden <br />
-                <strong>onRequestClose</strong> is a hook that should update the{" "}
-                <strong>isOpen</strong> to false
-              </p>
-            </>
-          </Subtitle>
-          <StoryDescription />
-          <Primary />
-          <ArgsTable story={PRIMARY_STORY} />
-          <Stories />
-        </>
-      ),
     },
   },
 
@@ -85,17 +47,52 @@ export default {
   },
 } as Meta;
 
+// CSS texture from https://projects.verou.me/css3patterns/
+// helps make the overlay's blur effect more apparent
+const TexturedBackground = styled.div`
+  background: linear-gradient(
+      135deg,
+      #708090 21px,
+      #d9ecff 22px,
+      #d9ecff 24px,
+      transparent 24px,
+      transparent 67px,
+      #d9ecff 67px,
+      #d9ecff 69px,
+      transparent 69px
+    ),
+    linear-gradient(
+        225deg,
+        #708090 21px,
+        #d9ecff 22px,
+        #d9ecff 24px,
+        transparent 24px,
+        transparent 67px,
+        #d9ecff 67px,
+        #d9ecff 69px,
+        transparent 69px
+      )
+      0 64px;
+  background-color: #708090;
+  background-size: 64px 128px;
+  width: 100%;
+  height: calc(100vh - 20px);
+`;
+
 const Description = styled.span`
   font-size: ${rem("17px")};
 `;
 
 const Template: Story<ModalProps> = ({ isOpen, onRequestClose }) => (
-  <ModalComponent isOpen={isOpen} onRequestClose={onRequestClose}>
-    <ModalHeading>Give Us Feedback</ModalHeading>
-    <Description>
-      After you click submit, we will move this item to the bottom of the list.
-    </Description>
-  </ModalComponent>
+  <TexturedBackground>
+    <ModalComponent isOpen={isOpen} onRequestClose={onRequestClose}>
+      <ModalHeading>Give Us Feedback</ModalHeading>
+      <Description>
+        After you click submit, we will move this item to the bottom of the
+        list.
+      </Description>
+    </ModalComponent>
+  </TexturedBackground>
 );
 
 export const Modal = Template.bind({});
