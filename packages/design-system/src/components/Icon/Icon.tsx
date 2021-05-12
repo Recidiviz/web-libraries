@@ -22,7 +22,7 @@ import { palette } from "../../styles";
 export interface IconProps extends IconSVGProps {
   className?: string;
   kind: keyof typeof IconSVG | React.FC;
-  size?: number;
+  size?: string | number;
   rotate?: number;
 }
 

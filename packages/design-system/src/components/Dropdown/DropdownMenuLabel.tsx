@@ -14,24 +14,16 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 // =============================================================================
-import styled from "styled-components";
-import { rem, rgba } from "polished";
-import { palette } from "../../styles";
-import { NeedState } from "./Need";
+import * as React from "react";
+import { MenuLabelElement } from "./Dropdown.styles";
 
-interface NeedsContainerProps {
-  state: NeedState;
+export interface MenuLabelProps {
+  className?: string;
+  children?: React.ReactChild;
 }
 
-export const NeedsContainer = styled.div<NeedsContainerProps>`
-  width: ${rem("24px")};
-  height: ${rem("24px")};
-  vertical-align: middle;
+const MenuLabel = ({ className, children }: MenuLabelProps): JSX.Element => {
+  return <MenuLabelElement className={className}>{children}</MenuLabelElement>;
+};
 
-  & path {
-    fill: ${(props) =>
-      props.state === NeedState.MET
-        ? palette.signal.links
-        : rgba(palette.slate, 0.4)};
-  }
-`;
+export default MenuLabel;

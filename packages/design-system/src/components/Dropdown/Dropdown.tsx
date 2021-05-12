@@ -21,7 +21,8 @@ import DropdownFocusManager from "./DropdownFocusManager";
 import DropdownContext from "./DropdownContext";
 import Menu from "./DropdownMenu";
 import MenuItem from "./DropdownMenuItem";
-import Toggle from "./DropdownToggle";
+import Toggle, { ToggleIcon } from "./DropdownToggle";
+import MenuLabel from "./DropdownMenuLabel";
 
 interface DropdownProps {
   children: JSX.Element | JSX.Element[];
@@ -34,16 +35,18 @@ const Dropdown = ({ children, className }: DropdownProps): JSX.Element => {
   const [shown, setShown] = useState(false);
 
   return (
-    <DropdownContext.Provider value={{ focusManager, shown, setShown }}>
-      <DropdownElement className={className} ref={ref}>
+    <DropdownElement className={className} ref={ref}>
+      <DropdownContext.Provider value={{ focusManager, shown, setShown }}>
         {children}
-      </DropdownElement>
-    </DropdownContext.Provider>
+      </DropdownContext.Provider>
+    </DropdownElement>
   );
 };
 
 Dropdown.Menu = Menu;
+Dropdown.MenuLabel = MenuLabel;
 Dropdown.MenuItem = MenuItem;
 Dropdown.Toggle = Toggle;
+Dropdown.ToggleIcon = ToggleIcon;
 
 export default Dropdown;
