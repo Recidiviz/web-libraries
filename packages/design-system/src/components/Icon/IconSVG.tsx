@@ -19,8 +19,8 @@ import * as React from "react";
 export interface IconSVGProps {
   className?: string;
   fill?: string;
-  height?: number;
-  width?: number;
+  height?: string | number;
+  width?: string | number;
   transform?: string;
 }
 
