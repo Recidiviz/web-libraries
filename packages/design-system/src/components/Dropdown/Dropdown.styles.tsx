@@ -16,7 +16,7 @@
 // =============================================================================
 import { rem } from "polished";
 import styled, { css } from "styled-components";
-import { palette, spacing } from "../../styles";
+import { fonts, palette, spacing } from "../../styles";
 
 export const MenuItemElement = styled.button.attrs({
   type: "button",
@@ -62,6 +62,28 @@ export const MenuItemElement = styled.button.attrs({
   }
 `;
 
+export const MenuLabelElement = styled.div`
+  color: ${palette.slate70};
+  height: ${rem(32)};
+  line-height: ${rem(32)};
+  padding: 0 ${rem(spacing.md)};
+  white-space: nowrap;
+
+  &:first-child {
+    margin-top: ${rem(spacing.sm)};
+  }
+
+  &:last-child {
+    margin-bottom: ${rem(spacing.sm)};
+  }
+
+  &:first-child:last-child {
+    margin-top: 0;
+    margin-bottom: 0;
+    border-radius: 8px;
+  }
+`;
+
 export interface MenuElementProps {
   alignment?: "left" | "right";
   shown: boolean;
@@ -72,6 +94,7 @@ export const MenuElement = styled.div.attrs({
 })<MenuElementProps>`
   display: flex;
   flex-direction: column;
+  font-family: ${fonts.sans};
   position: absolute;
   min-width: 193px;
   padding: 0;
@@ -115,10 +138,9 @@ export const ToggleElement = styled.button.attrs({
   background: white;
   cursor: pointer;
   color: ${palette.pine4};
+  min-height: initial;
   min-width: ${rem(32)};
   height: ${rem(32)};
-  min-height: initial;
-  min-width: initial;
   margin: 0;
 
   border: 1px solid ${palette.slate30};
