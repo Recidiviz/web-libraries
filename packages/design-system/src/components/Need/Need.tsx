@@ -15,28 +15,14 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 // =============================================================================
 import * as React from "react";
-import {
-  NeedsContainerDisabled,
-  NeedsContainerDisabledMet,
-  NeedsContainerMet,
-  NeedsContainer,
-} from "./Need.styles";
+import { NeedsContainer } from "./Need.styles";
 import { Icon } from "../Icon/Icon";
 import { IconSVG } from "../Icon/IconSVG";
 
 export enum NeedState {
   NOT_MET = "NOT_MET",
   MET = "MET",
-  DISABLED = "DISABLED",
-  DISABLED_MET = "DISABLED_MET",
 }
-
-const ContainerMap = {
-  [NeedState.NOT_MET]: NeedsContainer,
-  [NeedState.MET]: NeedsContainerMet,
-  [NeedState.DISABLED]: NeedsContainerDisabled,
-  [NeedState.DISABLED_MET]: NeedsContainerDisabledMet,
-};
 
 export interface NeedProps {
   className?: string;
@@ -47,17 +33,15 @@ export interface NeedProps {
 export const Need: React.FC<NeedProps> = ({
   className,
   kind,
-  state = NeedState.DISABLED,
+  state = NeedState.NOT_MET,
 }: NeedProps) => {
-  const Container = ContainerMap[state];
-
   return (
-    <Container className={className}>
-      <Icon kind={kind} size={16} />
-    </Container>
+    <NeedsContainer className={className} state={state}>
+      <Icon kind={kind} />
+    </NeedsContainer>
   );
 };
 
 Need.defaultProps = {
-  state: NeedState.DISABLED,
+  state: NeedState.NOT_MET,
 };
