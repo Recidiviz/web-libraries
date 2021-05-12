@@ -18,6 +18,7 @@ import * as React from "react";
 import { Story, Meta } from "@storybook/react";
 import Dropdown from "./Dropdown";
 import { ToastProvider, useToasts } from "../Toast/Toast";
+import { IconSVG } from "../Icon/IconSVG";
 
 export default {
   title: "Design System/Atoms/ButtonDropdown",
@@ -40,15 +41,22 @@ const Template: Story = ({ children, kind, disabled, onClick }) => {
         other focusable element
       </button>
       <Dropdown>
-        <Dropdown.Toggle label="Report an issue with this case" />
+        <Dropdown.Toggle ariaLabel="Create a reminder">
+          <Dropdown.ToggleIcon kind={IconSVG.Clock} size={16} />
+        </Dropdown.Toggle>
         <Dropdown.Menu>
+          <Dropdown.MenuLabel>Remind Me In</Dropdown.MenuLabel>
           <Dropdown.MenuItem
-            label="Person is not in caseload"
-            onClick={() => addToast("Caseload clicked")}
+            label="7 days"
+            onClick={() => addToast("7 days")}
           />
           <Dropdown.MenuItem
-            label="Person in custody"
-            onClick={() => addToast("Custody clicked")}
+            label="14 days"
+            onClick={() => addToast("14 days")}
+          />
+          <Dropdown.MenuItem
+            label="30 days"
+            onClick={() => addToast("30 days")}
           />
         </Dropdown.Menu>
       </Dropdown>

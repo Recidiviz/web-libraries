@@ -36,7 +36,7 @@ class DropdownFocusManager {
 
   focusFirstItem(): void {
     this.querySelector<HTMLButtonElement>(
-      `${MenuItemElement}:first-child`
+      `${MenuItemElement}:first-of-type`
     )?.focus();
   }
 
@@ -51,7 +51,11 @@ class DropdownFocusManager {
     );
 
     const previous =
-      focused?.nextElementSibling || focused?.parentElement?.firstElementChild;
+      focused?.nextElementSibling &&
+      focused.nextElementSibling.matches(`${MenuItemElement}`)
+        ? focused.nextElementSibling
+        : this.querySelector(`${MenuItemElement}:first-of-type`);
+
     (previous as HTMLButtonElement).focus();
   }
 
@@ -60,9 +64,13 @@ class DropdownFocusManager {
     const focused = this.querySelector<HTMLButtonElement>(
       `${MenuItemElement}:focus`
     );
+
     const previous =
-      focused?.previousElementSibling ||
-      focused?.parentElement?.lastElementChild;
+      focused?.previousElementSibling &&
+      focused.previousElementSibling.matches(`${MenuItemElement}`)
+        ? focused.previousElementSibling
+        : this.querySelector(`${MenuItemElement}:last-of-type`);
+
     (previous as HTMLButtonElement).focus();
   }
 }

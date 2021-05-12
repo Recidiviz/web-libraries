@@ -22,19 +22,35 @@ import { Icon } from "../Icon/Icon";
 import { palette } from "../../styles";
 
 export interface ToggleProps {
+  ariaLabel: string;
   borderless?: boolean;
-  children?: React.ReactChild | null;
+  children: React.ReactNode | React.ReactNode[] | null;
   className?: string;
-  label?: string;
   icon?: IconSVGMap[keyof IconSVGMap];
 }
+
+export interface ToggleIconProps {
+  kind: keyof typeof IconSVG | React.FC;
+  size?: string | number;
+}
+
+const ToggleIcon = ({ kind, size }: ToggleIconProps): JSX.Element => {
+  const { shown } = React.useContext(DropdownContext);
+
+  return (
+    <Icon
+      kind={kind}
+      size={size}
+      fill={shown ? palette.marble1 : palette.signal.links}
+    />
+  );
+};
 
 const Toggle = ({
   children,
   className,
   borderless = false,
-  icon = IconSVG.DownChevron,
-  label,
+  ariaLabel,
 }: ToggleProps): JSX.Element => {
   const { shown, setShown } = React.useContext(DropdownContext);
 
@@ -49,18 +65,14 @@ const Toggle = ({
       }}
       borderless={borderless}
       shown={shown}
-      aria-label={label}
+      aria-label={ariaLabel}
       aria-haspopup="menu"
       aria-expanded={shown}
     >
       {children}
-      <Icon
-        kind={icon}
-        size={borderless ? 14 : 8}
-        fill={shown ? palette.marble1 : palette.signal.links}
-      />
     </ToggleElement>
   );
 };
 
 export default Toggle;
+export { ToggleIcon };
