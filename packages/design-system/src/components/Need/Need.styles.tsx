@@ -15,47 +15,23 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 // =============================================================================
 import styled from "styled-components";
-import { rem } from "polished";
+import { rem, rgba } from "polished";
 import { palette } from "../../styles";
+import { NeedState } from "./Need";
 
-export const NeedsContainer = styled.div`
-  background-color: ${palette.white};
-  border: 1px solid ${palette.slate30};
-  width: ${rem("40px")};
-  height: ${rem("40px")};
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+interface NeedsContainerProps {
+  state: NeedState;
+}
 
-  & path {
-    fill: ${palette.slate70};
-  }
-`;
-
-export const NeedsContainerMet = styled(NeedsContainer)`
-  background-color: ${palette.signal.links};
-  border: none;
+export const NeedsContainer = styled.div<NeedsContainerProps>`
+  width: ${rem("24px")};
+  height: ${rem("24px")};
+  vertical-align: middle;
 
   & path {
-    fill: ${palette.white80};
-  }
-`;
-
-export const NeedsContainerDisabled = styled(NeedsContainer)`
-  background-color: transparent;
-  border: 1px solid ${palette.slate30};
-
-  & path {
-    fill: ${palette.slate70};
-  }
-`;
-
-export const NeedsContainerDisabledMet = styled(NeedsContainer)`
-  background-color: ${palette.slate60};
-  border: none;
-
-  & path {
-    fill: ${palette.marble3};
+    fill: ${(props) =>
+      props.state === NeedState.MET
+        ? palette.signal.links
+        : rgba(palette.slate, 0.4)};
   }
 `;
