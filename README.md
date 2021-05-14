@@ -12,6 +12,8 @@ All npm packages should be scoped to the `@recidiviz` organization.
 
 [@recidiviz/eslint-config](./packages/eslint-config/README.md)
 
+[@recidiviz/tsconfig](./packages/tsconfig/README.md)
+
 ## Development
 
 Packages are versioned independently of one another and have separate dependencies. Dependencies are managed with [`yarn`](https://classic.yarnpkg.com/lang/en/). For convenience, a postinstall script will install dependencies for all packages when you run `yarn install` in the root package.
