@@ -1,0 +1,17 @@
+{
+  "name": "@recidiviz/tsconfig",
+  "version": "1.0.0",
+  "description": "Typescript config bases for Recidiviz web applications",
+  "author": "Recidiviz <team@recidiviz.org>",
+  "files": [
+    "react.json",
+    "e2e.json"
+  ],
+  "license": "GPL-3.0-only",
+  "engines": {
+    "node": ">=12.x.x"
+  },
+  "dependencies": {
+    "@tsconfig/node12": "^1.0.7"
+  }
+}
