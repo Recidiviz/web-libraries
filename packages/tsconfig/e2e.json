@@ -1,0 +1,11 @@
+{
+  "extends": "@tsconfig/node12/tsconfig.json",
+  "compilerOptions": {
+    "types": [
+      "node",
+      "webdriverio/async",
+      "@wdio/cucumber-framework",
+      "expect-webdriverio"
+    ]
+  }
+}

@@ -7,8 +7,9 @@
   "private": true,
   "scripts": {
     "postinstall": "run-p install:*",
+    "install:design-system": "(cd packages/design-system && yarn install)",
     "install:eslint-config": "(cd packages/eslint-config && yarn install)",
-    "install:design-system": "(cd packages/design-system && yarn install)"
+    "install:tsconfig": "(cd packages/tsconfig && yarn install)"
   },
   "devDependencies": {
     "npm-run-all": "^4.1.5"
