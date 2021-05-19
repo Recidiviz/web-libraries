@@ -76,7 +76,7 @@ const TexturedBackground = styled.div`
   background-color: #708090;
   background-size: 64px 128px;
   width: 100%;
-  height: calc(100vh - 20px);
+  height: calc(120vh);
 `;
 
 const Description = styled.span`
@@ -86,10 +86,10 @@ const Description = styled.span`
 const Template: Story<ModalProps> = ({ isOpen, onRequestClose }) => (
   <TexturedBackground>
     <ModalComponent isOpen={isOpen} onRequestClose={onRequestClose}>
-      <ModalHeading>Give Us Feedback</ModalHeading>
+      <ModalHeading>This is a modal.</ModalHeading>
       <Description>
-        After you click submit, we will move this item to the bottom of the
-        list.
+        The background should not scroll while this modal is open; when the
+        modal is closed, it should scroll freely up and down.
       </Description>
     </ModalComponent>
   </TexturedBackground>
