@@ -35,6 +35,7 @@ export const MenuItemElement = styled.button.attrs({
   width: 100%;
   text-align: left;
   white-space: nowrap;
+  font-size: ${rem(14)};
 
   &:focus {
     outline: none;
@@ -133,7 +134,7 @@ interface ToggleElementProps {
 export const ToggleElement = styled.button.attrs({
   type: "button",
 })<ToggleElementProps>`
-  padding: ${rem(spacing.sm)};
+  padding: ${rem(spacing.xs)} ${rem(spacing.sm)};
   position: relative;
   background: white;
   cursor: pointer;
@@ -146,6 +147,7 @@ export const ToggleElement = styled.button.attrs({
   border: 1px solid ${palette.slate30};
   box-sizing: border-box;
   border-radius: 4px;
+  font-size: ${rem(14)};
 
   &:hover {
     border-color: ${palette.signal.links};

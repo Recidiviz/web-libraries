@@ -14,24 +14,7 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 // =============================================================================
-import styled from "styled-components";
-import { rem, rgba } from "polished";
-import { palette } from "../../styles";
-import { NeedState } from "./Need.types";
-
-interface NeedsContainerProps {
-  state: NeedState;
+export enum NeedState {
+  NOT_MET = "NOT_MET",
+  MET = "MET",
 }
-
-export const NeedsContainer = styled.div<NeedsContainerProps>`
-  width: ${rem("24px")};
-  height: ${rem("24px")};
-  vertical-align: middle;
-
-  & path {
-    fill: ${(props) =>
-      props.state === NeedState.MET
-        ? palette.signal.links
-        : rgba(palette.slate, 0.4)};
-  }
-`;
