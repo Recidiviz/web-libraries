@@ -14,36 +14,7 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 // =============================================================================
-import * as React from "react";
-import { ButtonProps } from "./Button.types";
-import { LinkButton, PrimaryButton, SecondaryButton } from "./Button.styles";
-
-const KindMap = {
-  primary: PrimaryButton,
-  secondary: SecondaryButton,
-  link: LinkButton,
-};
-
-export const Button = ({
-  children,
-  className = "",
-  kind = "primary",
-  disabled = false,
-  onClick,
-  ...attributes
-}: ButtonProps): JSX.Element => {
-  const Component = KindMap[kind];
-
-  return (
-    <Component
-      className={className}
-      onClick={disabled ? undefined : onClick}
-      disabled={disabled}
-      {...attributes}
-    >
-      {children}
-    </Component>
-  );
-};
-
-export type { ButtonKind, ButtonProps } from "./Button.types";
+export enum NeedState {
+  NOT_MET = "NOT_MET",
+  MET = "MET",
+}

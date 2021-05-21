@@ -17,7 +17,7 @@
 import styled from "styled-components";
 import { rem, rgba } from "polished";
 import { palette } from "../../styles";
-import { NeedState } from "./Need";
+import { NeedState } from "./Need.types";
 
 interface NeedsContainerProps {
   state: NeedState;

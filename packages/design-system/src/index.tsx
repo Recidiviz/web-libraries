@@ -22,7 +22,7 @@ import { ErrorPage } from "./components/ErrorPage/ErrorPage";
 import { Header } from "./components/Header/Header";
 import { Icon } from "./components/Icon/Icon";
 import { IconSVG } from "./components/Icon/IconSVG";
-import { Need, NeedState } from "./components/Need/Need";
+import { Need } from "./components/Need/Need";
 import { Search } from "./components/Search/Search";
 import { fonts, palette, spacing, zindex } from "./styles";
 
@@ -39,6 +39,7 @@ import Assets from "./assets";
 import { Modal, ModalHeading, ModalProps } from "./components/Modal/Modal";
 import { Link } from "./components/Typography/Link";
 import ChartWrapper from "./components/ChartWrapper/ChartWrapper";
+import { NeedState } from "./components/Need/Need.types";
 
 export {
   Assets,

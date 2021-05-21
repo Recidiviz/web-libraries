@@ -27,7 +27,7 @@ import { animation, palette, zindex } from "../../styles";
 ReactModal.defaultStyles.content = {};
 ReactModal.defaultStyles.overlay = {};
 
-export interface ModalProps extends ReactModal.Props {
+export interface ModalProps extends Omit<ReactModal.Props, "contentRef"> {
   className?: string;
 }
 
@@ -46,7 +46,11 @@ const UnstyledModal: React.FC<ModalProps> = ({
 
   return (
     <ReactModal
+      closeTimeoutMS={300}
       {...rest}
+      contentRef={(node) => {
+        if (node) modalContentRef.current = node;
+      }}
       onAfterClose={() => {
         if (modalContentRef.current) {
           enableBodyScroll(modalContentRef.current);
@@ -64,7 +68,6 @@ const UnstyledModal: React.FC<ModalProps> = ({
         }
       }}
       portalClassName={className}
-      closeTimeoutMS={300}
     >
       {children}
     </ReactModal>

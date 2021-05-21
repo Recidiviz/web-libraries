@@ -18,11 +18,7 @@ import * as React from "react";
 import { NeedsContainer } from "./Need.styles";
 import { Icon } from "../Icon/Icon";
 import { IconSVG } from "../Icon/IconSVG";
-
-export enum NeedState {
-  NOT_MET = "NOT_MET",
-  MET = "MET",
-}
+import { NeedState } from "./Need.types";
 
 export interface NeedProps {
   className?: string;

@@ -14,11 +14,11 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 // =============================================================================
-import { MouseEventHandler, ReactChild } from "react";
+import React, { MouseEventHandler, ReactChild } from "react";
 
 export type ButtonKind = "primary" | "secondary" | "link";
 
-export interface ButtonProps {
+export interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
   children: ReactChild | ReactChild[];
 
   className?: string;
