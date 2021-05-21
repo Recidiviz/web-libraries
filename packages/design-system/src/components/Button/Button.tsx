@@ -30,6 +30,7 @@ export const Button = ({
   kind = "primary",
   disabled = false,
   onClick,
+  ...attributes
 }: ButtonProps): JSX.Element => {
   const Component = KindMap[kind];
 
@@ -38,6 +39,7 @@ export const Button = ({
       className={className}
       onClick={disabled ? undefined : onClick}
       disabled={disabled}
+      {...attributes}
     >
       {children}
     </Component>
