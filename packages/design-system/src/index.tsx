@@ -38,12 +38,14 @@ import {
 import Assets from "./assets";
 import { Modal, ModalHeading, ModalProps } from "./components/Modal/Modal";
 import { Link } from "./components/Typography/Link";
+import ChartWrapper from "./components/ChartWrapper/ChartWrapper";
 
 export {
   Assets,
   Button,
   Card,
   CardSection,
+  ChartWrapper,
   Dropdown,
   ErrorPage,
   H1,
