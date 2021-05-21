@@ -77,7 +77,17 @@ const data = {
   teal2: rgb(110, 140, 147),
   salmon1: rgb(204, 152, 156),
   salmon2: rgb(171, 119, 123),
+  defaultOrder: [] as string[],
 };
+
+data.defaultOrder = [
+  data.forest1,
+  data.gold1,
+  data.crimson1,
+  data.indigo1,
+  data.teal1,
+  data.salmon1,
+];
 
 const text = {
   caption: basePalette.slate85,
@@ -118,6 +128,7 @@ export const zindex = {
     backdrop: 1000,
     content: 1001,
   },
+  tooltip: 500,
 };
 
 export const animation = {

@@ -1,0 +1,420 @@
+<!--
+// Recidiviz - a data platform for criminal justice reform
+// Copyright (C) 2021 Recidiviz, Inc.
+//
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with this program. If not, see <https://www.gnu.org/licenses/>.
+// =============================================================================
+-->
+
+import { Canvas, Meta, Story, ArgsTable } from "@storybook/addon-docs/blocks";
+import { cityTemperature, exoplanets, letterFrequency } from "@visx/mock-data";
+import { OrdinalFrame, XYFrame } from "semiotic";
+import { palette } from "../../styles";
+import ChartWrapper from "./ChartWrapper";
+
+<Meta
+  title="Design System/Charts"
+  parameters={{
+    controls: {
+      hideNoControlsWarning: true,
+      exclude: ["children"],
+    },
+  }}
+/>
+
+# Making charts with Semiotic
+
+Increasingly at Recidiviz we are using [Semiotic](https://semiotic.nteract.io/)
+as our go-to chart library. It offers a good balance of reasonable defaults
+and great flexibility for custom visualizations, making it one of the more
+powerful off-the-shelf chart libraries in the React ecosystem.
+
+As a result, it can present a steeper learning curve than simpler libraries
+such as chart.js, which we have also used exensively in the past. This document
+provides a short introduction and cheat-sheet for getting started with Semiotic
+and using it in Recidiviz web applications.
+
+## ChartWrapper
+
+You will see the `ChartWrapper` component being used in the below examples.
+This component is provided by this design system and should be wrapped around
+all Semiotic components to provide baseline brand styling, including typefaces and
+some colors.
+
+<Canvas>
+  <Story name="ChartWrapper" args={{ className: "" }}>
+    <ChartWrapper>
+      <OrdinalFrame
+        axes={[
+          {
+            orient: "left",
+            label: "frequency",
+          },
+        ]}
+        data={letterFrequency}
+        oAccessor="letter"
+        oLabel
+        oPadding={5}
+        rAccessor="frequency"
+        size={[600, 300]}
+        title="English alphabet usage"
+        type="bar"
+      />
+    </ChartWrapper>
+  </Story>
+</Canvas>
+
+<ArgsTable of={ChartWrapper} />
+
+It accepts a `className` prop and so can be extended by CSS or `styled-components` as needed.
+
+## Overview of Semiotic concepts
+
+[Semiotic](https://semiotic.nteract.io/) provides only a handful of generic components that
+can render many types of charts. These components are known as "frames" and correspond to
+the different types of data that Semiotic can visualize.
+
+- `XYFrame`: for when you have two continuous variables. Produces line and area charts,
+  scatterplots, and the like.
+- `OrdinalFrame`: for when you have one continuous variable and one non-continuous variable.
+  Good for bar charts, pie charts, timelines, and many others.
+- `NetworkFrame`: for when you have relationship data that can be represented as nodes
+  and/or edges. Produces network diagrams, path diagrams, and hierarchical diagrams.
+  (We don't do much of this at Recidiviz, so it's not discussed in detail here; refer
+  to the Semiotic docs for further information.)
+
+These components each accept a large number of props, which represent a combination of
+data inputs, configuration options, and rendering instructions. Rendering instructions
+generally accept JSX or functions that return JSX, which makes them a powerful tool for
+customizing chart output (`tooltipContent` being one prominent example that all frames
+support; it accepts a function that receives data associated with the targeted point and
+returns JSX to be rendered in place.)
+
+## Working with data
+
+Semiotic, for the most part, does not require any particular data structure for its input;
+instead, you provide "data accessor" props that tell the component how to extract
+variables from your input data.
+
+### XY data
+
+XY points should be represented as objects. The properties can be anything you like:
+
+```js
+const points = [
+  { time: 1, temperature: 15, size: 400 },
+  { time: 2, temperature: 13, size: 401 },
+  ...
+]
+```
+
+<Canvas>
+  <Story name="Points">
+    <ChartWrapper>
+      <XYFrame
+        axes={[{ orient: "left" }, { orient: "bottom" }]}
+        points={exoplanets}
+        size={[700, 300]}
+        xAccessor="distance"
+        yAccessor="radius"
+      />
+    </ChartWrapper>
+  </Story>
+</Canvas>
+
+The `xAccessor` and `yAccessor` props determine what properties are plotted. As a shorthand,
+string values will be treated as property names. Otherwise, pass a function.
+
+```jsx
+<XYFrame
+  points={points}
+  xAccessor="time"
+  // trivial example but you get the idea
+  yAccessor=((point) => point.temperature)
+ />
+```
+
+To draw your points on a line, pass one or more objects that include your points as a property
+called `coordinates`. (This is the default, but you can
+[change it](https://semiotic.nteract.io/api/xyframe#linedataaccessor--string--function-)).
+Each of these objects will be drawn as a separate line.
+
+<Canvas>
+  <Story name="Lines">
+    <ChartWrapper>
+      <XYFrame
+        axes={[{ orient: "left" }, { orient: "bottom" }]}
+        lines={[
+          {
+            coordinates: cityTemperature.map((r, i) => ({
+              time: i,
+              temp: Number(r.Austin),
+            })),
+          },
+        ]}
+        size={[700, 400]}
+        xAccessor="time"
+        yAccessor="temp"
+      />
+    </ChartWrapper>
+  </Story>
+</Canvas>
+
+Order matters! Points on a line will be connected in the order they appear in, and Semiotic
+won't sort them for you to make them continuous from left to right. Sort them yourself before
+passing the prop if necessary.
+
+### Ordinal and categorical data
+
+Similar idea; records are represented by objects that can have whatever properties you like,
+and you pass the props `oAccessor` (for "ordinal") and `rAccessor` (for "range") to determine
+what gets plotted.
+
+The `data` prop is always a single, flat array; for stacked or grouped bars, either pass
+multiple properties to `rAccessor` or spread your multiple values out to separate records,
+depending on what your data looks like.
+
+<Canvas>
+  <Story name="Bars">
+    <ChartWrapper>
+      <OrdinalFrame
+        axes={[
+          {
+            orient: "left",
+          },
+        ]}
+        data={letterFrequency}
+        oAccessor="letter"
+        oLabel
+        oPadding={5}
+        rAccessor="frequency"
+        size={[600, 300]}
+        type="bar"
+      />
+    </ChartWrapper>
+    <ChartWrapper>
+      <OrdinalFrame
+        axes={[
+          {
+            orient: "bottom",
+          },
+        ]}
+        data={cityTemperature.slice(0, 5)}
+        margin={{ left: 75, bottom: 40 }}
+        oAccessor="date"
+        oLabel
+        oPadding={15}
+        projection="horizontal"
+        rAccessor={["Austin", "New York", "San Francisco"]}
+        size={[600, 300]}
+        type="clusterbar"
+      />
+    </ChartWrapper>
+  </Story>
+</Canvas>
+
+You may have noticed `projection="horizontal"` in the example above, an effect of
+Semiotic eschewing the notions of X and Y entirely for categorical data. You can also
+set the projection to `radial` for polar charts and other such circular delicacies.
+Somewhat counterintuitively, this is how you create pie and donut charts. In
+Semiotic these are considered a variant of bar charts; set the projection to
+`"radial"` and use the `dynamicColumnWidth` prop instead of `rAccessor`.
+
+export const pieData = [
+  { status: "Eaten", amount: 500 },
+  { status: "Uneaten", amount: 145 },
+];
+
+<Canvas>
+  <Story name="Pies">
+    <ChartWrapper>
+      <OrdinalFrame
+        data={pieData}
+        oAccessor="status"
+        dynamicColumnWidth="amount"
+        oLabel
+        projection="radial"
+        size={[300, 300]}
+        type="bar"
+      />
+    </ChartWrapper>
+  </Story>
+</Canvas>
+
+## Using color
+
+While `ChartWrapper` does provide some limited default coloring for common chart types,
+Semiotic in general does nothing by default when it comes to color. It doesn't even
+have any props that specifically address it, as it tries generally to make very few assumptions
+about how you want to control the appearance of your marks beyond what is absolutely necessary.
+
+When you need a color that isn't supplied by default, or you want to color your marks
+dynamically based on the data, the customary approach is to use one of the style props:
+`style` for `OrdinalFrame`, and `pointStyle` and/or `lineStyle` for `XYFrame`. These take
+either a static React style object or a function that accepts the corresponding data point
+(and its index) and returns a style object. (Keep in mind it will render SVG, so you need
+to use `stroke` and `fill`, et al.)
+
+You can build a hash of your colors, look them up by index, compute them on the fly,
+or simply merge them into your input data - whatever makes the most sense for your use case.
+For a basic categorical color palette, you should use the `palette.data.defaultOrder` array.
+
+<Canvas>
+  <Story name="Using colors">
+    <ChartWrapper>
+      <OrdinalFrame
+        axes={[
+          {
+            orient: "left",
+          },
+        ]}
+        data={cityTemperature.slice(0, 5)}
+        oAccessor="date"
+        oLabel
+        oPadding={15}
+        rAccessor={["Austin", "New York", "San Francisco"]}
+        size={[600, 300]}
+        // the rIndex property corresponds to the order in rAccessor
+        style={(d) => ({ fill: palette.data.defaultOrder[d.rIndex] })}
+        type="clusterbar"
+      />
+    </ChartWrapper>
+    <ChartWrapper>
+      <OrdinalFrame
+        data={pieData}
+        oAccessor="status"
+        dynamicColumnWidth="amount"
+        oLabel
+        projection="radial"
+        size={[300, 300]}
+        style={(d) => ({
+          fill: palette.data.crimson1,
+          fillOpacity: d.status === "Eaten" ? 0.3 : 1,
+          strokeWidth: 0,
+        })}
+        type="bar"
+      />
+    </ChartWrapper>
+    <ChartWrapper>
+      <XYFrame
+        axes={[{ orient: "left" }, { orient: "bottom" }]}
+        lines={[
+          {
+            coordinates: cityTemperature.map((r, i) => ({
+              time: i,
+              temp: Number(r.Austin),
+            })),
+          },
+          {
+            coordinates: cityTemperature.map((r, i) => ({
+              time: i,
+              temp: Number(r["New York"]),
+            })),
+          },
+        ]}
+        lineStyle={(d, i) => ({ stroke: palette.data.defaultOrder[i] })}
+        size={[700, 400]}
+        xAccessor="time"
+        yAccessor="temp"
+      />
+    </ChartWrapper>
+  </Story>
+</Canvas>
+
+Semiotic also doesn't render any legends for you. You can overlay one on your chart
+by providing SVG JSX to the `foregroundGraphics` prop, or simply render one alongside
+your chart in HTML.
+
+## Tooltips
+
+You can get a default tooltip (with styling provided by `ChartWrapper`) simply by
+passing `hoverAnnotation={true}` to any Semiotic component. Unfortunately the default
+behavior is ... not amazing:
+
+<Canvas>
+  <Story name="Tooltips">
+    <ChartWrapper>
+      <OrdinalFrame
+        axes={[
+          {
+            orient: "left",
+          },
+        ]}
+        data={letterFrequency}
+        hoverAnnotation
+        oAccessor="letter"
+        oLabel
+        oPadding={5}
+        rAccessor="frequency"
+        size={[600, 300]}
+        type="bar"
+      />
+    </ChartWrapper>
+  </Story>
+</Canvas>
+
+The overall tooltip API is pretty powerful however, you should dig into
+[the docs](https://semiotic.nteract.io/guides/tooltips)
+if you'd like to do anything more advanced than this.
+
+Particularly cumbersome is the placement algorithm; Semiotic divides the chart
+into "hoverable" regions based on the data points and places the tooltip at
+the center of the one you've targeted. This works pretty well for scatter plots
+and more or less poorly for everything else. You may find yourself overriding styles
+computing some positioning offsets on the fly in the tooltip rendering function.
+
+<Canvas>
+  <ChartWrapper>
+    <OrdinalFrame
+      axes={[
+        {
+          orient: "left",
+        },
+      ]}
+      data={letterFrequency}
+      hoverAnnotation
+      oAccessor="letter"
+      oLabel
+      oPadding={5}
+      rAccessor="frequency"
+      size={[600, 300]}
+      tooltipContent={(d) => {
+        return (
+          <div
+            className="tooltip-content"
+            style={{
+              // e.g., counteract the Y offset
+              // so the tooltip doesn't jump up and down
+              transform: `translate(0, ${-d.column.xyData[0].xy.y + 100}px)`,
+            }}
+          >
+            <div>
+              {d.summary[0].column}: {d.summary[0].value}
+            </div>
+          </div>
+        );
+      }}
+      type="bar"
+    />
+  </ChartWrapper>
+</Canvas>
+
+## Typescript
+
+Semiotic ships with Typescript definitions, but be advised that they are spotty.
+The Semiotic API relies a lot on argument overloading and dynamic properties
+derived from the input data, and these are not always adequately captured
+by the interface definitions. It's not uncommon to copy an example directly
+from the Semiotic documentation and have Typescript object to it! Don't be afraid
+to override the types when you know your code works.
