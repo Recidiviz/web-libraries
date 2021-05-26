@@ -19,7 +19,7 @@ import { rgb, rgba } from "polished";
 const slate = "rgb(53, 83, 98)";
 const white = rgb(255, 255, 255);
 
-const palette: Record<string, any> = {
+const basePalette = {
   /* Marble
      Used mainly for backgrounds and for knockout elements */
   marble1: rgb(255, 255, 255),
@@ -53,7 +53,7 @@ const palette: Record<string, any> = {
 
 /* Signal
    Used mainly for system alerts, error states, links, tooltips, and highlights */
-palette.signal = {
+const signal = {
   links: rgb(0, 108, 103),
   highlight: rgb(37, 184, 148),
   notification: rgb(35, 124, 175),
@@ -64,7 +64,7 @@ palette.signal = {
 
 /* Data
    Used mainly for data visualizations */
-palette.data = {
+const data = {
   forest1: rgb(37, 99, 111),
   forest2: rgb(0, 75, 91),
   gold1: rgb(217, 169, 95),
@@ -77,15 +77,30 @@ palette.data = {
   teal2: rgb(110, 140, 147),
   salmon1: rgb(204, 152, 156),
   salmon2: rgb(171, 119, 123),
+  defaultOrder: [] as string[],
 };
 
-palette.text = {
-  normal: palette.pine4,
-  links: palette.signal.links,
-  caption: palette.slate85,
+data.defaultOrder = [
+  data.forest1,
+  data.gold1,
+  data.crimson1,
+  data.indigo1,
+  data.teal1,
+  data.salmon1,
+];
+
+const text = {
+  caption: basePalette.slate85,
+  links: signal.links,
+  normal: basePalette.pine4,
 };
 
-export { palette };
+export const palette = {
+  ...basePalette,
+  signal,
+  data,
+  text,
+};
 
 /*
   Font families */
@@ -113,6 +128,7 @@ export const zindex = {
     backdrop: 1000,
     content: 1001,
   },
+  tooltip: 500,
 };
 
 export const animation = {

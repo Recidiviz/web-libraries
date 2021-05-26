@@ -38,6 +38,7 @@ import {
 import Assets from "./assets";
 import { Modal, ModalHeading, ModalProps } from "./components/Modal/Modal";
 import { Link } from "./components/Typography/Link";
+import ChartWrapper from "./components/ChartWrapper/ChartWrapper";
 import { NeedState } from "./components/Need/Need.types";
 
 export {
@@ -45,6 +46,7 @@ export {
   Button,
   Card,
   CardSection,
+  ChartWrapper,
   Dropdown,
   ErrorPage,
   H1,
