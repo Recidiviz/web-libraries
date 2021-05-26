@@ -71,4 +71,6 @@ export {
   zindex,
 };
 
+export * from "./components/Tabs/Tabs";
+
 export type { ButtonKind, ButtonProps, ModalProps };

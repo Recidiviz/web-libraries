@@ -1,0 +1,54 @@
+<!--
+// Recidiviz - a data platform for criminal justice reform
+// Copyright (C) 2021 Recidiviz, Inc.
+//
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with this program.  If not, see <https://www.gnu.org/licenses/>.
+// =============================================================================
+-->
+
+import { Canvas, Meta, Story, ArgsTable } from "@storybook/addon-docs/blocks";
+import { Icon } from "../Icon/Icon";
+import { Tabs, TabList, Tab, TabPanel } from "./Tabs";
+
+<Meta title="Design System/Atoms/Tabs" />
+
+# Tabs
+
+The tab feature actually comprises four related components that must be used together:
+`Tabs`, `TabList`, `Tab`, and `TabPanel`. The underlying functionality for these
+components is handled by [react-tabs](https://www.npmjs.com/package/react-tabs),
+which we have augmented with additional styles.
+
+<Canvas>
+  <Story name="Tabs">
+    <Tabs>
+      <TabList>
+        <Tab>One</Tab>
+        <Tab>The Second Tab</Tab>
+        <Tab>
+          <Icon kind="Star" size={24} />
+        </Tab>
+      </TabList>
+      <TabPanel>
+        <div>contents of first tab</div>
+      </TabPanel>
+      <TabPanel>
+        <div>contents of second tab</div>
+      </TabPanel>
+      <TabPanel>
+        <div>contents of third tab</div>
+      </TabPanel>
+    </Tabs>
+  </Story>
+</Canvas>
