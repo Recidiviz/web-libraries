@@ -33,7 +33,7 @@ export const TabList = styled(ReactTabs.TabList)`
   display: flex;
   flex-wrap: wrap;
   margin: 0;
-  padding: 0 ${rem(spacing.xl)};
+  padding: 0 ${rem(spacing.md)};
 `;
 
 export const Tab = styled(ReactTabs.Tab).attrs({
@@ -49,10 +49,6 @@ export const Tab = styled(ReactTabs.Tab).attrs({
   flex: 0 0 auto;
   transition-duration: ${animation.defaultDurationMs}ms;
   transition-property: border-bottom-color, color;
-
-  &:first-child {
-    margin-left: 0;
-  }
 
   &.Tab--selected {
     border-bottom-color: ${palette.signal.highlight};
