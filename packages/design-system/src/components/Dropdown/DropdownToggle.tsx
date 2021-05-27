@@ -23,7 +23,6 @@ import { ButtonProps } from "../Button/Button.types";
 
 export interface ToggleProps extends Pick<ButtonProps, "kind" | "shape"> {
   ariaLabel: string;
-  borderless?: boolean;
   children: React.ReactNode;
   className?: string;
   icon?: IconSVGMap[keyof IconSVGMap];
@@ -41,7 +40,6 @@ const ToggleIcon = ({ kind, size }: ToggleIconProps): JSX.Element => {
 const Toggle = ({
   children,
   className,
-  borderless = false,
   ariaLabel,
   shape = "block",
   kind = "secondary",
@@ -57,8 +55,6 @@ const Toggle = ({
           setShown(true);
         }
       }}
-      borderless={borderless}
-      shown={shown}
       aria-label={ariaLabel}
       aria-haspopup="menu"
       aria-expanded={shown}

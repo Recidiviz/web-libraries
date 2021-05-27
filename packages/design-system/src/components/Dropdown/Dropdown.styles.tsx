@@ -127,28 +127,7 @@ export const MenuElement = styled.div.attrs({
     `}
 `;
 
-interface ToggleElementProps {
-  borderless?: boolean;
-  shown: boolean;
-}
-
-export const ToggleElement = styled(Button)<ToggleElementProps>`
-  ${(props) =>
-    props.shown &&
-    css`
-      &,
-      &:hover {
-        background-color: ${palette.pine4};
-        color: ${palette.white};
-      }
-    `}
-
-  ${(props) =>
-    props.borderless &&
-    css`
-      border-color: transparent;
-    `}
-`;
+export const ToggleElement = styled(Button)``;
 
 export const DropdownElement = styled.div`
   display: inline-block;

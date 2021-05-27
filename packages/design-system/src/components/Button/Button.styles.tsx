@@ -35,7 +35,63 @@ const blockStyles = css`
   padding: ${rem(spacing.xs)} ${rem(spacing.sm)};
 `;
 
-const BaseButton = styled.button.attrs({
+const primaryStyles = css`
+  border: none;
+  background-color: ${palette.signal.links};
+  color: ${palette.white};
+
+  &:hover,
+  &:focus {
+    background-color: ${palette.pine4};
+  }
+
+  &:active,
+  &[aria-expanded="true"] {
+    background-color: ${palette.pine3};
+  }
+
+  &:disabled {
+    background-color: ${palette.slate10};
+    color: ${palette.slate80};
+  }
+`;
+
+const secondaryStyles = css`
+  background-color: transparent;
+  border: 1px solid ${palette.slate30};
+  color: ${palette.text.normal};
+
+  &:hover,
+  &:focus {
+    background-color: ${palette.slate20};
+    color: ${palette.pine4};
+  }
+
+  &:active,
+  &[aria-expanded="true"] {
+    border-color: ${palette.pine4};
+    color: ${palette.signal.links};
+  }
+
+  &:disabled {
+    background-color: transparent;
+    border-color: ${palette.slate20};
+    color: ${palette.slate60};
+  }
+`;
+
+const borderlessStyles = css`
+  ${secondaryStyles}
+
+  border-color: transparent !important;
+
+  &:hover,
+  &:focus {
+    background-color: transparent;
+  }
+`;
+
+export const BaseButton = styled.button.attrs({
   type: "button",
 })<Pick<ButtonProps, "kind" | "shape">>`
   align-items: center;
@@ -61,49 +117,19 @@ const BaseButton = styled.button.attrs({
         return "";
     }
   }}
-`;
 
-export const PrimaryButton = styled(BaseButton)<ButtonProps>`
-  border: none;
-  background-color: ${palette.signal.links};
-  color: ${palette.white};
-
-  &:hover,
-  &:focus {
-    background-color: ${palette.pine4};
-  }
-
-  &:active {
-    background-color: ${palette.pine3};
-  }
-
-  &:disabled {
-    background-color: ${palette.slate10};
-    color: ${palette.slate80};
-  }
-`;
-
-export const SecondaryButton = styled(BaseButton)<ButtonProps>`
-  background-color: transparent;
-  border: 1px solid ${palette.slate30};
-  color: ${palette.text.normal};
-
-  &:hover,
-  &:focus {
-    background-color: ${palette.slate20};
-    color: ${palette.pine4};
-  }
-
-  &:active {
-    border-color: ${palette.pine4};
-    color: ${palette.signal.links};
-  }
-
-  &:disabled {
-    background-color: transparent;
-    border-color: ${palette.slate20};
-    color: ${palette.slate60};
-  }
+  ${(props) => {
+    switch (props.kind) {
+      case "primary":
+        return primaryStyles;
+      case "secondary":
+        return secondaryStyles;
+      case "borderless":
+        return borderlessStyles;
+      default:
+        return "";
+    }
+  }}
 `;
 
 export const LinkButton = styled.button.attrs({
@@ -118,11 +144,13 @@ export const LinkButton = styled.button.attrs({
 
   &:active,
   &:hover,
-  &:focus {
+  &:focus,
+  &[aria-expanded="true"] {
     text-decoration: underline;
   }
 
-  &:active {
+  &:active,
+  &[aria-expanded="true"] {
     color: ${palette.pine4};
   }
 

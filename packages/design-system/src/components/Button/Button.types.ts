@@ -16,7 +16,7 @@
 // =============================================================================
 import React, { MouseEventHandler, ReactNode } from "react";
 
-export type ButtonKind = "primary" | "secondary" | "link";
+export type ButtonKind = "primary" | "secondary" | "link" | "borderless";
 export type ButtonShape = "pill" | "block";
 
 export interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {

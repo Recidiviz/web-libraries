@@ -16,13 +16,7 @@
 // =============================================================================
 import * as React from "react";
 import { ButtonProps } from "./Button.types";
-import { LinkButton, PrimaryButton, SecondaryButton } from "./Button.styles";
-
-const KindMap = {
-  primary: PrimaryButton,
-  secondary: SecondaryButton,
-  link: LinkButton,
-};
+import { LinkButton, BaseButton } from "./Button.styles";
 
 export const Button = ({
   children,
@@ -33,7 +27,7 @@ export const Button = ({
   onClick,
   ...attributes
 }: ButtonProps): JSX.Element => {
-  const Component = KindMap[kind];
+  const Component = kind === "link" ? LinkButton : BaseButton;
 
   return (
     <Component
@@ -41,6 +35,7 @@ export const Button = ({
       onClick={disabled ? undefined : onClick}
       disabled={disabled}
       shape={shape}
+      kind={kind}
       {...attributes}
     >
       {children}

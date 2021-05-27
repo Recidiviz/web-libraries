@@ -26,7 +26,7 @@ export default {
     kind: {
       control: {
         type: "select",
-        options: ["primary", "secondary", "link"],
+        options: ["primary", "secondary", "link", "borderless"],
       },
     },
     shape: {
@@ -61,6 +61,13 @@ SecondaryButton.args = { children: "See Details", kind: "secondary" };
 
 export const LinkButton: Story<ButtonProps> = Template.bind({});
 LinkButton.args = { children: "See Details", kind: "link" };
+
+export const BorderlessButton: Story<ButtonProps> = Template.bind({});
+BorderlessButton.args = {
+  children: "See Details",
+  kind: "borderless",
+  shape: "block",
+};
 
 export const BlockButton: Story<ButtonProps> = Template.bind({});
 BlockButton.args = {
