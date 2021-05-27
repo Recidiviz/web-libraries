@@ -21,7 +21,7 @@ import DropdownFocusManager from "./DropdownFocusManager";
 import DropdownContext from "./DropdownContext";
 import Menu from "./DropdownMenu";
 import MenuItem from "./DropdownMenuItem";
-import Toggle, { ToggleIcon } from "./DropdownToggle";
+import Toggle from "./DropdownToggle";
 import MenuLabel from "./DropdownMenuLabel";
 
 interface DropdownProps {
@@ -47,6 +47,5 @@ Dropdown.Menu = Menu;
 Dropdown.MenuLabel = MenuLabel;
 Dropdown.MenuItem = MenuItem;
 Dropdown.Toggle = Toggle;
-Dropdown.ToggleIcon = ToggleIcon;
 
 export default Dropdown;

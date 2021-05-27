@@ -18,6 +18,7 @@ import * as React from "react";
 import { Story, Meta } from "@storybook/react";
 import { ButtonProps } from "./Button.types";
 import { Button } from "./Button";
+import { IconSVG } from "../Icon/IconSVG";
 
 export default {
   title: "Design System/Atoms/Button",
@@ -25,8 +26,20 @@ export default {
   argTypes: {
     kind: {
       control: {
-        type: "radio",
-        options: ["primary", "secondary", "link"],
+        type: "select",
+        options: ["primary", "secondary", "link", "borderless"],
+      },
+    },
+    shape: {
+      control: {
+        options: ["pill", "block"],
+        type: "select",
+      },
+    },
+    icon: {
+      control: {
+        options: Object.keys(IconSVG),
+        type: "select",
       },
     },
   },
@@ -37,20 +50,51 @@ const Template: Story<ButtonProps> = ({
   kind,
   disabled,
   onClick,
+  shape,
+  icon,
+  iconSize,
 }) => (
-  <Button kind={kind} onClick={onClick} disabled={disabled}>
+  <Button
+    kind={kind}
+    onClick={onClick}
+    disabled={disabled}
+    shape={shape}
+    icon={icon}
+    iconSize={iconSize}
+  >
     {children}
   </Button>
 );
 
-export const PrimaryButton = Template.bind({});
+export const PrimaryButton: Story<ButtonProps> = Template.bind({});
 PrimaryButton.args = {
   children: "Add to Calendar",
   kind: "primary",
 };
 
-export const SecondaryButton = Template.bind({});
+export const SecondaryButton: Story<ButtonProps> = Template.bind({});
 SecondaryButton.args = { children: "See Details", kind: "secondary" };
 
-export const LinkButton = Template.bind({});
+export const LinkButton: Story<ButtonProps> = Template.bind({});
 LinkButton.args = { children: "See Details", kind: "link" };
+
+export const BorderlessButton: Story<ButtonProps> = Template.bind({});
+BorderlessButton.args = {
+  children: "See Details",
+  kind: "borderless",
+  shape: "block",
+};
+
+export const IconButton: Story<ButtonProps> = Template.bind({});
+IconButton.args = {
+  icon: "Place",
+  kind: "secondary",
+  shape: "block",
+};
+
+export const BlockButton: Story<ButtonProps> = Template.bind({});
+BlockButton.args = {
+  children: "Suggested action",
+  shape: "block",
+  kind: "secondary",
+};

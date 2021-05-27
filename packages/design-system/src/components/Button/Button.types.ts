@@ -14,17 +14,28 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 // =============================================================================
-import React, { MouseEventHandler, ReactChild } from "react";
+import React, { MouseEventHandler, ReactNode } from "react";
+import { IconSVG } from "../Icon/IconSVG";
 
-export type ButtonKind = "primary" | "secondary" | "link";
+export type ButtonKind = "primary" | "secondary" | "link" | "borderless";
+export type ButtonShape = "pill" | "block";
 
 export interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
-  children: ReactChild | ReactChild[];
+  /**
+   * children will not be rendered if an icon is specified
+   */
+  children?: ReactNode;
 
   className?: string;
 
   kind?: ButtonKind;
+  /**
+   * `shape` has no effect when `kind === "link"`
+   */
+  shape?: ButtonShape;
   disabled?: boolean;
 
   onClick?: MouseEventHandler<HTMLButtonElement>;
+  icon?: keyof typeof IconSVG;
+  iconSize?: number;
 }

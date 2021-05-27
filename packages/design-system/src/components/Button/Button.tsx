@@ -16,32 +16,36 @@
 // =============================================================================
 import * as React from "react";
 import { ButtonProps } from "./Button.types";
-import { LinkButton, PrimaryButton, SecondaryButton } from "./Button.styles";
-
-const KindMap = {
-  primary: PrimaryButton,
-  secondary: SecondaryButton,
-  link: LinkButton,
-};
+import { LinkButton, BaseButton } from "./Button.styles";
+import { Icon } from "../Icon/Icon";
 
 export const Button = ({
   children,
   className = "",
   kind = "primary",
+  shape = "pill",
   disabled = false,
   onClick,
+  icon,
+  iconSize = 16,
   ...attributes
 }: ButtonProps): JSX.Element => {
-  const Component = KindMap[kind];
+  const Component = kind === "link" ? LinkButton : BaseButton;
 
   return (
     <Component
       className={className}
       onClick={disabled ? undefined : onClick}
       disabled={disabled}
+      shape={shape}
+      kind={kind}
       {...attributes}
     >
-      {children}
+      {icon ? (
+        <Icon kind={icon} fill="currentColor" size={iconSize} />
+      ) : (
+        children
+      )}
     </Component>
   );
 };
