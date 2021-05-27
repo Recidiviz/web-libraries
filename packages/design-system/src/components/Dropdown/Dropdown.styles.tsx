@@ -17,6 +17,7 @@
 import { rem } from "polished";
 import styled, { css } from "styled-components";
 import { fonts, palette, spacing } from "../../styles";
+import { Button } from "../Button/Button";
 
 export const MenuItemElement = styled.button.attrs({
   type: "button",
@@ -27,10 +28,10 @@ export const MenuItemElement = styled.button.attrs({
   height: ${rem(32)};
   line-height: ${rem(32)};
   padding: 0 ${rem(spacing.md)};
-  transition: color, background-color;
-  transition-easing: ease-in-out;
+  transition-property: color, background-color;
+  transition-timing-function: ease-in-out;
   transition-duration: 0.1s;
-  background-color: white;
+  background-color: ${palette.white};
   border: none;
   width: 100%;
   text-align: left;
@@ -131,43 +132,21 @@ interface ToggleElementProps {
   shown: boolean;
 }
 
-export const ToggleElement = styled.button.attrs({
-  type: "button",
-})<ToggleElementProps>`
-  padding: ${rem(spacing.xs)} ${rem(spacing.sm)};
-  position: relative;
-  background: white;
-  cursor: pointer;
-  color: ${palette.pine4};
-  min-height: initial;
-  min-width: ${rem(32)};
-  height: ${rem(32)};
-  margin: 0;
-
-  border: 1px solid ${palette.slate30};
-  box-sizing: border-box;
-  border-radius: 4px;
-  font-size: ${rem(14)};
-
-  &:hover {
-    border-color: ${palette.signal.links};
-  }
-
-  ${(props: ToggleElementProps) =>
+export const ToggleElement = styled(Button)<ToggleElementProps>`
+  ${(props) =>
     props.shown &&
     css`
-      background-color: ${palette.pine4};
-      color: white;
-
+      &,
       &:hover {
         background-color: ${palette.pine4};
+        color: ${palette.white};
       }
     `}
 
-  ${(props: ToggleElementProps) =>
+  ${(props) =>
     props.borderless &&
     css`
-      border-width: 0;
+      border-color: transparent;
     `}
 `;
 

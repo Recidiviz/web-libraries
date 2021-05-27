@@ -19,6 +19,8 @@ import { Story, Meta } from "@storybook/react";
 import Dropdown from "./Dropdown";
 import { ToastProvider, useToasts } from "../Toast/Toast";
 import { IconSVG } from "../Icon/IconSVG";
+import { ToggleProps } from "./DropdownToggle";
+import { MenuProps } from "./DropdownMenu";
 
 export default {
   title: "Design System/Atoms/ButtonDropdown",
@@ -30,9 +32,49 @@ export default {
       </ToastProvider>
     ),
   ],
+  argTypes: {
+    alignment: {
+      name: "Dropdown.Menu alignment",
+      type: "string",
+      options: ["left", "right"],
+      control: {
+        type: "select",
+      },
+    },
+    ariaLabel: {
+      name: "Dropdown.Toggle ariaLabel",
+      type: "string",
+      defaultValue: "Create a reminder",
+    },
+    borderless: {
+      name: "Dropdown.Toggle borderless",
+      type: "boolean",
+      defaultValue: false,
+    },
+    kind: {
+      name: "Dropdown.Toggle kind",
+      type: "string",
+      options: ["primary", "secondary", "link"],
+      control: { type: "select" },
+    },
+    shape: {
+      name: "Dropdown.Toggle shape",
+      type: "string",
+      options: ["block", "pill"],
+      control: { type: "select" },
+    },
+  },
 } as Meta;
 
-const Template: Story = ({ children, kind, disabled, onClick }) => {
+type CombinedArgs = ToggleProps & MenuProps;
+
+const Template: Story<CombinedArgs> = ({
+  alignment,
+  ariaLabel,
+  borderless,
+  kind,
+  shape,
+}) => {
   const { addToast } = useToasts();
 
   return (
@@ -41,10 +83,15 @@ const Template: Story = ({ children, kind, disabled, onClick }) => {
         other focusable element
       </button>
       <Dropdown>
-        <Dropdown.Toggle ariaLabel="Create a reminder">
+        <Dropdown.Toggle
+          ariaLabel={ariaLabel}
+          borderless={borderless}
+          kind={kind}
+          shape={shape}
+        >
           <Dropdown.ToggleIcon kind={IconSVG.Clock} size={16} />
         </Dropdown.Toggle>
-        <Dropdown.Menu>
+        <Dropdown.Menu alignment={alignment}>
           <Dropdown.MenuLabel>Remind Me In</Dropdown.MenuLabel>
           <Dropdown.MenuItem
             label="7 days"
@@ -65,3 +112,4 @@ const Template: Story = ({ children, kind, disabled, onClick }) => {
 };
 
 export const DropdownStory = Template.bind({});
+DropdownStory.storyName = "ButtonDropdown";

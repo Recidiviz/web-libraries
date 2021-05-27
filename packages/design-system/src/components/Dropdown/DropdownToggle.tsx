@@ -19,12 +19,12 @@ import { IconSVG, IconSVGMap } from "../Icon/IconSVG";
 import DropdownContext from "./DropdownContext";
 import { ToggleElement } from "./Dropdown.styles";
 import { Icon } from "../Icon/Icon";
-import { palette } from "../../styles";
+import { ButtonProps } from "../Button/Button.types";
 
-export interface ToggleProps {
+export interface ToggleProps extends Pick<ButtonProps, "kind" | "shape"> {
   ariaLabel: string;
   borderless?: boolean;
-  children: React.ReactNode | React.ReactNode[] | null;
+  children: React.ReactNode;
   className?: string;
   icon?: IconSVGMap[keyof IconSVGMap];
 }
@@ -35,15 +35,7 @@ export interface ToggleIconProps {
 }
 
 const ToggleIcon = ({ kind, size }: ToggleIconProps): JSX.Element => {
-  const { shown } = React.useContext(DropdownContext);
-
-  return (
-    <Icon
-      kind={kind}
-      size={size}
-      fill={shown ? palette.marble1 : palette.signal.links}
-    />
-  );
+  return <Icon kind={kind} size={size} fill="currentColor" />;
 };
 
 const Toggle = ({
@@ -51,6 +43,8 @@ const Toggle = ({
   className,
   borderless = false,
   ariaLabel,
+  shape = "block",
+  kind = "secondary",
 }: ToggleProps): JSX.Element => {
   const { shown, setShown } = React.useContext(DropdownContext);
 
@@ -68,6 +62,8 @@ const Toggle = ({
       aria-label={ariaLabel}
       aria-haspopup="menu"
       aria-expanded={shown}
+      shape={shape}
+      kind={kind}
     >
       {children}
     </ToggleElement>
