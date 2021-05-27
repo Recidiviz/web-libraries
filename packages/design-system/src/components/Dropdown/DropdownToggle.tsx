@@ -15,40 +15,27 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 // =============================================================================
 import * as React from "react";
-import { IconSVG, IconSVGMap } from "../Icon/IconSVG";
 import DropdownContext from "./DropdownContext";
 import { ToggleElement } from "./Dropdown.styles";
-import { Icon } from "../Icon/Icon";
 import { ButtonProps } from "../Button/Button.types";
 
-export interface ToggleProps extends Pick<ButtonProps, "kind" | "shape"> {
-  ariaLabel: string;
-  children: React.ReactNode;
+export interface ToggleProps extends ButtonProps {
+  ariaLabel?: string;
+  children?: React.ReactNode;
   className?: string;
-  icon?: IconSVGMap[keyof IconSVGMap];
 }
-
-export interface ToggleIconProps {
-  kind: keyof typeof IconSVG | React.FC;
-  size?: string | number;
-}
-
-const ToggleIcon = ({ kind, size }: ToggleIconProps): JSX.Element => {
-  return <Icon kind={kind} size={size} fill="currentColor" />;
-};
 
 const Toggle = ({
   children,
-  className,
   ariaLabel,
   shape = "block",
   kind = "secondary",
+  ...attributes
 }: ToggleProps): JSX.Element => {
   const { shown, setShown } = React.useContext(DropdownContext);
 
   return (
     <ToggleElement
-      className={className}
       onClick={() => setShown(!shown)}
       onKeyPress={(event) => {
         if (event.key === "Down" || event.key === "ArrowDown") {
@@ -60,6 +47,7 @@ const Toggle = ({
       aria-expanded={shown}
       shape={shape}
       kind={kind}
+      {...attributes}
     >
       {children}
     </ToggleElement>
@@ -67,4 +55,3 @@ const Toggle = ({
 };
 
 export default Toggle;
-export { ToggleIcon };

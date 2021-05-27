@@ -15,12 +15,16 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 // =============================================================================
 import React, { MouseEventHandler, ReactNode } from "react";
+import { IconSVG } from "../Icon/IconSVG";
 
 export type ButtonKind = "primary" | "secondary" | "link" | "borderless";
 export type ButtonShape = "pill" | "block";
 
 export interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
-  children: ReactNode;
+  /**
+   * children will not be rendered if an icon is specified
+   */
+  children?: ReactNode;
 
   className?: string;
 
@@ -32,4 +36,6 @@ export interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
   disabled?: boolean;
 
   onClick?: MouseEventHandler<HTMLButtonElement>;
+  icon?: keyof typeof IconSVG;
+  iconSize?: number;
 }

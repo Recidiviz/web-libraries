@@ -29,8 +29,7 @@ const pillStyles = css`
 const blockStyles = css`
   border-radius: ${rem(4)};
 
-  height: ${rem(32)};
-  min-height: initial;
+  min-height: ${rem(32)};
   min-width: ${rem(32)};
   padding: ${rem(spacing.xs)} ${rem(spacing.sm)};
 `;

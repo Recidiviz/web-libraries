@@ -18,6 +18,7 @@ import * as React from "react";
 import { Story, Meta } from "@storybook/react";
 import { ButtonProps } from "./Button.types";
 import { Button } from "./Button";
+import { IconSVG } from "../Icon/IconSVG";
 
 export default {
   title: "Design System/Atoms/Button",
@@ -35,6 +36,12 @@ export default {
         type: "select",
       },
     },
+    icon: {
+      control: {
+        options: Object.keys(IconSVG),
+        type: "select",
+      },
+    },
   },
 } as Meta;
 
@@ -44,8 +51,17 @@ const Template: Story<ButtonProps> = ({
   disabled,
   onClick,
   shape,
+  icon,
+  iconSize,
 }) => (
-  <Button kind={kind} onClick={onClick} disabled={disabled} shape={shape}>
+  <Button
+    kind={kind}
+    onClick={onClick}
+    disabled={disabled}
+    shape={shape}
+    icon={icon}
+    iconSize={iconSize}
+  >
     {children}
   </Button>
 );
@@ -66,6 +82,13 @@ export const BorderlessButton: Story<ButtonProps> = Template.bind({});
 BorderlessButton.args = {
   children: "See Details",
   kind: "borderless",
+  shape: "block",
+};
+
+export const IconButton: Story<ButtonProps> = Template.bind({});
+IconButton.args = {
+  icon: "Place",
+  kind: "secondary",
   shape: "block",
 };
 

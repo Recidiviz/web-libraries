@@ -17,6 +17,7 @@
 import * as React from "react";
 import { ButtonProps } from "./Button.types";
 import { LinkButton, BaseButton } from "./Button.styles";
+import { Icon } from "../Icon/Icon";
 
 export const Button = ({
   children,
@@ -25,6 +26,8 @@ export const Button = ({
   shape = "pill",
   disabled = false,
   onClick,
+  icon,
+  iconSize = 16,
   ...attributes
 }: ButtonProps): JSX.Element => {
   const Component = kind === "link" ? LinkButton : BaseButton;
@@ -38,7 +41,11 @@ export const Button = ({
       kind={kind}
       {...attributes}
     >
-      {children}
+      {icon ? (
+        <Icon kind={icon} fill="currentColor" size={iconSize} />
+      ) : (
+        children
+      )}
     </Component>
   );
 };

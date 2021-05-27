@@ -44,7 +44,6 @@ export default {
     ariaLabel: {
       name: "Dropdown.Toggle ariaLabel",
       type: "string",
-      defaultValue: "Create a reminder",
     },
     kind: {
       name: "Dropdown.Toggle kind",
@@ -60,6 +59,12 @@ export default {
       control: { type: "select" },
       defaultValue: "block",
     },
+    icon: {
+      name: "Dropdown.Toggle icon",
+      type: "string",
+      options: Object.keys(IconSVG),
+      control: { type: "select" },
+    },
   },
 } as Meta;
 
@@ -68,8 +73,10 @@ type CombinedArgs = ToggleProps & MenuProps;
 const Template: Story<CombinedArgs> = ({
   alignment,
   ariaLabel,
+  children,
   kind,
   shape,
+  icon,
 }) => {
   const { addToast } = useToasts();
 
@@ -79,8 +86,13 @@ const Template: Story<CombinedArgs> = ({
         other focusable element
       </button>
       <Dropdown>
-        <Dropdown.Toggle ariaLabel={ariaLabel} kind={kind} shape={shape}>
-          <Dropdown.ToggleIcon kind={IconSVG.Clock} size={16} />
+        <Dropdown.Toggle
+          ariaLabel={ariaLabel}
+          kind={kind}
+          shape={shape}
+          icon={icon}
+        >
+          {children}
         </Dropdown.Toggle>
         <Dropdown.Menu alignment={alignment}>
           <Dropdown.MenuLabel>Remind Me In</Dropdown.MenuLabel>
@@ -102,5 +114,11 @@ const Template: Story<CombinedArgs> = ({
   );
 };
 
-export const DropdownStory = Template.bind({});
-DropdownStory.storyName = "ButtonDropdown";
+export const ButtonDropdown: Story<CombinedArgs> = Template.bind({});
+ButtonDropdown.args = { children: "Create a reminder" };
+
+export const IconButtonDropdown: Story<CombinedArgs> = Template.bind({});
+IconButtonDropdown.args = {
+  ariaLabel: "Create a reminder",
+  icon: "Clock",
+};
