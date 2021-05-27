@@ -17,6 +17,7 @@
 import React, { MouseEventHandler, ReactChild } from "react";
 
 export type ButtonKind = "primary" | "secondary" | "link";
+export type ButtonShape = "pill" | "block";
 
 export interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
   children: ReactChild | ReactChild[];
@@ -24,6 +25,10 @@ export interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
   className?: string;
 
   kind?: ButtonKind;
+  /**
+   * `shape` has no effect when `kind === "link"`
+   */
+  shape?: ButtonShape;
   disabled?: boolean;
 
   onClick?: MouseEventHandler<HTMLButtonElement>;

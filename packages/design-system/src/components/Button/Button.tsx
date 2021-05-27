@@ -28,6 +28,7 @@ export const Button = ({
   children,
   className = "",
   kind = "primary",
+  shape = "pill",
   disabled = false,
   onClick,
   ...attributes
@@ -39,6 +40,7 @@ export const Button = ({
       className={className}
       onClick={disabled ? undefined : onClick}
       disabled={disabled}
+      shape={shape}
       {...attributes}
     >
       {children}

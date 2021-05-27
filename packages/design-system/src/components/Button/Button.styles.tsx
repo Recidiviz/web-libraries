@@ -14,26 +14,53 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 // =============================================================================
-import styled from "styled-components";
+import { rem } from "polished";
+import styled, { css } from "styled-components";
 import { ButtonProps } from "./Button.types";
-import { fonts, palette } from "../../styles";
+import { animation, fonts, palette, spacing } from "../../styles";
+
+const pillStyles = css`
+  min-width: ${rem(129)};
+  min-height: ${rem(40)};
+  padding: ${rem(12)} ${rem(16)};
+  border-radius: ${rem(999)};
+`;
+
+const blockStyles = css`
+  border-radius: ${rem(4)};
+
+  height: ${rem(32)};
+  min-height: initial;
+  min-width: ${rem(32)};
+  padding: ${rem(spacing.xs)} ${rem(spacing.sm)};
+`;
 
 const BaseButton = styled.button.attrs({
   type: "button",
-})`
-  cursor: pointer;
-  min-width: 129px;
-  min-height: 40px;
-  padding: 12px 16px;
-  border-radius: 999px;
-  display: flex;
+})<Pick<ButtonProps, "kind" | "shape">>`
   align-items: center;
+  cursor: pointer;
+  display: flex;
   font-family: ${fonts.body};
+  font-size: ${rem(14)};
   justify-content: center;
+  transition-duration: ${animation.defaultDurationMs}ms;
+  transition-property: color, background-color, border-color;
 
   &:disabled {
     cursor: not-allowed;
   }
+
+  ${(props) => {
+    switch (props.shape) {
+      case "pill":
+        return pillStyles;
+      case "block":
+        return blockStyles;
+      default:
+        return "";
+    }
+  }}
 `;
 
 export const PrimaryButton = styled(BaseButton)<ButtonProps>`
@@ -58,11 +85,12 @@ export const PrimaryButton = styled(BaseButton)<ButtonProps>`
 
 export const SecondaryButton = styled(BaseButton)<ButtonProps>`
   background-color: transparent;
-  border: 1px solid ${palette.signal.links};
-  color: ${palette.signal.links};
+  border: 1px solid ${palette.slate30};
+  color: ${palette.text.normal};
 
   &:hover,
   &:focus {
+    background-color: ${palette.slate20};
     color: ${palette.pine4};
   }
 
@@ -72,8 +100,9 @@ export const SecondaryButton = styled(BaseButton)<ButtonProps>`
   }
 
   &:disabled {
-    background-color: ${palette.slate20};
-    color: ${palette.slate70};
+    background-color: transparent;
+    border-color: ${palette.slate20};
+    color: ${palette.slate60};
   }
 `;
 

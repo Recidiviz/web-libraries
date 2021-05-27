@@ -25,8 +25,14 @@ export default {
   argTypes: {
     kind: {
       control: {
-        type: "radio",
+        type: "select",
         options: ["primary", "secondary", "link"],
+      },
+    },
+    shape: {
+      control: {
+        options: ["pill", "block"],
+        type: "select",
       },
     },
   },
@@ -37,20 +43,28 @@ const Template: Story<ButtonProps> = ({
   kind,
   disabled,
   onClick,
+  shape,
 }) => (
-  <Button kind={kind} onClick={onClick} disabled={disabled}>
+  <Button kind={kind} onClick={onClick} disabled={disabled} shape={shape}>
     {children}
   </Button>
 );
 
-export const PrimaryButton = Template.bind({});
+export const PrimaryButton: Story<ButtonProps> = Template.bind({});
 PrimaryButton.args = {
   children: "Add to Calendar",
   kind: "primary",
 };
 
-export const SecondaryButton = Template.bind({});
+export const SecondaryButton: Story<ButtonProps> = Template.bind({});
 SecondaryButton.args = { children: "See Details", kind: "secondary" };
 
-export const LinkButton = Template.bind({});
+export const LinkButton: Story<ButtonProps> = Template.bind({});
 LinkButton.args = { children: "See Details", kind: "link" };
+
+export const BlockButton: Story<ButtonProps> = Template.bind({});
+BlockButton.args = {
+  children: "Suggested action",
+  shape: "block",
+  kind: "secondary",
+};
