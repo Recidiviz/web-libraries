@@ -15,14 +15,14 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 // =============================================================================
 import * as React from "react";
-import { Story, Meta } from "@storybook/react";
+import { Meta, Story } from "@storybook/react";
 import styled from "styled-components/macro";
 import { rem } from "polished";
 
-import { ErrorPageProps, ErrorPage } from "./ErrorPage";
+import { ErrorPage, ErrorPageProps } from "./ErrorPage";
 
-import { Button } from "../Button/Button";
-import { Link } from "../Typography/Link";
+import { Button } from "../Button";
+import { Link } from "../Typography";
 import { spacing } from "../../styles";
 
 export default {

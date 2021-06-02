@@ -14,14 +14,14 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 // =============================================================================
-import React from "react";
+import * as React from "react";
 import {
   Options,
   ToastProps,
   ToastProvider as OriginalToastProvider,
   useToasts as useToastsOrig,
 } from "react-toast-notifications";
-import { Icon } from "../Icon/Icon";
+import { Icon } from "../Icon";
 import {
   BaseToastContent,
   BaseToastDiv,

@@ -19,17 +19,16 @@ import { useRef, useState } from "react";
 import { DropdownElement } from "./Dropdown.styles";
 import DropdownFocusManager from "./DropdownFocusManager";
 import DropdownContext from "./DropdownContext";
-import Menu from "./DropdownMenu";
-import MenuItem from "./DropdownMenuItem";
-import Toggle from "./DropdownToggle";
-import MenuLabel from "./DropdownMenuLabel";
 
-interface DropdownProps {
+export interface DropdownProps {
   children: JSX.Element | JSX.Element[];
   className?: string;
 }
 
-const Dropdown = ({ children, className }: DropdownProps): JSX.Element => {
+export const Dropdown = ({
+  children,
+  className,
+}: DropdownProps): JSX.Element => {
   const ref = useRef(null);
   const [focusManager] = useState(new DropdownFocusManager(ref));
   const [shown, setShown] = useState(false);
@@ -42,10 +41,3 @@ const Dropdown = ({ children, className }: DropdownProps): JSX.Element => {
     </DropdownElement>
   );
 };
-
-Dropdown.Menu = Menu;
-Dropdown.MenuLabel = MenuLabel;
-Dropdown.MenuItem = MenuItem;
-Dropdown.Toggle = Toggle;
-
-export default Dropdown;

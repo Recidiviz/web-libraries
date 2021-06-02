@@ -16,7 +16,7 @@
 // =============================================================================
 
 import { rem } from "polished";
-import React from "react";
+import * as React from "react";
 import styled from "styled-components";
 import { palette, zindex } from "../../styles";
 
@@ -107,8 +107,9 @@ export type ChartWrapperProps = {
  * Wrapper component for Semiotic chart components that applies
  * Recidiviz baseline styles to classes rendered by Semiotic.
  */
-const ChartWrapper: React.FC<ChartWrapperProps> = ({ className, children }) => {
+export const ChartWrapper: React.FC<ChartWrapperProps> = ({
+  className,
+  children,
+}) => {
   return <SemioticWrapper className={className}>{children}</SemioticWrapper>;
 };
-
-export default ChartWrapper;

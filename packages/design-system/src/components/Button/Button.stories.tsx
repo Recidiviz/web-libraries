@@ -15,10 +15,10 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 // =============================================================================
 import * as React from "react";
-import { Story, Meta } from "@storybook/react";
+import { Meta, Story } from "@storybook/react";
 import { ButtonProps } from "./Button.types";
 import { Button } from "./Button";
-import { IconSVG } from "../Icon/IconSVG";
+import { IconSVG } from "../Icon";
 
 export default {
   title: "Design System/Atoms/Button",

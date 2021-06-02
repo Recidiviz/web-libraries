@@ -14,7 +14,7 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 // =============================================================================
-import React from "react";
+import * as React from "react";
 import { SearchProps } from "./Search.types";
 import { SearchContainer, SearchInput, SearchIcon } from "./Search.styles";
 

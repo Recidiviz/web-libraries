@@ -16,7 +16,7 @@
 // =============================================================================
 import * as React from "react";
 import { Story, Meta } from "@storybook/react";
-import { CardSection, Card, CardProps } from "./Card";
+import { CardSection, Card, CardProps } from "./index";
 import { spacing } from "../../styles";
 
 export default {

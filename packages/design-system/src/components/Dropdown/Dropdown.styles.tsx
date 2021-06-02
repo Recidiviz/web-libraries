@@ -17,7 +17,7 @@
 import { rem } from "polished";
 import styled, { css } from "styled-components";
 import { fonts, palette, spacing } from "../../styles";
-import { Button } from "../Button/Button";
+import { Button } from "../Button";
 
 export const MenuItemElement = styled.button.attrs({
   type: "button",

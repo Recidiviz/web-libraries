@@ -16,8 +16,8 @@
 // =============================================================================
 import * as React from "react";
 import { NeedsContainer } from "./Need.styles";
-import { Icon } from "../Icon/Icon";
-import { IconSVG } from "../Icon/IconSVG";
+import { Icon, IconSVG } from "../Icon";
+
 import { NeedState } from "./Need.types";
 
 export interface NeedProps {

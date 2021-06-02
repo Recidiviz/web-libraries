@@ -17,7 +17,7 @@
 import * as React from "react";
 import { ButtonProps } from "./Button.types";
 import { LinkButton, BaseButton } from "./Button.styles";
-import { Icon } from "../Icon/Icon";
+import { Icon } from "../Icon";
 
 export const Button = ({
   children,
@@ -49,5 +49,3 @@ export const Button = ({
     </Component>
   );
 };
-
-export type { ButtonKind, ButtonProps } from "./Button.types";

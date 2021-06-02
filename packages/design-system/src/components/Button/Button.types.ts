@@ -15,7 +15,7 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 // =============================================================================
 import React, { MouseEventHandler, ReactNode } from "react";
-import { IconSVG } from "../Icon/IconSVG";
+import { IconSVG } from "../Icon";
 
 export type ButtonKind = "primary" | "secondary" | "link" | "borderless";
 export type ButtonShape = "pill" | "block";

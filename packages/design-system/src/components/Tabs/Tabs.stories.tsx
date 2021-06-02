@@ -15,10 +15,11 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 // =============================================================================
 
-import React, { useEffect, useState } from "react";
+import * as React from "react";
+import { useEffect, useState } from "react";
 import { Story, Meta } from "@storybook/react";
-import { Icon } from "../Icon/Icon";
-import { Tabs, TabList, Tab, TabPanel } from "./Tabs";
+import { Icon } from "../Icon";
+import { Tabs, TabList, Tab, TabPanel } from "./index";
 
 export default {
   title: "Design System/Atoms/Tabs",

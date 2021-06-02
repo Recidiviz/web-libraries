@@ -16,6 +16,5 @@
 // =============================================================================
 import LOGO from "./Logo.svg";
 
-export default {
-    LOGO,
-}
+export default { LOGO };
+

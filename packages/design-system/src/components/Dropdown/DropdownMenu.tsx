@@ -19,13 +19,17 @@ import { KeyboardEventHandler, useContext } from "react";
 import { MenuElement } from "./Dropdown.styles";
 import DropdownContext from "./DropdownContext";
 
-export interface MenuProps {
+export interface DropdownMenuProps {
   alignment?: "left" | "right";
   className?: string;
   children?: React.ReactChild | React.ReactChildren | JSX.Element[];
 }
 
-const Menu = ({ alignment, className, children }: MenuProps): JSX.Element => {
+export const DropdownMenu = ({
+  alignment,
+  className,
+  children,
+}: DropdownMenuProps): JSX.Element => {
   const { focusManager, shown, setShown } = useContext(DropdownContext);
   const onKeyPress: KeyboardEventHandler<HTMLDivElement> = (
     event: React.KeyboardEvent<HTMLDivElement>
@@ -80,5 +84,3 @@ const Menu = ({ alignment, className, children }: MenuProps): JSX.Element => {
     </MenuElement>
   );
 };
-
-export default Menu;

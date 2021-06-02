@@ -18,8 +18,7 @@ import styled from "styled-components";
 import { rem } from "polished";
 import { fonts, palette, spacing } from "../../styles";
 
-import { Icon } from "../Icon/Icon";
-import { IconSVG } from "../Icon/IconSVG";
+import { Icon, IconSVG } from "../Icon";
 
 export const SearchContainer = styled.div`
   display: flex;

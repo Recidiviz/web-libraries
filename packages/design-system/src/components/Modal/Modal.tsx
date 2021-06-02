@@ -20,7 +20,7 @@ import { rgba } from "polished";
 import * as React from "react";
 import styled from "styled-components";
 import ReactModal from "react-modal";
-import { H3 } from "../Typography/Headings";
+import { H3 } from "../Typography";
 import { animation, palette, zindex } from "../../styles";
 
 // Reset default `react-modal` styles
