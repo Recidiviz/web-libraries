@@ -47,3 +47,7 @@ yarn link v1.22.10
 success Using linked package for "react".
 ✨  Done in 0.08s.
 ```
+
+## Module Scope
+The package's `main` entrypoint is at [src/index.ts](https://github.com/Recidiviz/web-libraries/blob/main/packages/design-system/src/index.tsx). 
+Components define their interface by exporting the appropriate types/objects in `src/components/xx/index.ts`.

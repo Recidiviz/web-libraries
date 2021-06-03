@@ -14,6 +14,8 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 // =============================================================================
-import Dropdown from "./Dropdown";
-
-export default Dropdown;
+export * from "./Dropdown";
+export * from "./DropdownMenu";
+export * from "./DropdownMenuItem";
+export * from "./DropdownMenuLabel";
+export * from "./DropdownToggle";

@@ -14,14 +14,12 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 // =============================================================================
-export const styles = {
-  MAIN_FONT: "Libre Franklin",
-  HEADER_FONT: "Libre Baskerville",
-  MAIN_FONT_COLOR: "#00413E",
-  MINOR_FONT_COLOR: "#7D9897",
-  BACKGROUND_COLOR: "#f4f5f5",
-  TITLE_FONT_SIZE: "17px",
-  SUBTITLE_FONT_SIZE: "13px",
-  PRIMARY_COLOR: "#00413E",
-  BORDER_COLOR: "#E3E6E6",
+export const spacing = {
+  xxs: 1,
+  xs: 4,
+  sm: 8,
+  md: 16,
+  lg: 24,
+  xl: 32,
+  xxl: 48,
 };

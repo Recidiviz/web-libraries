@@ -14,14 +14,13 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 // =============================================================================
-import React from "react";
-import { Story, Meta } from "@storybook/react";
+import * as React from "react";
+import { Meta, Story } from "@storybook/react";
 import { Header, HeaderProps } from "./Header";
-import { Search } from "../Search/Search";
+import { Search } from "../Search";
 
 import Assets from "../../assets";
-import { Icon } from "../Icon/Icon";
-import { IconSVG } from "../Icon/IconSVG";
+import { Icon, IconSVG } from "../Icon";
 
 export default {
   title: "Design System/Atoms/Header",

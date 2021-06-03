@@ -18,8 +18,8 @@ import * as React from "react";
 import styled from "styled-components";
 import { Story, Meta } from "@storybook/react";
 import { rem } from "polished";
-import { Icon, IconProps } from "../../components/Icon/Icon";
-import { IconSVG } from "../../components/Icon/IconSVG";
+import { Icon, IconProps, IconSVG } from "../../components/Icon";
+
 import { palette } from "../../styles";
 
 export default {

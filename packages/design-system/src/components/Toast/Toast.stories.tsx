@@ -16,7 +16,7 @@
 // =============================================================================
 import * as React from "react";
 import { Story, Meta } from "@storybook/react";
-import { Button } from "../Button/Button";
+import { Button } from "../Button";
 import {
   Toast as ToastComponent,
   ToastProps,

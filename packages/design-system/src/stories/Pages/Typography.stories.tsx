@@ -24,7 +24,7 @@ import {
   H2,
   H3,
   H4,
-} from "../../components/Typography/Headings";
+} from "../../components/Typography";
 
 export default {
   title: "Design System/Pages/Typography",

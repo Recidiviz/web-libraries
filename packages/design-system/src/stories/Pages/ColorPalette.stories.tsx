@@ -18,7 +18,7 @@ import * as React from "react";
 import styled from "styled-components";
 import { Meta, Story } from "@storybook/react";
 import { rem } from "polished";
-import { H1, H4 } from "../../components/Typography/Headings";
+import { H1, H4 } from "../../components/Typography";
 import { palette, spacing } from "../../styles";
 
 interface SwatchProps {

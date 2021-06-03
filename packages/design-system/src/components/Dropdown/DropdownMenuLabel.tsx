@@ -17,13 +17,14 @@
 import * as React from "react";
 import { MenuLabelElement } from "./Dropdown.styles";
 
-export interface MenuLabelProps {
+export interface DropdownMenuLabelProps {
   className?: string;
   children?: React.ReactChild;
 }
 
-const MenuLabel = ({ className, children }: MenuLabelProps): JSX.Element => {
+export const DropdownMenuLabel = ({
+  className,
+  children,
+}: DropdownMenuLabelProps): JSX.Element => {
   return <MenuLabelElement className={className}>{children}</MenuLabelElement>;
 };
-
-export default MenuLabel;

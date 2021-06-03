@@ -1,12 +1,12 @@
-import { GlobalStyle } from '../src/styles/GlobalStyle'
-import { addDecorator } from '@storybook/react';
+import { GlobalStyle } from "../src";
+import { addDecorator } from "@storybook/react";
 
-addDecorator(story => {
+addDecorator((story) => {
   return (
-  <>
+    <>
       <GlobalStyle />
       {story()}
-  </>
+    </>
   );
 });
 

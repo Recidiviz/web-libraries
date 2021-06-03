@@ -19,17 +19,17 @@ import * as React from "react";
 import { MenuItemElement } from "./Dropdown.styles";
 import DropdownContext from "./DropdownContext";
 
-export interface MenuItemProps {
+export interface DropdownMenuItemProps {
   className?: string;
   label: string;
   onClick: React.MouseEventHandler<HTMLButtonElement>;
 }
 
-const MenuItem = ({
+export const DropdownMenuItem = ({
   className,
   label,
   onClick,
-}: MenuItemProps): JSX.Element => {
+}: DropdownMenuItemProps): JSX.Element => {
   const { focusManager, shown, setShown } = useContext(DropdownContext);
   const ref = useRef<HTMLButtonElement>(null);
 
@@ -58,5 +58,3 @@ const MenuItem = ({
     </MenuItemElement>
   );
 };
-
-export default MenuItem;

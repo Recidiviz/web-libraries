@@ -17,21 +17,19 @@
 import * as React from "react";
 import DropdownContext from "./DropdownContext";
 import { ToggleElement } from "./Dropdown.styles";
-import { ButtonProps } from "../Button/Button.types";
+import { ButtonProps } from "../Button";
 
-export interface ToggleProps extends ButtonProps {
-  ariaLabel?: string;
+export interface DropdownToggleProps extends ButtonProps {
   children?: React.ReactNode;
   className?: string;
 }
 
-const Toggle = ({
+export const DropdownToggle = ({
   children,
-  ariaLabel,
   shape = "block",
   kind = "secondary",
   ...attributes
-}: ToggleProps): JSX.Element => {
+}: DropdownToggleProps): JSX.Element => {
   const { shown, setShown } = React.useContext(DropdownContext);
 
   return (
@@ -42,7 +40,6 @@ const Toggle = ({
           setShown(true);
         }
       }}
-      aria-label={ariaLabel}
       aria-haspopup="menu"
       aria-expanded={shown}
       shape={shape}
@@ -53,5 +50,3 @@ const Toggle = ({
     </ToggleElement>
   );
 };
-
-export default Toggle;

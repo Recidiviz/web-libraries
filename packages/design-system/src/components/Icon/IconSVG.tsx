@@ -313,6 +313,19 @@ IconSVG.UserDelete = () => (
     />
   </BaseSVG>
 );
+
+IconSVG.Edit = () => (
+  <BaseSVG viewBox="0 0 16 16">
+    <path
+      d="M14.1 0.3C13.7 -0.1 13.1 -0.1 12.7 0.3L6 7V10H9L15.7 3.3C16.1 2.9 16.1 2.3 15.7 1.9L14.1 0.3Z"
+      fill={prop("fill")}
+    />
+    <path
+      d="M15 9C14.4 9 14 9.4 14 10V14H2V2H6C6.6 2 7 1.6 7 1C7 0.4 6.6 0 6 0H1C0.4 0 0 0.4 0 1V15C0 15.6 0.4 16 1 16H15C15.6 16 16 15.6 16 15V10C16 9.4 15.6 9 15 9Z"
+      fill={prop("fill")}
+    />
+  </BaseSVG>
+);
 /* eslint-enable max-len */
 
 export { IconSVG };

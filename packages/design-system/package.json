@@ -1,6 +1,6 @@
 {
   "name": "@recidiviz/design-system",
-  "version": "0.7.1",
+  "version": "1.0.0",
   "description": "UI components and styles for Recidiviz web products.",
   "author": "Recidiviz <team@recidiviz.org>",
   "license": "GPL-3.0-only",
@@ -26,7 +26,6 @@
     "body-scroll-lock": "^3.1.5",
     "polished": "^4.1.0",
     "prop-types": "^15.7.2",
-    "react-customizable-progressbar": "^1.0.2",
     "react-tabs": "^3.2.2",
     "react-toast-notifications": "^2.4.3",
     "styled-components": "^5.2.1"

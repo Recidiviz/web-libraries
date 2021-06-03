@@ -14,7 +14,10 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 // =============================================================================
-declare module "*.svg" {
-  const content: string;
-  export default content;
-}
+export const zindex = {
+  modal: {
+    backdrop: 1000,
+    content: 1001,
+  },
+  tooltip: 500,
+};
