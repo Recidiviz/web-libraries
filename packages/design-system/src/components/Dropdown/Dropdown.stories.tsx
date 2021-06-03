@@ -36,33 +36,29 @@ export default {
   ],
   argTypes: {
     alignment: {
-      name: "Dropdown.Menu alignment",
+      name: "DropdownMenu alignment",
       type: "string",
       options: ["left", "right"],
       control: {
         type: "select",
       },
     },
-    ariaLabel: {
-      name: "Dropdown.Toggle ariaLabel",
-      type: "string",
-    },
     kind: {
-      name: "Dropdown.Toggle kind",
+      name: "DropdownToggle kind",
       type: "string",
       options: ["secondary", "link", "primary", "borderless"],
       control: { type: "select" },
       defaultValue: "secondary",
     },
     shape: {
-      name: "Dropdown.Toggle shape",
+      name: "DropdownToggle shape",
       type: "string",
       options: ["block", "pill"],
       control: { type: "select" },
       defaultValue: "block",
     },
     icon: {
-      name: "Dropdown.Toggle icon",
+      name: "DropdownToggle icon",
       type: "string",
       options: Object.keys(IconSVG),
       control: { type: "select" },

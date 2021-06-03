@@ -14,8 +14,9 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 // =============================================================================
-export * from "./animation";
-export * from "./fonts";
-export * from "./palette";
-export * from "./spacing";
-export * from "./zindex";
+export const fonts = {
+  heading: "'Libre Baskerville', serif",
+  body: "'Libre Franklin', sans-serif",
+  serif: "'Libre Baskerville', serif",
+  sans: "'Libre Franklin', sans-serif",
+};

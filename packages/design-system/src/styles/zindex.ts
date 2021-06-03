@@ -14,8 +14,10 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 // =============================================================================
-export * from "./animation";
-export * from "./fonts";
-export * from "./palette";
-export * from "./spacing";
-export * from "./zindex";
+export const zindex = {
+  modal: {
+    backdrop: 1000,
+    content: 1001,
+  },
+  tooltip: 500,
+};

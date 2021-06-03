@@ -101,36 +101,3 @@ export const palette = {
   data,
   text,
 };
-
-/*
-  Font families */
-export const fonts = {
-  heading: "'Libre Baskerville', serif",
-  body: "'Libre Franklin', sans-serif",
-  serif: "'Libre Baskerville', serif",
-  sans: "'Libre Franklin', sans-serif",
-};
-
-/*
-  Margin/padding gutters */
-export const spacing = {
-  xxs: 1,
-  xs: 4,
-  sm: 8,
-  md: 16,
-  lg: 24,
-  xl: 32,
-  xxl: 48,
-};
-
-export const zindex = {
-  modal: {
-    backdrop: 1000,
-    content: 1001,
-  },
-  tooltip: 500,
-};
-
-export const animation = {
-  defaultDurationMs: 500,
-};
