@@ -18,6 +18,7 @@ import { rem } from "polished";
 import styled, { css } from "styled-components";
 import { ButtonProps } from "./Button.types";
 import { animation, fonts, palette, spacing } from "../../styles";
+import { FilledIcon, StrokedIcon } from "../Icon";
 
 const pillStyles = css`
   min-width: ${rem(129)};
@@ -39,10 +40,6 @@ const primaryStyles = css`
   background-color: ${palette.signal.links};
   color: ${palette.white};
 
-  & svg {
-    color: ${palette.white};
-  }
-
   &:hover,
   &:focus {
     background-color: ${palette.pine4};
@@ -57,11 +54,6 @@ const primaryStyles = css`
     background-color: ${palette.slate10};
     color: ${palette.slate80};
   }
-
-  &:disabled svg {
-    fill: ${palette.slate80};
-    stroke: ${palette.slate80};
-  }
 `;
 
 const secondaryStyles = css`
@@ -69,20 +61,10 @@ const secondaryStyles = css`
   border: 1px solid ${palette.slate30};
   color: ${palette.text.normal};
 
-  & svg {
-    fill: ${palette.text.normal};
-  }
-
   &:hover,
   &:focus {
     background-color: ${palette.slate20};
     color: ${palette.pine4};
-  }
-
-  &:hover svg,
-  &:focus svg {
-    fill: ${palette.pine4};
-    stroke: ${palette.pine4};
   }
 
   &:active,
@@ -91,21 +73,10 @@ const secondaryStyles = css`
     color: ${palette.signal.links};
   }
 
-  &:active svg,
-  &[aria-expanded="true"] svg {
-    fill: ${palette.signal.links};
-    stroke: ${palette.signal.links};
-  }
-
   &:disabled {
     background-color: transparent;
     border-color: ${palette.slate20};
     color: ${palette.slate60};
-  }
-
-  &:disabled svg {
-    fill: ${palette.slate60};
-    stroke: ${palette.slate60};
   }
 `;
 
@@ -131,6 +102,13 @@ export const BaseButton = styled.button.attrs({
   justify-content: center;
   transition-duration: ${animation.defaultDurationMs}ms;
   transition-property: color, background-color, border-color;
+
+  & ${FilledIcon} {
+    fill: currentColor;
+  }
+  & ${StrokedIcon} {
+    stroke: currentColor;
+  }
 
   &:disabled {
     cursor: not-allowed;
@@ -171,11 +149,6 @@ export const LinkButton = styled.button.attrs({
   font-family: ${fonts.body};
   padding: 0;
 
-  & svg {
-    fill: ${palette.signal.links};
-    stroke: ${palette.signal.links};
-  }
-
   &:active,
   &:hover,
   &:focus,
@@ -188,19 +161,8 @@ export const LinkButton = styled.button.attrs({
     color: ${palette.pine4};
   }
 
-  &:active svg,
-  &[aria-expanded="true"] {
-    fill: ${palette.pine4};
-    stroke: ${palette.pine4};
-  }
-
   &:disabled {
     cursor: not-allowed;
     color: ${palette.slate70};
-  }
-
-  &:disabled svg {
-    fill: ${palette.slate70};
-    stroke: ${palette.slate70};
   }
 `;

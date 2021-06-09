@@ -41,11 +41,7 @@ export const Button = ({
       kind={kind}
       {...attributes}
     >
-      {icon ? (
-        <Icon kind={icon} fill="currentColor" size={iconSize} />
-      ) : (
-        children
-      )}
+      {icon ? <Icon kind={icon} size={iconSize} /> : children}
     </Component>
   );
 };

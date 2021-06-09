@@ -16,6 +16,7 @@
 // =============================================================================
 import * as React from "react";
 import { CSSProperties } from "react";
+import styled from "styled-components/macro";
 
 export interface IconSVGProps {
   className?: string;
@@ -62,32 +63,30 @@ const BaseSVG = ({
   </svg>
 );
 
-const StrokedIcon = ({
-  children,
-  viewBox,
-  ...rest
-}: React.SVGProps<SVGSVGElement>) => (
-  <BaseSVG
-    viewBox={viewBox}
-    fill="transparent"
-    stroke={prop("fill")}
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    {...rest}
-  >
-    {children}
-  </BaseSVG>
-);
+// styled() so we can apply styles when nested (i.e. Button.styles.tsx)
+export const StrokedIcon = styled(
+  ({ children, viewBox, ...rest }: React.SVGProps<SVGSVGElement>) => (
+    <BaseSVG
+      viewBox={viewBox}
+      fill="transparent"
+      stroke={prop("fill")}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      {...rest}
+    >
+      {children}
+    </BaseSVG>
+  )
+)``;
 
-const FilledIcon = ({
-  children,
-  viewBox,
-  ...rest
-}: React.SVGProps<SVGSVGElement>) => (
-  <BaseSVG fill={prop("fill")} strokeWidth={0} viewBox={viewBox} {...rest}>
-    {children}
-  </BaseSVG>
-);
+// styled() so we can apply styles when nested (i.e. Button.styles.tsx)
+export const FilledIcon = styled(
+  ({ children, viewBox, ...rest }: React.SVGProps<SVGSVGElement>) => (
+    <BaseSVG fill={prop("fill")} strokeWidth={0} viewBox={viewBox} {...rest}>
+      {children}
+    </BaseSVG>
+  )
+)``;
 
 IconSVG.Arrow = () => (
   <StrokedIcon viewBox="0 0 12 10">
