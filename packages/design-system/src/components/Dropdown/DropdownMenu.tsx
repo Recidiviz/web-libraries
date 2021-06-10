@@ -37,7 +37,6 @@ export const DropdownMenu = ({
     switch (event.key) {
       case "Down":
       case "ArrowDown":
-      case "Tab":
         event.preventDefault();
         focusManager.focusNextItem();
         break;
