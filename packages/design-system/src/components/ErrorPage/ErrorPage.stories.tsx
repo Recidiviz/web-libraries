@@ -16,7 +16,7 @@
 // =============================================================================
 import * as React from "react";
 import { Meta, Story } from "@storybook/react";
-import styled from "styled-components/macro";
+import styled from "styled-components";
 import { rem } from "polished";
 
 import { ErrorPage, ErrorPageProps } from "./ErrorPage";
