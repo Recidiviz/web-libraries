@@ -17,7 +17,6 @@
 
 import * as React from "react";
 import { IconSVGContext, IconSVGProps, IconSVG } from "./IconSVG";
-import { palette } from "../../styles";
 
 export interface IconProps extends IconSVGProps {
   className?: string;
@@ -27,13 +26,13 @@ export interface IconProps extends IconSVGProps {
 }
 
 export const Icon: React.FC<IconProps> = ({
-  className = "",
-  fill = palette.text.normal,
   height,
+  fill = "currentColor",
   kind,
   size,
   width,
   rotate,
+  ...rest
 }: IconProps) => {
   let SVG;
   if (typeof kind === "string") {
@@ -50,8 +49,7 @@ export const Icon: React.FC<IconProps> = ({
     typeof rotate === "undefined" ? undefined : `rotate(${rotate})`;
 
   const iconSVGProps: IconSVGProps = {
-    className,
-    fill,
+    ...rest,
     transform: assignedRotate,
     height: assignedHeight,
     width: assignedWidth,
