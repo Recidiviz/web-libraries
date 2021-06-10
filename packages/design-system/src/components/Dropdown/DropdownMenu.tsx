@@ -47,6 +47,7 @@ export const DropdownMenu = ({
         break;
       case "Esc":
       case "Escape":
+        event.stopPropagation();
         event.preventDefault();
         setShown(false);
         focusManager.focusToggle();
