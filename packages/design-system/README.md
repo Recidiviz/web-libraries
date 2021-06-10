@@ -17,35 +17,11 @@ Use the `yarn dev` will run Storybook. Source files will be watched and automati
 The component library can be developed directly alongside dependent projects.
 
 ```bash
-# Link the component library with Yarn
-$ yarn link
-yarn link v1.22.10
-success Registered "@recidiviz/design-system".
+# Creates yarn links for the component library and dependencies, uses them inside the dependent project (i.e. case-triage)
+$ yarn dev-link ~/workspace/recidiviz-data/frontends/case-triage
 
-# Link React to avoid multiple versions of React in the dependent app
-$ cd node_modules/react && yarn link
-
-# Watch and rebuild the package when source files change
-$ yarn run watch
-rollup v2.36.1
-bundles src/index.tsx → dist/index.js, dist/index.es.js...
-created dist/index.js, dist/index.es.js in 7.8s
-```
-
-Inside a dependent frontend app:
-
-```bash
-# Use the linked component library
-$ yarn link @recidiviz/design-system
-yarn link v1.22.10
-success Using linked package for "@recidiviz/design-system".
-✨  Done in 0.08s.
-
-# Use the linked React package
-$ yarn link react
-yarn link v1.22.10
-success Using linked package for "react".
-✨  Done in 0.08s.
+# Destroys yarn links used for development
+$ yarn dev-unlink ~/workspace/recidiviz-data/frontends/case-triage
 ```
 
 ## Module Scope
