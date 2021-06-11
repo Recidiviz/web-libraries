@@ -16,10 +16,11 @@
 // =============================================================================
 
 import * as React from "react";
-import { IconSVGContext, IconSVGProps, IconSVG } from "./IconSVG";
+import { ExternalPropsContext, IconSVGProps, IconSVG } from "./IconSVG";
 
 export interface IconProps extends IconSVGProps {
   className?: string;
+  color?: string;
   kind: keyof typeof IconSVG | React.FC;
   size?: string | number;
   rotate?: number;
@@ -27,7 +28,7 @@ export interface IconProps extends IconSVGProps {
 
 export const Icon: React.FC<IconProps> = ({
   height,
-  fill = "currentColor",
+  color = "currentColor",
   kind,
   size,
   width,
@@ -48,21 +49,22 @@ export const Icon: React.FC<IconProps> = ({
   const assignedRotate =
     typeof rotate === "undefined" ? undefined : `rotate(${rotate})`;
 
-  const iconSVGProps: IconSVGProps = {
+  const iconProps: IconSVGProps = {
     ...rest,
+    color,
     transform: assignedRotate,
     height: assignedHeight,
     width: assignedWidth,
   };
 
   if (!SVG) {
-    iconSVGProps.fill = "red";
+    iconProps.color = "red";
     SVG = IconSVG.Error;
   }
 
   return (
-    <IconSVGContext.Provider value={iconSVGProps}>
+    <ExternalPropsContext.Provider value={iconProps}>
       <SVG />
-    </IconSVGContext.Provider>
+    </ExternalPropsContext.Provider>
   );
 };

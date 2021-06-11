@@ -25,7 +25,7 @@ import { palette } from "../../styles";
 export default {
   title: "Design System/Pages/Icons",
   argTypes: {
-    fill: { control: "color" },
+    color: { control: "color" },
     height: {
       control: {
         type: "range",
@@ -70,7 +70,7 @@ const IconKind = styled.div`
 
 const renderIconGridItem = ({
   kind,
-  fill,
+  color,
   height,
   width,
   rotate,
@@ -78,7 +78,7 @@ const renderIconGridItem = ({
   <IconGridItem>
     <Icon
       kind={kind}
-      fill={fill}
+      color={color}
       height={height}
       width={width}
       rotate={rotate}
@@ -87,11 +87,11 @@ const renderIconGridItem = ({
   </IconGridItem>
 );
 
-const Template: Story<IconProps> = ({ fill, height, width, rotate }) => (
+const Template: Story<IconProps> = ({ color, height, width, rotate }) => (
   <>
     <IconGrid>
       {Object.keys(IconSVG).map((kind) =>
-        renderIconGridItem({ kind, fill, height, width, rotate })
+        renderIconGridItem({ kind, color, height, width, rotate })
       )}
     </IconGrid>
   </>
@@ -99,7 +99,7 @@ const Template: Story<IconProps> = ({ fill, height, width, rotate }) => (
 
 export const Icons = Template.bind({});
 Icons.args = {
-  fill: palette.signal.links,
+  color: palette.signal.links,
   height: 32,
   width: 32,
   rotate: 0,
