@@ -19,33 +19,35 @@ import { ButtonProps } from "./Button.types";
 import { LinkButton, BaseButton } from "./Button.styles";
 import { Icon } from "../Icon";
 
-export const Button = ({
-  children,
-  className = "",
-  kind = "primary",
-  shape = "pill",
-  disabled = false,
-  onClick,
-  icon,
-  iconSize = 16,
-  ...attributes
-}: ButtonProps): JSX.Element => {
-  const Component = kind === "link" ? LinkButton : BaseButton;
+export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
+  (
+    {
+      children,
+      className = "",
+      kind = "primary",
+      shape = "pill",
+      disabled = false,
+      onClick,
+      icon,
+      iconSize = 16,
+      ...attributes
+    },
+    ref
+  ) => {
+    const Component = kind === "link" ? LinkButton : BaseButton;
 
-  return (
-    <Component
-      className={className}
-      onClick={disabled ? undefined : onClick}
-      disabled={disabled}
-      shape={shape}
-      kind={kind}
-      {...attributes}
-    >
-      {icon ? (
-        <Icon kind={icon} fill="currentColor" size={iconSize} />
-      ) : (
-        children
-      )}
-    </Component>
-  );
-};
+    return (
+      <Component
+        className={className}
+        onClick={disabled ? undefined : onClick}
+        disabled={disabled}
+        shape={shape}
+        kind={kind}
+        {...attributes}
+        ref={ref}
+      >
+        {icon ? <Icon kind={icon} size={iconSize} /> : children}
+      </Component>
+    );
+  }
+);
