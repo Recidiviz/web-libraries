@@ -14,26 +14,15 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 // =============================================================================
-import Assets from "./assets";
+// Sets a vendor-prefixed `Element.prototype.matches` implementations (namely IE11)
 
-import polyfill from "./polyfill";
+const polyfill = (): void => {
+  if (!Element.prototype.matches) {
+    Element.prototype.matches =
+      Element.prototype.matches ||
+      Element.prototype.msMatchesSelector ||
+      Element.prototype.webkitMatchesSelector;
+  }
+};
 
-export { Assets };
-
-polyfill();
-
-export * from "./styles";
-
-export * from "./components/Button";
-export * from "./components/Card";
-export * from "./components/ChartWrapper";
-export * from "./components/Dropdown";
-export * from "./components/ErrorPage";
-export * from "./components/GlobalStyle";
-export * from "./components/Header";
-export * from "./components/Icon";
-export * from "./components/Modal";
-export * from "./components/Need";
-export * from "./components/Search";
-export * from "./components/Tabs";
-export * from "./components/Typography";
+export default polyfill;

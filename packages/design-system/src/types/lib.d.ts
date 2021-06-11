@@ -14,26 +14,7 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 // =============================================================================
-import Assets from "./assets";
 
-import polyfill from "./polyfill";
-
-export { Assets };
-
-polyfill();
-
-export * from "./styles";
-
-export * from "./components/Button";
-export * from "./components/Card";
-export * from "./components/ChartWrapper";
-export * from "./components/Dropdown";
-export * from "./components/ErrorPage";
-export * from "./components/GlobalStyle";
-export * from "./components/Header";
-export * from "./components/Icon";
-export * from "./components/Modal";
-export * from "./components/Need";
-export * from "./components/Search";
-export * from "./components/Tabs";
-export * from "./components/Typography";
+interface Element {
+  msMatchesSelector: (selector: string) => boolean;
+}
