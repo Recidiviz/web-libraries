@@ -25,7 +25,7 @@ import { DropdownMenuLabel } from "./DropdownMenuLabel";
 import { DropdownMenuItem } from "./DropdownMenuItem";
 
 export default {
-  title: "Design System/Atoms/ButtonDropdown",
+  title: "Design System/Atoms/Dropdown",
   component: Dropdown,
   decorators: [
     (BaseStory) => (
