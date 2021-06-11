@@ -67,9 +67,11 @@ export const DropdownMenu = ({
     };
 
     document.addEventListener("click", handleFocus);
+    document.addEventListener("focusin", handleFocus);
 
     return () => {
       document.removeEventListener("click", handleFocus);
+      document.removeEventListener("focusin", handleFocus);
     };
   });
 

@@ -52,7 +52,7 @@ export const DropdownMenuItem = ({
         focusManager.focusToggle();
       }}
       disabled={!shown}
-      tabIndex={shown ? 0 : -1}
+      tabIndex={-1}
     >
       {label}
     </MenuItemElement>
