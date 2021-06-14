@@ -37,7 +37,6 @@ export const DropdownMenu = ({
     switch (event.key) {
       case "Down":
       case "ArrowDown":
-      case "Tab":
         event.preventDefault();
         focusManager.focusNextItem();
         break;
@@ -48,6 +47,7 @@ export const DropdownMenu = ({
         break;
       case "Esc":
       case "Escape":
+        event.stopPropagation();
         event.preventDefault();
         setShown(false);
         focusManager.focusToggle();
@@ -67,9 +67,11 @@ export const DropdownMenu = ({
     };
 
     document.addEventListener("click", handleFocus);
+    document.addEventListener("focusin", handleFocus);
 
     return () => {
       document.removeEventListener("click", handleFocus);
+      document.removeEventListener("focusin", handleFocus);
     };
   });
 

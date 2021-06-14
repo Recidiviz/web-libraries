@@ -44,6 +44,7 @@ export const DropdownToggle = ({
       aria-expanded={shown}
       shape={shape}
       kind={kind}
+      tabIndex={shown ? -1 : 0}
       {...attributes}
     >
       {children}
