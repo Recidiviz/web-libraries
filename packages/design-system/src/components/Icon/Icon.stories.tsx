@@ -24,7 +24,7 @@ export default {
   title: "Design System/Atoms/Icon",
   component: IconComponent,
   argTypes: {
-    fill: {
+    color: {
       control: "color",
     },
     kind: {
@@ -48,8 +48,8 @@ export default {
   },
 } as Meta;
 
-const Template: Story<IconProps> = ({ kind, fill, height, width }) => (
-  <IconComponent kind={kind} fill={fill} height={height} width={width} />
+const Template: Story<IconProps> = ({ kind, color, height, width }) => (
+  <IconComponent kind={kind} color={color} height={height} width={width} />
 );
 
 export const Icon = Template.bind({});
