@@ -14,6 +14,8 @@
   ],
   "scripts": {
     "dev": "start-storybook -p 60006 -s public",
+    "dev-link": "./scripts/dev-link.sh",
+    "dev-unlink": "./scripts/dev-unlink.sh",
     "build": "rollup -c",
     "watch": "rollup -c -w",
     "lint": "tsc && eslint --ext .js,.ts,.tsx src/",
