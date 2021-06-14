@@ -72,7 +72,7 @@ const FillSVG = ({ children, ...propsFromInternalIcon }: IconSVGProps) => {
   2. Right click -> Copy SVG
   3. Run SVG through SVGOMG (make sure the `Remove viewBox` option is disabled!) https://jakearchibald.github.io/svgomg/
   4. Remove `fill`/`stroke` properties from the icon, as these values are inherited from the `<svg/>` parent
-  5. Add a functional component o `IconSVG`. Use `StrokeSVG` for icons that are built of stroked paths,
+  5. Add a functional component to `IconSVG`. Use `StrokeSVG` for icons that are built of stroked paths,
      `FillSVG` for icons that are built of filled paths
 */
 IconSVG.Arrow = () => (
