@@ -255,6 +255,35 @@ IconSVG.Briefcase = () => (
   </StrokeSVG>
 );
 
+IconSVG.Return = () => (
+  <StrokeSVG viewBox="0 0 19 9">
+    <path
+      d="M0.5 4.5H18.5V0.5"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M4.5 8.5L0.5 4.5L4.5 0.5"
+      strokeMiterlimit="10"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </StrokeSVG>
+);
+
+IconSVG.Circle = () => (
+  <FillSVG viewBox="0 0 8 8">
+    <circle cx="4" cy="4" r="4" />
+  </FillSVG>
+);
+
+IconSVG.AddFilled = () => (
+  <FillSVG viewBox="0 0 24 24">
+    <path d="M12 0C9.62663 0 7.30655 0.703788 5.33316 2.02236C3.35977 3.34094 1.8217 5.21509 0.913451 7.4078C0.00519943 9.60051 -0.232441 12.0133 0.230582 14.3411C0.693605 16.6689 1.83649 18.8071 3.51472 20.4853C5.19295 22.1635 7.33115 23.3064 9.65892 23.7694C11.9867 24.2324 14.3995 23.9948 16.5922 23.0866C18.7849 22.1783 20.6591 20.6402 21.9776 18.6668C23.2962 16.6935 24 14.3734 24 12C23.9908 8.82024 22.7235 5.77336 20.4751 3.52492C18.2266 1.27648 15.1798 0.00923395 12 0V0ZM18 13H13V18H11V13H6.00001V11H11V6H13V11H18V13Z" />
+  </FillSVG>
+);
+
 /* eslint-enable max-len */
 
 export { IconSVG };
