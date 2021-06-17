@@ -1,5 +1,9 @@
 # Changelog
 
+## v2.1.0
+### Added
+* `IconSVG.AddFilled`, `IconSVG.Circle`, `IconSVG.Return` (#36)
+
 ## v2.0.0
 ### Added
 * `<Icon/>`s now default their fill/stroke to `currentColor` (#31)
