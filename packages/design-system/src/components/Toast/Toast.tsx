@@ -42,7 +42,7 @@ export const Toast: React.FC<ToastProps> = ({ appearance, children }) => (
       <Icon
         kind={IconMap[appearance]}
         size={24}
-        fill={ToastAccentColors[appearance]}
+        color={ToastAccentColors[appearance]}
       />
     </IconWrapper>
     <BaseToastContent>{children}</BaseToastContent>
