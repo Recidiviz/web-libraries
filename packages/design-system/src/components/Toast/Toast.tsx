@@ -27,6 +27,7 @@ import {
   BaseToastDiv,
   IconWrapper,
   ToastAccentColors,
+  ToastContainer,
 } from "./Toast.styles";
 
 const IconMap = {
@@ -70,7 +71,10 @@ export interface ToastProviderProps {
 export const ToastProvider = ({
   children,
 }: ToastProviderProps): JSX.Element => (
-  <OriginalToastProvider placement="bottom-right" components={{ Toast }}>
+  <OriginalToastProvider
+    placement="bottom-right"
+    components={{ Toast, ToastContainer }}
+  >
     {children}
   </OriginalToastProvider>
 );

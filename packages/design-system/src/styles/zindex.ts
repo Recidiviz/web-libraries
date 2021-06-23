@@ -15,6 +15,7 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 // =============================================================================
 export const zindex = {
+  toast: 1002,
   modal: {
     backdrop: 1000,
     content: 1001,

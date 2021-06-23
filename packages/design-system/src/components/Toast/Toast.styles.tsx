@@ -15,9 +15,12 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 // =============================================================================
 import styled from "styled-components";
-import { AppearanceTypes } from "react-toast-notifications";
+import {
+  AppearanceTypes,
+  DefaultToastContainer,
+} from "react-toast-notifications";
 import { rem } from "polished";
-import { fonts, palette, spacing } from "../../styles";
+import { fonts, palette, spacing, zindex } from "../../styles";
 
 export const ToastBackgroundColors = {
   success: "#d5f6ee",
@@ -32,6 +35,14 @@ export const ToastAccentColors = {
   warning: "#d9a95f",
   error: "#c53b3e",
 };
+
+export const ToastContainer = styled(DefaultToastContainer)`
+  /* additional specificity to override default styles */
+  && {
+    padding: ${rem(spacing.xl)};
+    z-index: ${zindex.toast};
+  }
+`;
 
 export const BaseToastDiv = styled.div<{ appearance: AppearanceTypes }>(
   ({ appearance }) => `
