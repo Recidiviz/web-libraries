@@ -27,6 +27,7 @@ import {
   BaseToastDiv,
   IconWrapper,
   ToastAccentColors,
+  ToastContainer,
 } from "./Toast.styles";
 
 const IconMap = {
@@ -42,7 +43,7 @@ export const Toast: React.FC<ToastProps> = ({ appearance, children }) => (
       <Icon
         kind={IconMap[appearance]}
         size={24}
-        fill={ToastAccentColors[appearance]}
+        color={ToastAccentColors[appearance]}
       />
     </IconWrapper>
     <BaseToastContent>{children}</BaseToastContent>
@@ -70,7 +71,10 @@ export interface ToastProviderProps {
 export const ToastProvider = ({
   children,
 }: ToastProviderProps): JSX.Element => (
-  <OriginalToastProvider placement="bottom-right" components={{ Toast }}>
+  <OriginalToastProvider
+    placement="bottom-right"
+    components={{ Toast, ToastContainer }}
+  >
     {children}
   </OriginalToastProvider>
 );

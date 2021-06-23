@@ -36,4 +36,5 @@ export * from "./components/Modal";
 export * from "./components/Need";
 export * from "./components/Search";
 export * from "./components/Tabs";
+export * from "./components/Toast";
 export * from "./components/Typography";
