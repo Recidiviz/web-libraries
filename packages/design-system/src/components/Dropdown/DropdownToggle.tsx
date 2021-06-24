@@ -15,19 +15,23 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 // =============================================================================
 import * as React from "react";
+import { rem } from "polished";
 import DropdownContext from "./DropdownContext";
-import { ToggleElement } from "./Dropdown.styles";
+import { CaretWrapper, ToggleElement } from "./Dropdown.styles";
 import { ButtonProps } from "../Button";
+import { Icon } from "../Icon";
 
 export interface DropdownToggleProps extends ButtonProps {
   children?: React.ReactNode;
   className?: string;
+  showCaret?: boolean;
 }
 
 export const DropdownToggle = ({
   children,
   shape = "block",
   kind = "secondary",
+  showCaret,
   ...attributes
 }: DropdownToggleProps): JSX.Element => {
   const { shown, setShown } = React.useContext(DropdownContext);
@@ -48,6 +52,11 @@ export const DropdownToggle = ({
       {...attributes}
     >
       {children}
+      {showCaret && (
+        <CaretWrapper>
+          <Icon kind="DownChevron" height={rem(4)} width={rem(8)} />
+        </CaretWrapper>
+      )}
     </ToggleElement>
   );
 };
