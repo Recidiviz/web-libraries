@@ -37,6 +37,7 @@ export const MenuItemElement = styled.button.attrs({
   text-align: left;
   white-space: nowrap;
   font-size: ${rem(14)};
+  font-family: ${fonts.body};
 
   &:focus {
     outline: none;
