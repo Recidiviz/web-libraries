@@ -21,7 +21,7 @@ import DropdownContext from "./DropdownContext";
 
 export interface DropdownMenuItemProps {
   className?: string;
-  label: string;
+  label: React.ReactNode;
   onClick: React.MouseEventHandler<HTMLButtonElement>;
 }
 
