@@ -21,13 +21,18 @@ import DropdownContext from "./DropdownContext";
 
 export interface DropdownMenuItemProps {
   className?: string;
-  label: string;
+  /**
+   * @deprecated pass children instead
+   */
+  label?: string;
+  children?: React.ReactNode;
   onClick: React.MouseEventHandler<HTMLButtonElement>;
 }
 
 export const DropdownMenuItem = ({
   className,
   label,
+  children,
   onClick,
 }: DropdownMenuItemProps): JSX.Element => {
   const { focusManager, shown, setShown } = useContext(DropdownContext);
@@ -54,7 +59,7 @@ export const DropdownMenuItem = ({
       disabled={!shown}
       tabIndex={-1}
     >
-      {label}
+      {label || children}
     </MenuItemElement>
   );
 };

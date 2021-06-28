@@ -37,6 +37,7 @@ export const MenuItemElement = styled.button.attrs({
   text-align: left;
   white-space: nowrap;
   font-size: ${rem(14)};
+  font-family: ${fonts.body};
 
   &:focus {
     outline: none;
@@ -128,6 +129,13 @@ export const MenuElement = styled.div.attrs({
 `;
 
 export const ToggleElement = styled(Button)``;
+
+export const CaretWrapper = styled.span`
+  display: inline-flex;
+  margin-left: auto;
+  padding-left: ${rem(spacing.sm)};
+  vertical-align: middle;
+`;
 
 export const DropdownElement = styled.div`
   display: inline-block;

@@ -63,6 +63,10 @@ export default {
       options: Object.keys(IconSVG),
       control: { type: "select" },
     },
+    showCaret: {
+      name: "DropdownToggle showCaret",
+      type: "boolean",
+    },
   },
 } as Meta;
 
@@ -74,6 +78,7 @@ const Template: Story<CombinedArgs> = ({
   kind,
   shape,
   icon,
+  showCaret,
 }) => {
   const { addToast } = useToasts();
 
@@ -83,7 +88,12 @@ const Template: Story<CombinedArgs> = ({
         other focusable element
       </button>
       <Dropdown>
-        <DropdownToggle kind={kind} shape={shape} icon={icon}>
+        <DropdownToggle
+          kind={kind}
+          shape={shape}
+          icon={icon}
+          showCaret={showCaret}
+        >
           {children}
         </DropdownToggle>
         <DropdownMenu alignment={alignment}>
