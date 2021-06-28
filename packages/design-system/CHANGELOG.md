@@ -4,19 +4,19 @@
 
 ### Added
 
-- `DropdownToggle` will render a caret when specified via prop
+- `DropdownToggle` will render a caret when specified via prop (#39)
 
 ### Changed
 
-- `DropdownMenuItem` can render any `children` instead of just a string `label`.
+- `DropdownMenuItem` can render any `children` instead of just a string `label`. (#39)
 
 ### Fixed
 
-- `DropdownMenu` now renders text in the house body font.
+- `DropdownMenu` now renders text in the house body font. (#39)
 
 ### Deprecated
 
-- The `label` prop for `DropdownMenuItem`
+- The `label` prop for `DropdownMenuItem` (#39)
 
 ## v2.1.0
 
