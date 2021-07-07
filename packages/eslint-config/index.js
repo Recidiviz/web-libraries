@@ -90,6 +90,8 @@ module.exports = {
       "error",
       { declaration: false, assignment: false },
     ],
+    "simple-import-sort/imports": "error",
+    "simple-import-sort/exports": "error"
   },
   overrides: [
     {

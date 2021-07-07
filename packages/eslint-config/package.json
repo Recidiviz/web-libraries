@@ -1,6 +1,6 @@
 {
   "name": "@recidiviz/eslint-config",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Shared ESLint config for Recidiviz web applications",
   "author": "Recidiviz <team@recidiviz.org>",
   "main": "index.js",
