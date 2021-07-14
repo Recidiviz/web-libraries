@@ -50,6 +50,11 @@ export const DropdownMenuItem = ({
     <MenuItemElement
       className={className}
       ref={ref}
+      onMouseDown={(e) =>
+        // prevents a blur from clobbering click event in Safari
+        // https://stackoverflow.com/questions/17769005/onclick-and-onblur-ordering-issue/57630197#57630197
+        e.preventDefault()
+      }
       onMouseEnter={onMouseEnter}
       onClick={(event: React.MouseEvent<HTMLButtonElement>) => {
         onClick(event);
