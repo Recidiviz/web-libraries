@@ -1,5 +1,17 @@
 # Changelog
 
+## v2.3.2
+
+### Fixed
+
+- Bug in `Dropdown` where Safari ignored menu item clicks
+
+## v2.3.1
+
+### Added
+
+- `Gift` icon (#42)
+
 ## v2.3.0
 
 ### Added
