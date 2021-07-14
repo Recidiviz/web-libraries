@@ -32,9 +32,15 @@ export const DropdownToggle = ({
   shape = "block",
   kind = "secondary",
   showCaret,
+  style,
   ...attributes
 }: DropdownToggleProps): JSX.Element => {
   const { shown, setShown } = React.useContext(DropdownContext);
+
+  const inlineStyles = { ...style };
+  if (showCaret) {
+    inlineStyles.justifyContent = "space-between";
+  }
 
   return (
     <ToggleElement
@@ -49,6 +55,7 @@ export const DropdownToggle = ({
       shape={shape}
       kind={kind}
       tabIndex={shown ? -1 : 0}
+      style={inlineStyles}
       {...attributes}
     >
       {children}
