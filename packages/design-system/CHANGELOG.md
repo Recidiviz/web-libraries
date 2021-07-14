@@ -4,7 +4,7 @@
 
 ### Fixed
 
-- Bug in `Dropdown` where Safari ignored menu item clicks
+- Bug in `Dropdown` where Safari ignored menu item clicks (#43)
 
 ## v2.3.1
 
