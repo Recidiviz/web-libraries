@@ -132,7 +132,6 @@ export const ToggleElement = styled(Button)``;
 
 export const CaretWrapper = styled.span`
   display: inline-flex;
-  margin-left: auto;
   padding-left: ${rem(spacing.sm)};
   vertical-align: middle;
 `;

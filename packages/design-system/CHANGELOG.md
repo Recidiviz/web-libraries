@@ -5,6 +5,7 @@
 ### Fixed
 
 - Bug in `Dropdown` where Safari ignored menu item clicks (#43)
+- Bug in `Dropdown` where caret was not placed correctly in IE 11 (#44)
 
 ## v2.3.1
 
