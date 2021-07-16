@@ -107,6 +107,10 @@ const Template: Story<CombinedArgs> = ({
             label="30 days"
             onClick={() => addToast("30 days")}
           />
+          <DropdownMenuLabel>Other Actions</DropdownMenuLabel>
+          <DropdownMenuItem onClick={() => addToast("Recidiviz")}>
+            Say “Recidiviz”
+          </DropdownMenuItem>
         </DropdownMenu>
       </Dropdown>
     </>

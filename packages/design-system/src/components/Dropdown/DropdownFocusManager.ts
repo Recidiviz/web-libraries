@@ -44,32 +44,52 @@ class DropdownFocusManager {
     this.querySelector<HTMLButtonElement>(`${ToggleElement}`)?.focus();
   }
 
+  /**
+   * Selects the next menu item after the one currently focused, otherwise wrap to the first
+   */
   focusNextItem(): void {
-    // Selects the focused menu item's next sibling, otherwise wrap to the first
     const focused = this.querySelector<HTMLButtonElement>(
       `${MenuItemElement}:focus`
     );
 
-    const previous =
-      focused?.nextElementSibling &&
-      focused.nextElementSibling.matches(`${MenuItemElement}`)
-        ? focused.nextElementSibling
-        : this.querySelector(`${MenuItemElement}:first-of-type`);
+    let next = focused?.nextElementSibling;
 
-    (previous as HTMLButtonElement).focus();
+    // skip over any intermediate elements that are not MenuItemElements
+    while (next) {
+      if (next.matches(`${MenuItemElement}`)) {
+        break;
+      }
+      next = next.nextElementSibling;
+    }
+
+    if (!next) {
+      next = this.querySelector(`${MenuItemElement}:first-of-type`);
+    }
+
+    (next as HTMLButtonElement).focus();
   }
 
+  /**
+   * Selects the last menu item before the one currently focused, otherwise wrap to the last
+   */
   focusPreviousItem(): void {
-    // Selects the focused menu item's previous sibling, otherwise wrap to the last
     const focused = this.querySelector<HTMLButtonElement>(
       `${MenuItemElement}:focus`
     );
 
-    const previous =
-      focused?.previousElementSibling &&
-      focused.previousElementSibling.matches(`${MenuItemElement}`)
-        ? focused.previousElementSibling
-        : this.querySelector(`${MenuItemElement}:last-of-type`);
+    let previous = focused?.previousElementSibling;
+
+    // skip over any intermediate elements that are not MenuItemElements
+    while (previous) {
+      if (previous.matches(`${MenuItemElement}`)) {
+        break;
+      }
+      previous = previous.previousElementSibling;
+    }
+
+    if (!previous) {
+      previous = this.querySelector(`${MenuItemElement}:last-of-type`);
+    }
 
     (previous as HTMLButtonElement).focus();
   }
