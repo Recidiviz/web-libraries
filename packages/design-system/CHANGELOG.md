@@ -1,5 +1,15 @@
 # Changelog
 
+## v2.4.0
+
+### Added
+
+- StarCircled icon (#46)
+
+### Fixed
+
+- Keyboard navigation bug in `Dropdown` (#46)
+
 ## v2.3.2
 
 ### Fixed
