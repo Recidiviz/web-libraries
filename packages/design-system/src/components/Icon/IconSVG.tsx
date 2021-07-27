@@ -296,6 +296,21 @@ IconSVG.AddFilled = () => (
   </FillSVG>
 );
 
+IconSVG.Download = () => (
+  <StrokeSVG viewBox="0 0 16 16">
+    <path
+      d="M12.445 6.545c.022-.181.055-.358.055-.545A4.5 4.5 0 008 1.5c-2.359 0-4.271 1.821-4.463 4.13A3.993 3.993 0 00.5 9.5a4 4 0 004 4H12a3.5 3.5 0 003.5-3.5 3.489 3.489 0 00-3.055-3.455z"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+    <path
+      d="M6 9l2.5 2.5L11 9M8.5 11.5v-6"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </StrokeSVG>
+);
+
 /* eslint-enable max-len */
 
 export { IconSVG };
