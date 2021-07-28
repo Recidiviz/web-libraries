@@ -1,5 +1,11 @@
 # Changelog
 
+## v2.5.0
+
+### Added
+
+- Alert icon (#48)
+
 ## v2.4.1
 
 ### Added
