@@ -19,6 +19,7 @@ import {
   Options,
   ToastProps,
   ToastProvider as OriginalToastProvider,
+  ToastProviderProps,
   useToasts as useToastsOrig,
 } from "react-toast-notifications";
 import { Icon } from "../Icon";
@@ -64,16 +65,14 @@ export const useToasts = (): ReturnType<typeof useToastsOrig> => {
   return { addToast: addToastWrapper, ...others };
 };
 
-export interface ToastProviderProps {
-  children: React.ReactNode;
-}
-
 export const ToastProvider = ({
   children,
+  ...props
 }: ToastProviderProps): JSX.Element => (
   <OriginalToastProvider
     placement="bottom-right"
     components={{ Toast, ToastContainer }}
+    {...props}
   >
     {children}
   </OriginalToastProvider>
@@ -82,6 +81,7 @@ export const ToastProvider = ({
 export type {
   AppearanceTypes as ToastType,
   ToastProps,
+  ToastProviderProps,
 } from "react-toast-notifications";
 
 export default Toast;
