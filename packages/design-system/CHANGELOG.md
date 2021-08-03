@@ -1,5 +1,11 @@
 # Changelog
 
+## v2.5.1
+
+### Fixed
+
+- Accept all library props for ToastProvider (#49)
+
 ## v2.5.0
 
 ### Added
