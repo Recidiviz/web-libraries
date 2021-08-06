@@ -60,9 +60,9 @@ export const TabPanel = styled(ReactTabs.TabPanel).attrs({
   selectedClassName: "TabPanel--selected",
 })`
   display: none;
+  padding: ${rem(spacing.xl)};
 
   &.TabPanel--selected {
     display: block;
-    padding: ${rem(spacing.xl)};
   }
 `;
