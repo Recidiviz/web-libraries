@@ -1,5 +1,11 @@
 # Changelog
 
+## v2.5.2
+
+### Fixed
+
+- Hide inactive TabPanels so they don't interfere with the active one (#50)
+
 ## v2.5.1
 
 ### Fixed

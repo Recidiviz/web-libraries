@@ -59,7 +59,10 @@ export const Tab = styled(ReactTabs.Tab).attrs({
 export const TabPanel = styled(ReactTabs.TabPanel).attrs({
   selectedClassName: "TabPanel--selected",
 })`
+  display: none;
+  padding: ${rem(spacing.xl)};
+
   &.TabPanel--selected {
-    padding: ${rem(spacing.xl)};
+    display: block;
   }
 `;
