@@ -1,5 +1,11 @@
 # Changelog
 
+## v2.6.0
+
+### Added
+
+- Loading component (#51)
+
 ## v2.5.2
 
 ### Fixed

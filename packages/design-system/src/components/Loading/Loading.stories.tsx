@@ -14,7 +14,15 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 // =============================================================================
-export const animation = {
-  defaultDurationMs: 500,
-  extendedDurationMs: 1000,
-};
+import * as React from "react";
+import { Story, Meta } from "@storybook/react";
+import { Loading as LoadingComponent } from "./Loading";
+
+export default {
+  title: "Design System/Components/Loading",
+  component: LoadingComponent,
+} as Meta;
+
+const Template: Story = () => <LoadingComponent />;
+
+export const Loading = Template.bind({});
