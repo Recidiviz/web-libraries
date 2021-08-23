@@ -46,3 +46,5 @@ jobs:
           install-command: yarn --frozen-lockfile
       - name: Yarn build
         run: yarn build
+      - name: Deploy Storybook
+        run: yarn run deploy-storybook
