@@ -46,7 +46,3 @@ jobs:
           install-command: yarn --frozen-lockfile
       - name: Yarn build
         run: yarn build
-      - name: Deploy Storybook
-        run: yarn run deploy-storybook
-        env:
-          GH_TOKEN: ${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}
