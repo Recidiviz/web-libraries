@@ -21,7 +21,7 @@
     "lint": "tsc && eslint --ext .js,.ts,.tsx src/",
     "commit": "npx git-cz",
     "build-storybook": "build-storybook -o ./docs -s src/assets",
-    "deploy-storybook": "storybook-to-ghpages --out=./docs --source-branch=main -t GITHUB_TOKEN"
+    "deploy-storybook": "storybook-to-ghpages --out=./docs --source-branch=main"
   },
   "dependencies": {
     "@fontsource/libre-baskerville": "^4.1.0",
