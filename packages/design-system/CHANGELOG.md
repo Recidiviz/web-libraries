@@ -1,5 +1,12 @@
 # Changelog
 
+## v2.6.1
+
+### Configuration Change
+
+- Deploy Storybook to Github Pages (#58)
+- Add package.json version number to the Storybook brand title (#58)
+
 ## v2.6.0
 
 ### Added
