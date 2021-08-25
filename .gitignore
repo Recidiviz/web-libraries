@@ -42,6 +42,7 @@ package-lock.json
 
 # Storybook
 storybook-static
+docs
 
 # Typescript
 *.tsbuildinfo
