@@ -23,5 +23,6 @@ Packages are versioned independently of one another and have separate dependenci
 The release process is semi-automated and relies on Github Actions. When you are ready to release a package, you should perform the following steps:
 
 1. Open a pull request to increment the version in its `package.json`, following [semantic versioning](https://docs.npmjs.com/about-semantic-versioning) conventions.
+1. Update the CHANGELOG.md file for the package you're updating.
 1. Once that pull request is merged, create a Github Release on `main` for that package. Include a changelog in the body of the Release. The tag for this release **must** follow the naming convention `[package]@[version-number]`, where `package` matches the name of the package's directory (e.g., `eslint-config` for `packages/eslint-config`). The version number should also match the version bump you just merged.
 1. When that release is created, the package matching the tagged name will be published to npm by a Github Action.
