@@ -1,6 +1,6 @@
 # Changelog
 
-## v2.6.1
+## v2.6.2
 
 ### Configuration Change
 
