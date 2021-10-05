@@ -20,7 +20,8 @@ import { IconSVG } from "../Icon";
 export type ButtonKind = "primary" | "secondary" | "link" | "borderless";
 export type ButtonShape = "pill" | "block";
 
-export interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
+export interface ButtonProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   /**
    * children will not be rendered if an icon is specified
    */

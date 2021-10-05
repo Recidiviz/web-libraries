@@ -1,5 +1,12 @@
 # Changelog
 
+## v2.6.2
+
+### Configuration Change
+
+- Improved `<Button/>` component typing to allow `type` attribute (#64)
+
+
 ## v2.6.1
 
 ### Configuration Change

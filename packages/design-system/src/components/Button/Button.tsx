@@ -30,6 +30,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       onClick,
       icon,
       iconSize = 16,
+      type = "button",
       ...attributes
     },
     ref
@@ -43,6 +44,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         disabled={disabled}
         shape={shape}
         kind={kind}
+        type={type}
         {...attributes}
         ref={ref}
       >

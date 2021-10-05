@@ -90,9 +90,7 @@ const borderlessStyles = css`
   }
 `;
 
-export const BaseButton = styled.button.attrs({
-  type: "button",
-})<Pick<ButtonProps, "kind" | "shape">>`
+export const BaseButton = styled.button<Pick<ButtonProps, "kind" | "shape">>`
   align-items: center;
   cursor: pointer;
   display: flex;
@@ -131,9 +129,7 @@ export const BaseButton = styled.button.attrs({
   }}
 `;
 
-export const LinkButton = styled.button.attrs({
-  type: "button",
-})<ButtonProps>`
+export const LinkButton = styled.button<ButtonProps>`
   background: transparent;
   border: none;
   color: ${palette.signal.links};
