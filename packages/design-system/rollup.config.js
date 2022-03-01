@@ -15,16 +15,22 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 // =============================================================================
 import postcss from "rollup-plugin-postcss";
-import peerDepsExternal from "rollup-plugin-peer-deps-external";
 import resolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
 import svg from "rollup-plugin-svg";
 import url from "postcss-url";
 import typescript from "rollup-plugin-typescript2";
 import sourcemaps from "rollup-plugin-sourcemaps";
+import analyze from "rollup-plugin-analyzer";
+import externals from "rollup-plugin-node-externals";
 
 const packageJson = require("./package.json");
-const webfont = require("postcss-webfont");
+
+const optionalPlugins = [];
+
+if (process.env.ANALYZE === "true") {
+  optionalPlugins.push(analyze({ summaryOnly: true }));
+}
 
 export default {
   input: "src/index.ts",
@@ -41,7 +47,7 @@ export default {
     },
   ],
   plugins: [
-    peerDepsExternal(),
+    externals(),
     postcss({
       plugins: [url({ url: "inline" })],
     }),
@@ -50,5 +56,6 @@ export default {
     svg({ base64: true }),
     sourcemaps(),
     typescript({ clean: true, useTsconfigDeclarationDir: true }),
+    ...optionalPlugins,
   ],
 };
