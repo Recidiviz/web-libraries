@@ -15,20 +15,10 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 // =============================================================================
 import { rem } from "polished";
-import React from "react";
 import styled from "styled-components";
 import { palette, spacing, zindex } from "../../styles";
 
-const StateStyles = {
-  entering: `opacity: 1;`,
-  exiting: `opacity: 0;`,
-};
-
-export type TooltipState = "entering" | "exiting" | null;
-
-const Tooltip = styled.div<{
-  state: TooltipState;
-}>`
+const Tooltip = styled.div`
   display: block;
   position: fixed;
   font-size: ${rem("14px")};
@@ -37,11 +27,7 @@ const Tooltip = styled.div<{
   color: ${palette.white};
   background-color: ${palette.signal.tooltip};
   pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.3s ease-in-out;
   z-index: ${zindex.modal.content + 1};
-
-  ${(props) => props.state && StateStyles[props.state]}
 `;
 
 export default Tooltip;

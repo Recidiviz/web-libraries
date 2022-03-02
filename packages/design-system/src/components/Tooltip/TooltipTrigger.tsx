@@ -16,23 +16,50 @@
 // =============================================================================
 import React from "react";
 import ReactDOM from "react-dom";
+import { useTransition, animated } from "react-spring";
+import styled from "styled-components";
 
-import Tooltip, { TooltipState } from "./Tooltip";
+import Tooltip from "./Tooltip";
 
 interface TooltipTriggerProps {
-  children: React.ReactNode | React.ReactChild | React.ReactChild[];
+  children: React.ReactElement;
   title: React.ReactNode;
 }
 
+const AnimatedTooltip = animated(Tooltip);
+
+const HoverTarget = styled.span`
+  pointer-events: none;
+
+  & > * {
+    pointer-events: auto;
+  }
+`;
+
+/**
+ * Wraps a component that should display a tooltip on hover.
+ * `children` must render an element (not just text)
+ * so we can properly target it with pointer events.
+ */
 const TooltipTrigger: React.FC<TooltipTriggerProps> = ({
   children,
   title,
 }: TooltipTriggerProps) => {
   const [offset, setOffset] = React.useState({ top: "0px", left: "0px" });
   const [shouldRenderTooltip, setShouldRenderTooltip] = React.useState(false);
-  const [animationState, setAnimationState] = React.useState<TooltipState>(
-    null
-  );
+
+  const transitions = useTransition(shouldRenderTooltip, {
+    from: { opacity: 0 },
+    enter: { opacity: 1 },
+    leave: { opacity: 0 },
+    reverse: shouldRenderTooltip,
+    config: {
+      mass: 0.75,
+      tension: 250,
+      friction: 15,
+      clamp: true,
+    },
+  });
 
   let frame: number;
   const onMouseMove: React.MouseEventHandler<HTMLDivElement> = (event) => {
@@ -49,38 +76,35 @@ const TooltipTrigger: React.FC<TooltipTriggerProps> = ({
 
   const onMouseEnter = () => {
     setShouldRenderTooltip(true);
-    setAnimationState("entering");
   };
 
   const onMouseLeave = () => {
-    setAnimationState("exiting");
     setShouldRenderTooltip(false);
   };
 
-  let tooltip = null;
-  if (shouldRenderTooltip) {
-    tooltip = ReactDOM.createPortal(
-      <Tooltip
-        state={animationState}
-        style={{ top: offset.top, left: offset.left }}
-      >
-        {title}
-      </Tooltip>,
-      window.document.body
-    );
-  }
-
   return (
     <>
-      {tooltip}
+      {ReactDOM.createPortal(
+        transitions(
+          (styles, item) =>
+            item && (
+              <AnimatedTooltip
+                style={{ ...styles, top: offset.top, left: offset.left }}
+              >
+                {title}
+              </AnimatedTooltip>
+            )
+        ),
+        window.document.body
+      )}
 
-      <span
+      <HoverTarget
         onMouseMove={onMouseMove}
         onMouseEnter={onMouseEnter}
         onMouseLeave={onMouseLeave}
       >
         {children}
-      </span>
+      </HoverTarget>
     </>
   );
 };

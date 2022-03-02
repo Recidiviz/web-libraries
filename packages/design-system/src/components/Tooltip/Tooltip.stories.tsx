@@ -21,19 +21,7 @@ import Tooltip from "./Tooltip";
 
 export default {
   title: "Design System/Components/Tooltip",
-  parameters: {
-    docs: {
-      // Render inside an iframe so that `position: fixed`; is contained
-      inlineStories: false,
-      iframeHeight: "300px",
-    },
-  },
-
   argTypes: {
-    show: {
-      description: "Tooltip visibility",
-      control: "boolean",
-    },
     contents: {
       description: "Tooltip contents",
       control: "text",
@@ -42,12 +30,9 @@ export default {
 } as Meta;
 
 const Template: Story = ({ show, contents }) => (
-  <Tooltip
-    state={show ? "entering" : "exiting"}
-    dangerouslySetInnerHTML={{ __html: contents }}
-  />
+  <Tooltip dangerouslySetInnerHTML={{ __html: contents }} />
 );
 
 export const DefaultStory = Template.bind({});
-DefaultStory.args = { show: true, contents: "This is a tooltip" };
+DefaultStory.args = { contents: "This is a tooltip" };
 DefaultStory.storyName = "Tooltip";

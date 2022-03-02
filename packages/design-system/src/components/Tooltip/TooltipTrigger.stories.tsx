@@ -23,19 +23,7 @@ import { Button } from "../Button";
 export default {
   title: "Design System/Components/Tooltip Trigger",
   component: TooltipTrigger,
-  parameters: {
-    docs: {
-      // Render inside an iframe so that `position: fixed`; is contained
-      inlineStories: false,
-      iframeHeight: "300px",
-    },
-  },
-
   argTypes: {
-    show: {
-      description: "Tooltip visibility",
-      control: "boolean",
-    },
     contents: {
       description: "Tooltip contents",
       control: "text",
