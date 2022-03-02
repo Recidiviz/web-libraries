@@ -22,6 +22,7 @@ import { cityTemperature, exoplanets, letterFrequency } from "@visx/mock-data";
 import { OrdinalFrame, XYFrame } from "semiotic";
 import { palette } from "../../styles";
 import { ChartWrapper } from "./ChartWrapper";
+import { Tooltip } from "../Tooltip";
 
 <Meta
   title="Design System/Charts"
@@ -391,8 +392,7 @@ computing some positioning offsets on the fly in the tooltip rendering function.
       size={[600, 300]}
       tooltipContent={(d) => {
         return (
-          <div
-            className="tooltip-content"
+          <Tooltip
             style={{
               // e.g., counteract the Y offset
               // so the tooltip doesn't jump up and down
@@ -402,7 +402,7 @@ computing some positioning offsets on the fly in the tooltip rendering function.
             <div>
               {d.summary[0].column}: {d.summary[0].value}
             </div>
-          </div>
+          </Tooltip>
         );
       }}
       type="bar"

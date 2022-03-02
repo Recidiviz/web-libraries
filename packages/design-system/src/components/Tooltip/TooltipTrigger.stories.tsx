@@ -17,7 +17,7 @@
 
 import React from "react";
 import { Story, Meta } from "@storybook/react";
-import TooltipTrigger from "./TooltipTrigger";
+import { TooltipTrigger } from "./TooltipTrigger";
 import { Button } from "../Button";
 
 export default {

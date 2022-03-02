@@ -19,7 +19,7 @@ import ReactDOM from "react-dom";
 import { useTransition, animated } from "react-spring";
 import styled from "styled-components";
 
-import Tooltip from "./Tooltip";
+import { Tooltip } from "./Tooltip";
 
 interface TooltipTriggerProps {
   children: React.ReactElement;
@@ -28,6 +28,8 @@ interface TooltipTriggerProps {
 
 const AnimatedTooltip = animated(Tooltip);
 
+// if the child is not perfectly rectangular (e.g. has rounded corners),
+// this ensures only the child's footprint will be hoverable and not the space around it
 const HoverTarget = styled.span`
   pointer-events: none;
 
@@ -41,7 +43,7 @@ const HoverTarget = styled.span`
  * `children` must render an element (not just text)
  * so we can properly target it with pointer events.
  */
-const TooltipTrigger: React.FC<TooltipTriggerProps> = ({
+export const TooltipTrigger: React.FC<TooltipTriggerProps> = ({
   children,
   title,
 }: TooltipTriggerProps) => {
@@ -108,5 +110,3 @@ const TooltipTrigger: React.FC<TooltipTriggerProps> = ({
     </>
   );
 };
-
-export default TooltipTrigger;

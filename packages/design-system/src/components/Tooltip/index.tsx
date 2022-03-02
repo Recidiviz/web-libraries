@@ -15,24 +15,5 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 // =============================================================================
 
-import React from "react";
-import { Story, Meta } from "@storybook/react";
-import { Tooltip } from "./Tooltip";
-
-export default {
-  title: "Design System/Components/Tooltip",
-  argTypes: {
-    contents: {
-      description: "Tooltip contents",
-      control: "text",
-    },
-  },
-} as Meta;
-
-const Template: Story = ({ show, contents }) => (
-  <Tooltip dangerouslySetInnerHTML={{ __html: contents }} />
-);
-
-export const DefaultStory = Template.bind({});
-DefaultStory.args = { contents: "This is a tooltip" };
-DefaultStory.storyName = "Tooltip";
+export * from "./Tooltip";
+export * from "./TooltipTrigger";

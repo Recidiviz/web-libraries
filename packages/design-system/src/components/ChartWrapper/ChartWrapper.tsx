@@ -15,10 +15,10 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 // =============================================================================
 
-import { rem } from "polished";
 import * as React from "react";
 import styled from "styled-components";
-import { palette, zindex } from "../../styles";
+import { palette } from "../../styles";
+import { tooltipStyles } from "../Tooltip";
 
 const SemioticWrapper = styled.div`
   /* classes provided by Semiotic */
@@ -75,14 +75,7 @@ const SemioticWrapper = styled.div`
     }
 
     .tooltip-content {
-      background: ${palette.pine1};
-      border-radius: ${rem(4)};
-      box-shadow: 0 ${rem(2)} ${rem(10)} rgba(0, 0, 0, 0.1);
-      color: ${palette.marble1};
-      font-size: ${rem(14)};
-      min-width: ${rem(120)};
-      padding: ${rem(16)};
-      z-index: ${zindex.tooltip};
+      ${tooltipStyles}
     }
 
     .xyframe-matte {

@@ -15,10 +15,10 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 // =============================================================================
 import { rem } from "polished";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { palette, spacing, zindex } from "../../styles";
 
-const Tooltip = styled.div`
+export const tooltipStyles = css`
   display: block;
   position: fixed;
   font-size: ${rem("14px")};
@@ -30,4 +30,6 @@ const Tooltip = styled.div`
   z-index: ${zindex.modal.content + 1};
 `;
 
-export default Tooltip;
+export const Tooltip = styled.div`
+  ${tooltipStyles}
+`;
