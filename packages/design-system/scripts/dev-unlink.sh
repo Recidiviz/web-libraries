@@ -7,11 +7,6 @@ else
   exit 1
 fi
 pushd $1
-yarn unlink @recidiviz/design-system react react-modal
-popd
-yarn unlink
-pushd node_modules
-pushd react && yarn unlink && popd
-pushd react-modal && yarn unlink && popd
-popd
+yalc remove @recidiviz/design-system
+yarn
 
