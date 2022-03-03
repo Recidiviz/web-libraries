@@ -34,7 +34,7 @@ export default {
 const Template: Story = ({ contents }) => (
   <TooltipTrigger
     // eslint-disable-next-line react/no-danger
-    title={<span dangerouslySetInnerHTML={{ __html: contents }} />}
+    contents={<span dangerouslySetInnerHTML={{ __html: contents }} />}
   >
     <Button>Hover me</Button>
   </TooltipTrigger>

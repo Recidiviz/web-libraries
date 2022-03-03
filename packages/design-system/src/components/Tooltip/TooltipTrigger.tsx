@@ -21,10 +21,10 @@ import styled from "styled-components";
 
 import { Tooltip } from "./Tooltip";
 
-interface TooltipTriggerProps {
+type TooltipTriggerProps = {
   children: React.ReactElement;
-  title: React.ReactNode;
-}
+  contents: React.ReactNode;
+};
 
 const AnimatedTooltip = animated(Tooltip);
 
@@ -38,6 +38,17 @@ const HoverTarget = styled.span`
   }
 `;
 
+// only makes a tooltip visible on hover if contents are actually provided
+function useTooltipState(contents: TooltipTriggerProps["contents"]) {
+  const haveValidContents = Boolean(contents);
+  const [showTooltip, setShowTooltip] = React.useState(false);
+  const setShowTooltipIfValid = (hoverState: boolean) => {
+    setShowTooltip(haveValidContents && hoverState);
+  };
+
+  return [showTooltip, setShowTooltipIfValid] as const;
+}
+
 /**
  * Wraps a component that should display a tooltip on hover.
  * `children` must render an element (not just text)
@@ -45,16 +56,17 @@ const HoverTarget = styled.span`
  */
 export const TooltipTrigger: React.FC<TooltipTriggerProps> = ({
   children,
-  title,
+  contents,
 }: TooltipTriggerProps) => {
   const [offset, setOffset] = React.useState({ top: "0px", left: "0px" });
-  const [shouldRenderTooltip, setShouldRenderTooltip] = React.useState(false);
+  // Event handlers should not be
+  const [showTooltip, setShowTooltip] = useTooltipState(contents);
 
-  const transitions = useTransition(shouldRenderTooltip, {
+  const transitions = useTransition(showTooltip, {
     from: { opacity: 0 },
     enter: { opacity: 1 },
     leave: { opacity: 0 },
-    reverse: shouldRenderTooltip,
+    reverse: showTooltip,
     config: {
       mass: 0.75,
       tension: 250,
@@ -77,11 +89,11 @@ export const TooltipTrigger: React.FC<TooltipTriggerProps> = ({
   };
 
   const onMouseEnter = () => {
-    setShouldRenderTooltip(true);
+    setShowTooltip(true);
   };
 
   const onMouseLeave = () => {
-    setShouldRenderTooltip(false);
+    setShowTooltip(false);
   };
 
   return (
@@ -93,7 +105,7 @@ export const TooltipTrigger: React.FC<TooltipTriggerProps> = ({
               <AnimatedTooltip
                 style={{ ...styles, top: offset.top, left: offset.left }}
               >
-                {title}
+                {contents}
               </AnimatedTooltip>
             )
         ),
