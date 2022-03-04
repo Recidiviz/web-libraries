@@ -14,29 +14,25 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 // =============================================================================
-import Assets from "./assets";
 
-import polyfill from "./polyfill";
+import React from "react";
+import { Story, Meta } from "@storybook/react";
+import { Tooltip } from "./Tooltip";
 
-export { Assets };
+export default {
+  title: "Design System/Components/Tooltip",
+  argTypes: {
+    contents: {
+      description: "Tooltip contents",
+      control: "text",
+    },
+  },
+} as Meta;
 
-polyfill();
+const Template: Story = ({ show, contents }) => (
+  <Tooltip dangerouslySetInnerHTML={{ __html: contents }} />
+);
 
-export * from "./styles";
-
-export * from "./components/Button";
-export * from "./components/Card";
-export * from "./components/ChartWrapper";
-export * from "./components/Dropdown";
-export * from "./components/ErrorPage";
-export * from "./components/GlobalStyle";
-export * from "./components/Header";
-export * from "./components/Icon";
-export * from "./components/Modal";
-export * from "./components/Need";
-export * from "./components/Search";
-export * from "./components/Tabs";
-export * from "./components/Toast";
-export * from "./components/Tooltip";
-export * from "./components/Typography";
-export * from "./components/Loading";
+export const DefaultStory = Template.bind({});
+DefaultStory.args = { contents: "This is a tooltip" };
+DefaultStory.storyName = "Tooltip";

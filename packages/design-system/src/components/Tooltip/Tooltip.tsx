@@ -14,29 +14,22 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 // =============================================================================
-import Assets from "./assets";
+import { rem } from "polished";
+import styled, { css } from "styled-components";
+import { palette, spacing, zindex } from "../../styles";
 
-import polyfill from "./polyfill";
+export const tooltipStyles = css`
+  display: block;
+  position: fixed;
+  font-size: ${rem("14px")};
+  padding: ${rem(spacing.sm)};
+  border-radius: 4px;
+  color: ${palette.white};
+  background-color: ${palette.signal.tooltip};
+  pointer-events: none;
+  z-index: ${zindex.modal.content + 1};
+`;
 
-export { Assets };
-
-polyfill();
-
-export * from "./styles";
-
-export * from "./components/Button";
-export * from "./components/Card";
-export * from "./components/ChartWrapper";
-export * from "./components/Dropdown";
-export * from "./components/ErrorPage";
-export * from "./components/GlobalStyle";
-export * from "./components/Header";
-export * from "./components/Icon";
-export * from "./components/Modal";
-export * from "./components/Need";
-export * from "./components/Search";
-export * from "./components/Tabs";
-export * from "./components/Toast";
-export * from "./components/Tooltip";
-export * from "./components/Typography";
-export * from "./components/Loading";
+export const Tooltip = styled.div`
+  ${tooltipStyles}
+`;
