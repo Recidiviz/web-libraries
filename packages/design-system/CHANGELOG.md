@@ -1,11 +1,24 @@
 # Changelog
 
+## v2.7.0
+
+### Added
+
+- Added a `Tooltip` component (#75)
+
+### Configuration Change
+
+- Updated developer tooling for dependent projects (#74)
+
+### Dependencies
+
+- Various security patches from Dependabot
+
 ## v2.6.2
 
 ### Configuration Change
 
 - Improved `<Button/>` component typing to allow `type` attribute (#64)
-
 
 ## v2.6.1
 
