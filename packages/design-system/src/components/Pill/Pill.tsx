@@ -25,11 +25,7 @@ export type PillProps = {
   textColor?: string;
 };
 
-export const pillPropsToStyles = ({
-  color,
-  filled,
-  textColor,
-}: PillProps): string => {
+const pillPropsToStyles = ({ color, filled, textColor }: PillProps): string => {
   const property = filled ? "background-color" : "border-color";
   const textColorValue = textColor
     ? `color: ${textColor}`
