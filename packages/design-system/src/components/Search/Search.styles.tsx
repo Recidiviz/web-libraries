@@ -16,7 +16,7 @@
 // =============================================================================
 import styled from "styled-components";
 import { rem } from "polished";
-import { fonts, palette, spacing } from "../../styles";
+import { palette, spacing } from "../../styles";
 
 import { Icon, IconSVG } from "../Icon";
 
@@ -43,7 +43,7 @@ export const SearchInput = styled.input.attrs({
   outline: 0;
   padding-left: ${rem(spacing.lg)};
 
-  font-family: ${fonts.body};
+  font-family: ${(props) => props.theme.fonts.body};
   font-size: ${rem(14)};
   font-weight: 500;
   color: ${palette.slate70};

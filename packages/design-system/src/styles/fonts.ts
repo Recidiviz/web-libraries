@@ -14,9 +14,9 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 // =============================================================================
-export const fonts = {
-  heading: "'Libre Baskerville', serif",
-  body: "'Libre Franklin', sans-serif",
-  serif: "'Libre Baskerville', serif",
-  sans: "'Libre Franklin', sans-serif",
-};
+
+export enum AVAILABLE_FONTS {
+  LIBRE_BASKERVILLE = "'Libre Baskerville', serif",
+  LIBRE_FRANKLIN = "'Libre Franklin', sans-serif",
+  PUBLIC_SANS = "'Public Sans', sans-serif",
+}

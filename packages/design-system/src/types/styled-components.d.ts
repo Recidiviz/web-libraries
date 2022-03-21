@@ -14,32 +14,15 @@
 // You should have received a copy of the GNU General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 // =============================================================================
-import styled from "styled-components";
-import { rem } from "polished";
-import { spacing } from "../../styles";
+import "styled-components";
 
-export const OuterErrorPageContainer = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-`;
-
-export const InnerErrorPageContainer = styled.div`
-  width: ${rem(700)};
-`;
-
-export const ErrorPageHeader = styled.h1`
-  font-family: ${(props) => props.theme.fonts.heading};
-  font-weight: normal;
-  font-style: normal;
-  font-size: ${rem(34)};
-
-  margin: ${rem(spacing.xl)} 0;
-`;
-
-export const ErrorPageBody = styled.div`
-  font-family: ${(props) => props.theme.fonts.body};
-  font-size: ${rem(19)};
-  line-height: ${rem(32)};
-`;
+declare module "styled-components" {
+  export interface DefaultTheme {
+    fonts: {
+      heading: string;
+      body: string;
+      serif: string;
+      sans: string;
+    };
+  }
+}

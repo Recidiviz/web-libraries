@@ -1193,6 +1193,11 @@
   resolved "https://registry.yarnpkg.com/@fontsource/libre-franklin/-/libre-franklin-4.2.2.tgz#8a0a49347bb0923623cd12daa8bce0862c89346a"
   integrity sha512-m7ISiLuXBlV9FvfjefX5n3Xhrp3Vcr8Duf40ws9uY+2LEvpERpaPAprOtErFQvEtgL8xoxKzHDWVQkWRaqdumA==
 
+"@fontsource/public-sans@^4.5.3":
+  version "4.5.3"
+  resolved "https://registry.yarnpkg.com/@fontsource/public-sans/-/public-sans-4.5.3.tgz#2627e0eec0b3b1eeeb906f5ac0a9f0b84235a22b"
+  integrity sha512-/3PC3AhNyHNfGt0iFVZ7NrwFOlbKLgD/ZH4k/ERkNCymxbJX5zF9OzYwsrfjbTmvh9Mkhlq2ZGU9XwBY7GsSDg==
+
 "@istanbuljs/load-nyc-config@^1.0.0":
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/@istanbuljs/load-nyc-config/-/load-nyc-config-1.1.0.tgz#fd3db1d59ecf7cf121e80650bb86712f9b55eced"
