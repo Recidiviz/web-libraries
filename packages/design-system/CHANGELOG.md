@@ -1,6 +1,11 @@
 # Changelog
 
 ## v3.0.0
+
+### Added
+* `DrawerModal` component (#83)
+* `Pill` component (#84)
+
 ### Breaking Change
 * Deprecated `fonts` object. Introduces the `styled-components` theme. Fonts are now configured inside the theme
 ```tsx
