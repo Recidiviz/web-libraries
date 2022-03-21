@@ -16,7 +16,7 @@
 // =============================================================================
 import { rem } from "polished";
 import styled, { css } from "styled-components";
-import { fonts, palette, spacing } from "../../styles";
+import { palette, spacing } from "../../styles";
 import { Button } from "../Button";
 
 export const MenuItemElement = styled.button.attrs({
@@ -37,7 +37,7 @@ export const MenuItemElement = styled.button.attrs({
   text-align: left;
   white-space: nowrap;
   font-size: ${rem(14)};
-  font-family: ${fonts.body};
+  font-family: ${(props) => props.theme.fonts.body};
 
   &:focus {
     outline: none;
@@ -97,7 +97,7 @@ export const MenuElement = styled.div.attrs({
 })<MenuElementProps>`
   display: flex;
   flex-direction: column;
-  font-family: ${fonts.sans};
+  font-family: ${(props) => props.theme.fonts.sans};
   position: absolute;
   min-width: 193px;
   padding: 0;

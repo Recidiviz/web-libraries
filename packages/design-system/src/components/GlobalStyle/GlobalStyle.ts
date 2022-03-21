@@ -16,7 +16,9 @@
 // =============================================================================
 import { createGlobalStyle } from "styled-components";
 import { rem } from "polished";
-import { fonts, palette, spacing } from "../../styles";
+import { palette, spacing } from "../../styles";
+import "@fontsource/public-sans";
+import "@fontsource/public-sans/500.css";
 import "@fontsource/libre-franklin";
 import "@fontsource/libre-franklin/500.css";
 import "@fontsource/libre-baskerville";
@@ -41,14 +43,14 @@ export const GlobalStyle = createGlobalStyle`
     line-height: 1.5;
     margin: 0;
   }
-  
+   
   body {
     height: 100%;
     margin: 0;
     padding: 0;
     background: ${palette.marble3};
     color: ${palette.pine3};
-    font-family: ${fonts.body};
+    font-family: ${(props) => props.theme.fonts.body};
     font-size: ${rem("16px")};
     letter-spacing: -0.01em;
     line-height: 1.5;

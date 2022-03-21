@@ -1,5 +1,14 @@
 # Changelog
 
+## v3.0.0
+### Breaking Change
+* Deprecated `fonts` object. Introduces the `styled-components` theme. Fonts are now configured inside the theme
+```tsx
+<ThemeProvider theme={{ fonts: { heading, body, serif, sans } }}>
+  ...
+</ThemeProvider>
+```
+
 ## v2.7.0
 
 ### Added

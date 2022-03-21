@@ -16,14 +16,13 @@
 // =============================================================================
 import styled from "styled-components";
 import { rem } from "polished";
-import { fonts } from "../../styles";
 
 export interface TypographyProps {
   color?: string;
 }
 
 export const TitleXXL = styled.h1<TypographyProps>`
-  font-family: ${fonts.heading};
+  font-family: ${(props) => props.theme.fonts.heading};
   font-weight: normal;
   font-size: ${rem("70px")};
   letter-spacing: -0.03em;
@@ -31,7 +30,7 @@ export const TitleXXL = styled.h1<TypographyProps>`
 `;
 
 export const TitleXL = styled.h1<TypographyProps>`
-  font-family: ${fonts.heading};
+  font-family: ${(props) => props.theme.fonts.heading};
   font-weight: normal;
   font-size: ${rem("60px")};
   letter-spacing: -0.04em;
@@ -39,34 +38,34 @@ export const TitleXL = styled.h1<TypographyProps>`
 `;
 
 export const Subtitle = styled.h2<TypographyProps>`
-  font-family: ${fonts.body};
+  font-family: ${(props) => props.theme.fonts.body};
   font-weight: 500;
   font-size: ${rem("56px")};
 `;
 
 export const H1 = styled.h1<TypographyProps>`
-  font-family: ${fonts.heading};
+  font-family: ${(props) => props.theme.fonts.heading};
   font-size: ${rem("56px")};
   font-weight: normal;
   letter-spacing: -0.04em;
 `;
 
 export const H2 = styled.h2<TypographyProps>`
-  font-family: ${fonts.heading};
+  font-family: ${(props) => props.theme.fonts.heading};
   font-size: ${rem("32px")};
   font-weight: normal;
   letter-spacing: -0.04em;
 `;
 
 export const H3 = styled.h3<TypographyProps>`
-  font-family: ${fonts.heading};
+  font-family: ${(props) => props.theme.fonts.heading};
   font-size: ${rem("24px")};
   font-weight: normal;
   letter-spacing: -0.01em;
 `;
 
 export const H4 = styled.h4<TypographyProps>`
-  font-family: ${fonts.body};
+  font-family: ${(props) => props.theme.fonts.body};
   font-size: ${rem("19px")};
   font-weight: normal;
   letter-spacing: -0.01em;
