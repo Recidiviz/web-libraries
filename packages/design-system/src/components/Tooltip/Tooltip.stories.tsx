@@ -26,13 +26,24 @@ export default {
       description: "Tooltip contents",
       control: "text",
     },
+    maxWidth: {
+      description: "Force tooltip to wrap at this width",
+      control: "number",
+    },
   },
 } as Meta;
 
-const Template: Story = ({ show, contents }) => (
-  <Tooltip dangerouslySetInnerHTML={{ __html: contents }} />
+const Template: Story = ({ contents, maxWidth }) => (
+  <Tooltip maxWidth={maxWidth} dangerouslySetInnerHTML={{ __html: contents }} />
 );
 
 export const DefaultStory = Template.bind({});
 DefaultStory.args = { contents: "This is a tooltip" };
 DefaultStory.storyName = "Tooltip";
+
+export const TooltipWithMaxWidth = Template.bind({});
+TooltipWithMaxWidth.args = {
+  contents:
+    "This is a tooltip with contents that are too long to fit one on line",
+  maxWidth: 250,
+};

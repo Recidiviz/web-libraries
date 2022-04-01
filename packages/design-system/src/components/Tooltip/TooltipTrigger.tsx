@@ -25,6 +25,7 @@ type TooltipTriggerProps = {
   children: React.ReactElement;
   className?: string;
   contents: React.ReactNode;
+  maxWidth?: number;
 };
 
 const AnimatedTooltip = animated(Tooltip);
@@ -59,6 +60,7 @@ export const TooltipTrigger: React.FC<TooltipTriggerProps> = ({
   children,
   className,
   contents,
+  maxWidth,
 }: TooltipTriggerProps) => {
   const [offset, setOffset] = React.useState({ top: "0px", left: "0px" });
   // Event handlers should not be
@@ -105,6 +107,7 @@ export const TooltipTrigger: React.FC<TooltipTriggerProps> = ({
           (styles, item) =>
             item && (
               <AnimatedTooltip
+                maxWidth={maxWidth}
                 style={{ ...styles, top: offset.top, left: offset.left }}
               >
                 {contents}
