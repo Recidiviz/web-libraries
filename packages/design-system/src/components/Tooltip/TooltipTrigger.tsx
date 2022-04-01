@@ -23,6 +23,7 @@ import { Tooltip } from "./Tooltip";
 
 type TooltipTriggerProps = {
   children: React.ReactElement;
+  className?: string;
   contents: React.ReactNode;
 };
 
@@ -56,6 +57,7 @@ function useTooltipState(contents: TooltipTriggerProps["contents"]) {
  */
 export const TooltipTrigger: React.FC<TooltipTriggerProps> = ({
   children,
+  className,
   contents,
 }: TooltipTriggerProps) => {
   const [offset, setOffset] = React.useState({ top: "0px", left: "0px" });
@@ -113,6 +115,7 @@ export const TooltipTrigger: React.FC<TooltipTriggerProps> = ({
       )}
 
       <HoverTarget
+        className={className}
         onMouseMove={onMouseMove}
         onMouseEnter={onMouseEnter}
         onMouseLeave={onMouseLeave}
