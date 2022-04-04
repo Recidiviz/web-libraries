@@ -80,16 +80,20 @@ export const TooltipTrigger: React.FC<TooltipTriggerProps> = ({
   });
 
   let frame: number;
-  const onMouseMove: React.MouseEventHandler<HTMLDivElement> = (event) => {
+  const updateTooltipPosition = (x: number, y: number) => {
     if (typeof frame !== "undefined") {
       window.cancelAnimationFrame(frame);
     }
     frame = window.requestAnimationFrame(() => {
       setOffset({
-        left: `${event.clientX + 15}px`,
-        top: `${event.clientY + 15}px`,
+        left: `${x}px`,
+        top: `${y}px`,
       });
     });
+  };
+
+  const onMouseMove: React.MouseEventHandler<HTMLDivElement> = (event) => {
+    updateTooltipPosition(event.clientX + 15, event.clientY + 15);
   };
 
   const onMouseEnter = () => {
@@ -98,6 +102,15 @@ export const TooltipTrigger: React.FC<TooltipTriggerProps> = ({
 
   const onMouseLeave = () => {
     setShowTooltip(false);
+  };
+
+  const onFocus: React.FocusEventHandler<HTMLSpanElement> = (event) => {
+    // if someone clicked on a hovered item don't override mouse position
+    if (!showTooltip) {
+      const bounds = event.target.getBoundingClientRect();
+      updateTooltipPosition(bounds.right + 15, bounds.top);
+    }
+    setShowTooltip(true);
   };
 
   return (
@@ -122,6 +135,8 @@ export const TooltipTrigger: React.FC<TooltipTriggerProps> = ({
         onMouseMove={onMouseMove}
         onMouseEnter={onMouseEnter}
         onMouseLeave={onMouseLeave}
+        onFocus={onFocus}
+        onBlur={onMouseLeave}
       >
         {children}
       </HoverTarget>
