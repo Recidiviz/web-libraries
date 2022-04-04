@@ -23,7 +23,9 @@ import { Tooltip } from "./Tooltip";
 
 type TooltipTriggerProps = {
   children: React.ReactElement;
+  className?: string;
   contents: React.ReactNode;
+  maxWidth?: number;
 };
 
 const AnimatedTooltip = animated(Tooltip);
@@ -56,7 +58,9 @@ function useTooltipState(contents: TooltipTriggerProps["contents"]) {
  */
 export const TooltipTrigger: React.FC<TooltipTriggerProps> = ({
   children,
+  className,
   contents,
+  maxWidth,
 }: TooltipTriggerProps) => {
   const [offset, setOffset] = React.useState({ top: "0px", left: "0px" });
   // Event handlers should not be
@@ -76,16 +80,20 @@ export const TooltipTrigger: React.FC<TooltipTriggerProps> = ({
   });
 
   let frame: number;
-  const onMouseMove: React.MouseEventHandler<HTMLDivElement> = (event) => {
+  const updateTooltipPosition = (x: number, y: number) => {
     if (typeof frame !== "undefined") {
       window.cancelAnimationFrame(frame);
     }
     frame = window.requestAnimationFrame(() => {
       setOffset({
-        left: `${event.clientX + 15}px`,
-        top: `${event.clientY + 15}px`,
+        left: `${x}px`,
+        top: `${y}px`,
       });
     });
+  };
+
+  const onMouseMove: React.MouseEventHandler<HTMLDivElement> = (event) => {
+    updateTooltipPosition(event.clientX + 15, event.clientY + 15);
   };
 
   const onMouseEnter = () => {
@@ -96,6 +104,15 @@ export const TooltipTrigger: React.FC<TooltipTriggerProps> = ({
     setShowTooltip(false);
   };
 
+  const onFocus: React.FocusEventHandler<HTMLSpanElement> = (event) => {
+    // if someone clicked on a hovered item don't override mouse position
+    if (!showTooltip) {
+      const bounds = event.target.getBoundingClientRect();
+      updateTooltipPosition(bounds.right + 15, bounds.top);
+    }
+    setShowTooltip(true);
+  };
+
   return (
     <>
       {ReactDOM.createPortal(
@@ -103,6 +120,7 @@ export const TooltipTrigger: React.FC<TooltipTriggerProps> = ({
           (styles, item) =>
             item && (
               <AnimatedTooltip
+                maxWidth={maxWidth}
                 style={{ ...styles, top: offset.top, left: offset.left }}
               >
                 {contents}
@@ -113,9 +131,12 @@ export const TooltipTrigger: React.FC<TooltipTriggerProps> = ({
       )}
 
       <HoverTarget
+        className={className}
         onMouseMove={onMouseMove}
         onMouseEnter={onMouseEnter}
         onMouseLeave={onMouseLeave}
+        onFocus={onFocus}
+        onBlur={onMouseLeave}
       >
         {children}
       </HoverTarget>

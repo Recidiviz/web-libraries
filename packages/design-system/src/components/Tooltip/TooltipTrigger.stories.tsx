@@ -28,13 +28,18 @@ export default {
       description: "Tooltip contents",
       control: "text",
     },
+    maxWidth: {
+      description: "Force tooltip to wrap at this width",
+      control: "number",
+    },
   },
 } as Meta;
 
-const Template: Story = ({ contents }) => (
+const Template: Story = ({ contents, maxWidth }) => (
   <TooltipTrigger
     // eslint-disable-next-line react/no-danger
     contents={<span dangerouslySetInnerHTML={{ __html: contents }} />}
+    maxWidth={maxWidth}
   >
     <Button>Hover me</Button>
   </TooltipTrigger>
@@ -43,3 +48,10 @@ const Template: Story = ({ contents }) => (
 export const DefaultStory = Template.bind({});
 DefaultStory.args = { contents: "This is a tooltip" };
 DefaultStory.storyName = "Tooltip Trigger";
+
+export const TooltipTriggerWithMaxWidth = Template.bind({});
+TooltipTriggerWithMaxWidth.args = {
+  contents:
+    "This is a tooltip with contents that are too long to fit one on line",
+  maxWidth: 250,
+};

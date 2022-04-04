@@ -30,6 +30,8 @@ export const tooltipStyles = css`
   z-index: ${zindex.modal.content + 1};
 `;
 
-export const Tooltip = styled.div`
+export const Tooltip = styled.div<{ maxWidth?: number }>`
   ${tooltipStyles}
+
+  max-width: ${({ maxWidth }) => (maxWidth ? `${rem(maxWidth)}` : "none")};
 `;
