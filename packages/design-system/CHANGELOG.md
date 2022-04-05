@@ -1,5 +1,15 @@
 # Changelog
 
+## v3.2.0
+
+### Added
+
+- `iconToDataURI` helper which converts `<Icon/>`s into data URIs for use in background images.
+
+```tsx
+iconToDataURI(<Icon kind={IconSVG.Edit} fill={palette.slate} />)
+```
+
 ## v3.1.0
 
 ### Added
