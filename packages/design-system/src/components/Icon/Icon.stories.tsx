@@ -16,7 +16,8 @@
 // =============================================================================
 import * as React from "react";
 import { Story, Meta } from "@storybook/react";
-import { Icon as IconComponent, IconProps } from "./Icon";
+import styled from "styled-components";
+import { Icon as IconComponent, IconProps, iconToDataURI } from "./Icon";
 import { IconSVG } from "./IconSVG";
 import { palette } from "../../styles";
 
@@ -26,6 +27,7 @@ export default {
   argTypes: {
     color: {
       control: "color",
+      defaultValue: palette.signal.highlight,
     },
     kind: {
       control: {
@@ -48,8 +50,35 @@ export default {
   },
 } as Meta;
 
+const IconButton = styled.button.attrs({ type: "button" })`
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 80% 80%;
+  border-radius: 4px;
+  color: ${palette.pine1};
+  text-shadow: -1px 1px white;
+  font-size: 1.2em;
+  font-weight: bold;
+  display: block;
+  height: 72px;
+  width: 72px;
+`;
+
 const Template: Story<IconProps> = ({ kind, color, height, width }) => (
-  <IconComponent kind={kind} color={color} height={height} width={width} />
+  <>
+    <IconComponent kind={kind} color={color} height={height} width={width} />
+    <hr />
+    Icons can also be used as background images:
+    <IconButton
+      style={{
+        backgroundImage: iconToDataURI(
+          <IconComponent kind={kind} fill={color} />
+        ),
+      }}
+    >
+      Press me!
+    </IconButton>
+  </>
 );
 
 export const Icon = Template.bind({});

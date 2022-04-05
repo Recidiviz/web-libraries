@@ -16,6 +16,7 @@
 // =============================================================================
 
 import * as React from "react";
+import { renderToStaticMarkup } from "react-dom/server";
 import { ExternalPropsContext, IconSVGProps, IconSVG } from "./IconSVG";
 
 export interface IconProps extends IconSVGProps {
@@ -68,3 +69,8 @@ export const Icon: React.FC<IconProps> = ({
     </ExternalPropsContext.Provider>
   );
 };
+
+export const iconToDataURI = (template: JSX.Element): string =>
+  `url("data:image/svg+xml,${encodeURIComponent(
+    renderToStaticMarkup(template)
+  )}")`;
