@@ -94,15 +94,24 @@ const SemioticWrapper = styled.div`
 
 export type ChartWrapperProps = {
   className?: string;
+  ref?:
+    | ((instance: HTMLDivElement | null) => void)
+    | React.RefObject<HTMLDivElement>
+    | null
+    | undefined;
 };
 
 /**
  * Wrapper component for Semiotic chart components that applies
  * Recidiviz baseline styles to classes rendered by Semiotic.
  */
-export const ChartWrapper: React.FC<ChartWrapperProps> = ({
-  className,
-  children,
-}) => {
-  return <SemioticWrapper className={className}>{children}</SemioticWrapper>;
-};
+
+export const ChartWrapper: React.FC<ChartWrapperProps> = React.forwardRef(
+  ({ className, children }, ref) => {
+    return (
+      <SemioticWrapper className={className} ref={ref}>
+        {children}
+      </SemioticWrapper>
+    );
+  }
+);
