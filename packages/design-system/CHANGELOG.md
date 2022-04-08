@@ -4,7 +4,7 @@
 
 ### Added
 
-- ChartWrapper now has the ability to forward a `ref`.
+- ChartWrapper accepts and forwards a `ref`.
 
 ```tsx
 <ChartWrapper className={className} ref={ref}>
