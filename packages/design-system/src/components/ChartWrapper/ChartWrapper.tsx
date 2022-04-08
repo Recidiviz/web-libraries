@@ -94,11 +94,6 @@ const SemioticWrapper = styled.div`
 
 export type ChartWrapperProps = {
   className?: string;
-  ref?:
-    | ((instance: HTMLDivElement | null) => void)
-    | React.RefObject<HTMLDivElement>
-    | null
-    | undefined;
 };
 
 /**
@@ -106,7 +101,7 @@ export type ChartWrapperProps = {
  * Recidiviz baseline styles to classes rendered by Semiotic.
  */
 
-export const ChartWrapper: React.FC<ChartWrapperProps> = React.forwardRef(
+export const ChartWrapper = React.forwardRef<HTMLDivElement, ChartWrapperProps>(
   ({ className, children }, ref) => {
     return (
       <SemioticWrapper className={className} ref={ref}>
