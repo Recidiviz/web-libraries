@@ -1,5 +1,17 @@
 # Changelog
 
+## v3.3.0
+
+### Added
+
+- ChartWrapper now has the ability to forward a `ref`.
+
+```tsx
+<ChartWrapper className={className} ref={ref}>
+  ...
+</ChartWrapper>
+```
+
 ## v3.2.0
 
 ### Added
