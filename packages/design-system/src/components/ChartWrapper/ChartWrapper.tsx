@@ -101,12 +101,13 @@ export type ChartWrapperProps = {
  * Recidiviz baseline styles to classes rendered by Semiotic.
  */
 
-export const ChartWrapper = React.forwardRef<HTMLDivElement, ChartWrapperProps>(
-  ({ className, children }, ref) => {
-    return (
-      <SemioticWrapper className={className} ref={ref}>
-        {children}
-      </SemioticWrapper>
-    );
-  }
-);
+export const ChartWrapper = React.forwardRef<
+  HTMLDivElement,
+  React.PropsWithChildren<ChartWrapperProps>
+>(({ className, children }, ref) => {
+  return (
+    <SemioticWrapper className={className} ref={ref}>
+      {children}
+    </SemioticWrapper>
+  );
+});

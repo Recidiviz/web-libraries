@@ -1,4 +1,9 @@
 # Changelog
+## v3.3.1
+
+### Fixed
+
+- Fixes TypeScript error within `ChartWrapper` when adding `children`.
 
 ## v3.3.0
 
