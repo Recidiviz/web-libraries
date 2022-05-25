@@ -1,0 +1,109 @@
+// Recidiviz - a data platform for criminal justice reform
+// Copyright (C) 2022 Recidiviz, Inc.
+//
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with this program.  If not, see <https://www.gnu.org/licenses/>.
+// =============================================================================
+@use "sass:math";
+
+@function rem($size) {
+  $remSize: math.div($size, 16);
+  @return #{$remSize}rem;
+}
+
+$sans-serif: "Public Sans", sans-serif;
+$serif: "Libre Baskerville", serif;
+
+$font-serif-34: 400 rem(34) / rem(40) $serif;
+$letter-spacing-serif-34: -0.04em;
+
+$font-serif-24: 400 rem(24) / rem(24) $serif;
+$letter-spacing-serif-24: -0.03em;
+
+$font-sans-24: 400 rem(24) / rem(40) $sans-serif;
+$letter-spacing-sans-24: -0.02em;
+
+$font-sans-16: 500 rem(16) / rem(24) $sans-serif;
+$letter-spacing-sans-16: -0.01em;
+
+$font-sans-14: 500 rem(14) / rem(24) $sans-serif;
+$letter-spacing-sans-14: -0.01em;
+
+$font-sans-12: 500 rem(12) / rem(16) $sans-serif;
+$letter-spacing-sans-12: -0.01em;
+
+$font-header-88: 400 rem(88) / rem(104) $serif;
+$letter-spacing-header-88: -0.04em;
+
+$font-header-56: 400 rem(56) / rem(72) $serif;
+$letter-spacing-header-56: -0.04em;
+
+$font-header-34: 400 rem(34) / rem(48) $serif;
+$letter-spacing-header-34: -0.04em;
+
+$font-header-24: 400 rem(24) / rem(32) $serif;
+$letter-spacing-header-24: -0.04em;
+
+$font-body-48: 400 rem(48) / rem(64) $sans-serif;
+$letter-spacing-body-48: -0.02em;
+
+$font-body-32: 400 rem(32) / rem(48) $sans-serif;
+$letter-spacing-body-32: -0.02em;
+
+$font-body-24: 400 rem(24) / rem(40) $sans-serif;
+$letter-spacing-body-24: 0;
+
+$font-body-19: 400 rem(19) / rem(32) $sans-serif;
+$letter-spacing-body-19: 0;
+
+$font-body-16: 500 rem(16) / 1.7 $sans-serif;
+$letter-spacing-body-16: 0;
+
+$font-body-14: 500 rem(14) / rem(24) $sans-serif;
+$letter-spacing-body-14: 0;
+
+// CSS-in-JS will use these to mirror the mixins in JS
+:export {
+  fontSans12: $font-sans-12;
+  letterSpacingSans12: $letter-spacing-sans-12;
+  fontSans14: $font-sans-14;
+  letterSpacingSans14: $letter-spacing-sans-14;
+  fontSans16: $font-sans-16;
+  letterSpacingSans16: $letter-spacing-sans-16;
+  fontSans24: $font-sans-24;
+  letterSpacingSans24: $letter-spacing-sans-24;
+  fontSerif24: $font-serif-24;
+  letterSpacingSerif24: $letter-spacing-serif-24;
+  fontSerif34: $font-serif-34;
+  letterSpacingSerif34: $letter-spacing-serif-34;
+  fontHeader88: $font-header-88;
+  letterSpacingHeader88: $letter-spacing-header-88;
+  fontHeader56: $font-header-56;
+  letterSpacingHeader56: $letter-spacing-header-56;
+  fontHeader34: $font-header-34;
+  letterSpacingHeader34: $letter-spacing-header-34;
+  fontHeader24: $font-header-24;
+  letterSpacingHeader24: $letter-spacing-header-24;
+  fontBody48: $font-body-48;
+  letterSpacingBody48: $letter-spacing-body-48;
+  fontBody32: $font-body-32;
+  letterSpacingBody32: $letter-spacing-body-32;
+  fontBody24: $font-body-24;
+  letterSpacingBody24: $letter-spacing-body-24;
+  fontBody19: $font-body-19;
+  letterSpacingBody19: $letter-spacing-body-19;
+  fontBody16: $font-body-16;
+  letterSpacingBody16: $letter-spacing-body-16;
+  fontBody14: $font-body-14;
+  letterSpacingBody14: $letter-spacing-body-14;
+}
