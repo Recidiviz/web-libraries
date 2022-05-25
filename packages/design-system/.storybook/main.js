@@ -1,3 +1,5 @@
+const path = require("path");
+
 module.exports = {
   // The stories array sorts the story list
   stories: [
@@ -13,5 +15,14 @@ module.exports = {
         esModuleInterop: false,
       },
     },
+  },
+  webpackFinal: async (config) => {
+    config.module.rules.push({
+      test: /\.scss$/,
+      use: ["style-loader", "css-loader", "sass-loader"],
+      include: path.resolve(__dirname, "../"),
+    });
+
+    return config;
   },
 };
