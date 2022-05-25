@@ -81,7 +81,7 @@ $list-style-body: outside;
 $list-padding-body: 1.2em;
 $list-item-spacing-body: 0.5em;
 
-// CSS-in-JS will use these to mirror the mixins in JS
+// CSS-in-JS will use these to mirror SCSS mixins in JS
 :export {
   fontSans12: $font-sans-12;
   letterSpacingSans12: $letter-spacing-sans-12;

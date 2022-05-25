@@ -1,0 +1,129 @@
+// Recidiviz - a data platform for criminal justice reform
+// Copyright (C) 2022 Recidiviz, Inc.
+//
+// This program is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with this program.  If not, see <https://www.gnu.org/licenses/>.
+// =============================================================================
+@use "variables";
+
+// SCSS should just use these mixins
+@mixin sans-12 {
+  font: variables.$font-sans-12;
+  letter-spacing: variables.$letter-spacing-sans-12;
+}
+@mixin sans-14 {
+  font: variables.$font-sans-14;
+  letter-spacing: variables.$letter-spacing-sans-14;
+}
+@mixin sans-16 {
+  font: variables.$font-sans-16;
+  letter-spacing: variables.$letter-spacing-sans-16;
+}
+@mixin sans-20 {
+  font: variables.$font-sans-20;
+  letter-spacing: variables.$letter-spacing-sans-20;
+}
+@mixin sans-24 {
+  font: variables.$font-sans-24;
+  letter-spacing: variables.$letter-spacing-sans-24;
+}
+
+@mixin serif-24 {
+  font: variables.$font-serif-24;
+  letter-spacing: variables.$letter-spacing-serif-24;
+}
+@mixin serif-34 {
+  font: variables.$font-serif-34;
+  letter-spacing: variables.$letter-spacing-serif-34;
+}
+
+@mixin header-common {
+  margin-bottom: variables.$paragraph-spacing-header;
+}
+
+@mixin header-24 {
+  font: variables.$font-header-24;
+  letter-spacing: variables.$letter-spacing-header-24;
+  @include header-common;
+}
+@mixin header-34 {
+  font: variables.$font-header-34;
+  letter-spacing: variables.$letter-spacing-header-34;
+  @include header-common;
+}
+@mixin header-56 {
+  font: variables.$font-header-56;
+  letter-spacing: variables.$letter-spacing-header-56;
+  @include header-common;
+}
+@mixin header-88 {
+  font: variables.$font-header-88;
+  letter-spacing: variables.$letter-spacing-header-88;
+  @include header-common;
+}
+
+@mixin body-common {
+  margin-bottom: variables.$paragraph-spacing-body;
+
+  p {
+    margin-bottom: variables.$paragraph-spacing-body;
+    &:not(:first-child) {
+      margin-top: variables.$paragraph-spacing-body;
+    }
+  }
+
+  a {
+    color: variables.$link-color-body;
+  }
+
+  ul {
+    list-style: variables.$list-style-body;
+    margin-top: variables.$paragraph-spacing-body;
+    padding-left: variables.$list-padding-body;
+  }
+
+  li {
+    margin: variables.$list-item-spacing-body 0;
+  }
+}
+
+@mixin body-48 {
+  font: variables.$font-body-48;
+  letter-spacing: variables.$letter-spacing-body-48;
+  @include body-common;
+}
+@mixin body-32 {
+  font: variables.$font-body-32;
+  letter-spacing: variables.$letter-spacing-body-32;
+  @include body-common;
+}
+@mixin body-24 {
+  font: variables.$font-body-24;
+  letter-spacing: variables.$letter-spacing-body-24;
+  @include body-common;
+}
+@mixin body-19 {
+  font: variables.$font-body-19;
+  letter-spacing: variables.$letter-spacing-body-19;
+  @include body-common;
+}
+@mixin body-16 {
+  font: variables.$font-body-16;
+  letter-spacing: variables.$letter-spacing-body-16;
+  @include body-common;
+}
+@mixin body-14 {
+  font: variables.$font-body-14;
+  letter-spacing: variables.$letter-spacing-body-14;
+  @include body-common;
+}

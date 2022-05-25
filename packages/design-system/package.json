@@ -106,6 +106,7 @@
     "rollup-plugin-styles": "^4.0.0",
     "rollup-plugin-svg": "^2.0.0",
     "rollup-plugin-typescript2": "^0.29.0",
+    "rollup-plugin-watcher": "^1.0.1",
     "sass": "^1.52.1",
     "sass-loader": "^10.1.1",
     "semiotic": "^1.20.6",
