@@ -54,6 +54,8 @@ $letter-spacing-header-34: -0.04em;
 $font-header-24: 400 rem(24) / rem(32) $serif;
 $letter-spacing-header-24: -0.04em;
 
+$paragraph-spacing-header: 0.5em;
+
 $font-body-48: 400 rem(48) / rem(64) $sans-serif;
 $letter-spacing-body-48: -0.02em;
 
@@ -71,6 +73,13 @@ $letter-spacing-body-16: 0;
 
 $font-body-14: 500 rem(14) / rem(24) $sans-serif;
 $letter-spacing-body-14: 0;
+
+$paragraph-spacing-body: 1em;
+// palette.signal.links but all the colors are not in SCSS yet
+$link-color-body: rgb(0, 108, 103);
+$list-style-body: outside;
+$list-padding-body: 1.2em;
+$list-item-spacing-body: 0.5em;
 
 // CSS-in-JS will use these to mirror the mixins in JS
 :export {
@@ -94,6 +103,7 @@ $letter-spacing-body-14: 0;
   letterSpacingHeader34: $letter-spacing-header-34;
   fontHeader24: $font-header-24;
   letterSpacingHeader24: $letter-spacing-header-24;
+  paragraphSpacingHeader: $paragraph-spacing-header;
   fontBody48: $font-body-48;
   letterSpacingBody48: $letter-spacing-body-48;
   fontBody32: $font-body-32;
@@ -106,4 +116,9 @@ $letter-spacing-body-14: 0;
   letterSpacingBody16: $letter-spacing-body-16;
   fontBody14: $font-body-14;
   letterSpacingBody14: $letter-spacing-body-14;
+  paragraphSpacingBody: $paragraph-spacing-body;
+  linkColorBody: $link-color-body;
+  listStyleBody: $list-style-body;
+  listPaddingBody: $list-padding-body;
+  listItemSpacingBody: $list-item-spacing-body;
 }

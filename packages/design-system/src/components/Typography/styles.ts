@@ -45,11 +45,47 @@ export type TypographyStyles = Record<
 
 export const styles: TypographyStyles = TYPOGRAPHY_LEVELS.reduce(
   (accumulatedStyles, level) => {
+    let additionalStyles = css``;
+
+    if (level.startsWith("Body")) {
+      additionalStyles = css`
+        margin-bottom: ${sassVars.paragraphSpacingBody};
+
+        p {
+          margin-bottom: ${sassVars.paragraphSpacingBody};
+          &:not(:first-child) {
+            margin-top: ${sassVars.paragraphSpacingBody};
+          }
+        }
+
+        a {
+          color: ${sassVars.linkColorBody};
+        }
+
+        ul {
+          list-style: ${sassVars.listStyleBody};
+          margin-top: ${sassVars.paragraphSpacingBody};
+          padding-left: ${sassVars.listPaddingBody};
+        }
+
+        li {
+          margin: ${sassVars.listItemSpacingBody} 0;
+        }
+      `;
+    }
+
+    if (level.startsWith("Header")) {
+      additionalStyles = css`
+        margin-bottom: ${sassVars.paragraphSpacingHeader};
+      `;
+    }
+
     return {
       ...accumulatedStyles,
       [level]: css`
         font: ${sassVars[`font${level}`]};
         letter-spacing: ${sassVars[`letterSpacing${level}`]};
+        ${additionalStyles}
       `,
     };
   },

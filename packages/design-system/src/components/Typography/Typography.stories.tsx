@@ -19,6 +19,8 @@ import { Meta, Story } from "@storybook/react";
 import React from "react";
 import { rem } from "polished";
 import styled from "styled-components";
+import prettier from "prettier";
+import parserPostCSS from "prettier/parser-postcss";
 import * as UITypographyComponents from "./UI";
 import * as ArticleTypographyComponents from "./Article";
 import { palette } from "../../styles";
@@ -48,7 +50,7 @@ const ComponentListHeader = styled(UITypographyComponents.Sans14)`
 
 const ComponentAttributes = styled(UITypographyComponents.Sans14)`
   color: ${palette.slate60};
-  white-space: pre-line;
+  white-space: pre-wrap;
 `;
 
 const WrapHeader = styled.div`
@@ -60,15 +62,14 @@ const WrapHeader = styled.div`
 type TypographyComponent = typeof UITypographyComponents[keyof typeof UITypographyComponents];
 
 function displayStyles(rawStyle: TypographyStyles[keyof TypographyStyles]) {
-  const propertyBreak = /;\s+/g;
   const remValue = /((\d+)|(\d+\.\d+))rem/g;
-  return rawStyle
-    .join("")
-    .trim()
-    .replace(propertyBreak, ";\n")
-    .replace(remValue, (_, p1) => {
-      return `${parseFloat(p1) * 16}px`;
-    });
+  const styleTransformed = rawStyle.join("").replace(remValue, (_, p1) => {
+    return `${parseFloat(p1) * 16}px`;
+  });
+  return prettier.format(styleTransformed, {
+    parser: "css",
+    plugins: [parserPostCSS],
+  });
 }
 
 const TypographyComponentsTemplate: React.FC<{
@@ -84,11 +85,13 @@ const TypographyComponentsTemplate: React.FC<{
       {components?.map((Component) => (
         <React.Fragment key={Component.displayName}>
           <Component>{Component.displayName}</Component>
-          <ComponentAttributes>
-            {displayStyles(
-              styles[Component.displayName as keyof typeof styles]
-            )}
-          </ComponentAttributes>
+          <ComponentAttributes
+            dangerouslySetInnerHTML={{
+              __html: displayStyles(
+                styles[Component.displayName as keyof typeof styles]
+              ),
+            }}
+          />
           <div>{example(Component)}</div>
         </React.Fragment>
       ))}
