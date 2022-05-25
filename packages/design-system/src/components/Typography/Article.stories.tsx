@@ -66,6 +66,28 @@ export const ArticleSandbox: Story<{
         This is a third {BodyComponent.displayName}. Suspendisse tristique felis
         ut turpis fermentum interdum. Curabitur luctus odio quis neque viverra
         tincidunt.
+        <ul>
+          <li>You can nest an unordered list</li>
+          <li>inside a {BodyComponent.displayName}!</li>
+        </ul>
+      </BodyComponent>
+      <BodyComponent>
+        <p>
+          These are multiple paragraphs nested inside a{" "}
+          {BodyComponent.displayName}. Duis efficitur sit amet arcu quis
+          euismod. Mauris venenatis pharetra augue, quis rutrum velit volutpat
+          et.
+        </p>
+        <p>
+          Convallis magna et, tempor ipsum. Nulla tempus commodo lacus, at
+          pulvinar libero suscipit sit amet.
+        </p>
+        <p>
+          Suspendisse tristique felis ut turpis fermentum interdum. Curabitur
+          luctus odio quis neque viverra tincidunt. Convallis magna et, tempor
+          ipsum. Nulla tempus commodo lacus, at pulvinar libero suscipit sit
+          amet.
+        </p>
       </BodyComponent>
     </div>
   );
