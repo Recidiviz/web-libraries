@@ -21,8 +21,7 @@ import { rem } from "polished";
 import styled from "styled-components";
 import * as UITypographyComponents from "./UI";
 import * as ArticleTypographyComponents from "./Article";
-import { palette, spacing } from "../../styles";
-import { Sans12, Sans14, Sans16, Sans24, Serif24, Serif34 } from "./UI";
+import { palette } from "../../styles";
 import { styles, TypographyStyles } from "./styles";
 
 export default {
@@ -30,11 +29,11 @@ export default {
 } as Meta;
 
 const ComponentList = styled.div`
-  align-items: flex-start;
+  align-items: start;
   column-gap: ${rem(88)};
   display: grid;
   grid-template-areas: "intro intro intro";
-  grid-template-columns: auto auto 3fr;
+  grid-template-columns: auto auto 1fr;
   row-gap: ${rem(72)};
 `;
 
@@ -43,24 +42,13 @@ const ComponentIntro = styled.div`
   margin-bottom: ${rem(80)};
 `;
 
-const ComponentListHeader = styled(Sans14)`
+const ComponentListHeader = styled(UITypographyComponents.Sans14)`
   color: ${palette.slate60};
 `;
 
-const ComponentAttributes = styled(Sans14)`
+const ComponentAttributes = styled(UITypographyComponents.Sans14)`
   color: ${palette.slate60};
   white-space: pre-line;
-`;
-
-const Examples = styled.div`
-  display: grid;
-  row-gap: ${rem(spacing.lg)};
-`;
-
-const ForceWrap = styled.div`
-  * {
-    max-width: 20em;
-  }
 `;
 
 const WrapHeader = styled.div`
@@ -69,9 +57,7 @@ const WrapHeader = styled.div`
   }
 `;
 
-const UIComponentsRanked = [Serif34, Serif24, Sans24, Sans16, Sans14, Sans12];
-
-type TypographyComponent = typeof UIComponentsRanked[number];
+type TypographyComponent = typeof UITypographyComponents[keyof typeof UITypographyComponents];
 
 function displayStyles(rawStyle: TypographyStyles[keyof TypographyStyles]) {
   const propertyBreak = /;\s+/g;
@@ -94,7 +80,7 @@ const TypographyComponentsTemplate: React.FC<{
       {!!children && <ComponentIntro>{children}</ComponentIntro>}
       <ComponentListHeader>Name</ComponentListHeader>
       <ComponentListHeader>Attributes</ComponentListHeader>
-      <ComponentListHeader>Examples</ComponentListHeader>
+      <ComponentListHeader>Example</ComponentListHeader>
       {components?.map((Component) => (
         <React.Fragment key={Component.displayName}>
           <Component>{Component.displayName}</Component>
@@ -110,56 +96,27 @@ const TypographyComponentsTemplate: React.FC<{
   );
 };
 
-function juxtaposeUi(Component: TypographyComponent): React.ReactNode {
-  const DUMMY_TEXT = "Lorem ipsum";
-  const selfIndex = UIComponentsRanked.indexOf(Component);
-
+function UIExample(Component: TypographyComponent): React.ReactNode {
   return (
-    <Examples>
-      {UIComponentsRanked.map((OtherComponent, index) => {
-        if (index > selfIndex) {
-          return (
-            <div key={OtherComponent.displayName}>
-              <Component>
-                {DUMMY_TEXT} {Component.displayName?.slice(-2)}
-              </Component>
-              <OtherComponent>
-                {DUMMY_TEXT} {OtherComponent.displayName?.slice(-2)}
-              </OtherComponent>
-            </div>
-          );
-        }
-        if (index < selfIndex) {
-          return (
-            <div key={OtherComponent.displayName}>
-              <OtherComponent>
-                {DUMMY_TEXT} {OtherComponent.displayName?.slice(-2)}
-              </OtherComponent>
-              <Component>
-                {DUMMY_TEXT} {Component.displayName?.slice(-2)}
-              </Component>
-            </div>
-          );
-        }
-        return null;
-      })}
-      <div>
-        <ForceWrap>
-          <Component>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent
-            ultricies. 12345
-          </Component>
-        </ForceWrap>
-      </div>
-    </Examples>
+    <div>
+      <Component>Lorem ipsum dolor sit amet</Component>
+    </div>
   );
 }
 
 export const UI: Story = () => (
   <TypographyComponentsTemplate
     components={Object.values(UITypographyComponents).reverse()}
-    example={juxtaposeUi}
-  />
+    example={UIExample}
+  >
+    <ArticleTypographyComponents.Header88>
+      Typography / UI
+    </ArticleTypographyComponents.Header88>
+    <ArticleTypographyComponents.Body32>
+      These styles are to be used for UI elements. For the most part, these
+      styles are used in Pathways and Workflows.
+    </ArticleTypographyComponents.Body32>
+  </TypographyComponentsTemplate>
 );
 
 function articleExample(Component: TypographyComponent): React.ReactNode {
@@ -174,30 +131,14 @@ function articleExample(Component: TypographyComponent): React.ReactNode {
     <>
       <Component>
         Aenean eleifend dictum pharetra. Suspendisse vel malesuada dolor. In
-        dignissim pretium dui, ut blandit dolor blandit at.
-        <p>
-          This is a <code>&lt;p&gt;</code> nested inside the{" "}
-          {Component.displayName}. It should have the same paragraph spacing as
-          adjacent {Component.displayName} tags. Duis efficitur sit amet arcu
-          quis euismod. Mauris venenatis pharetra augue, quis rutrum velit
-          volutpat et.
-        </p>
-      </Component>
-      <Component>
-        This is a second {Component.displayName}. praesent id lectus finibus,
-        convallis magna et, tempor ipsum. Nulla tempus commodo lacus, at
-        pulvinar libero suscipit sit amet.
-      </Component>
-      <Component>
-        This is a third {Component.displayName}. Suspendisse tristique felis ut
-        turpis fermentum interdum. Curabitur luctus odio quis neque viverra
-        tincidunt.
+        dignissim pretium dui, ut blandit dolor blandit at. Nulla tempus commodo
+        lacus, at pulvinar libero suscipit sit amet.
       </Component>
     </>
   );
 }
 
-export const Article: Story = () => (
+export const Articles: Story = () => (
   <TypographyComponentsTemplate
     components={Object.values(ArticleTypographyComponents)}
     example={articleExample}
