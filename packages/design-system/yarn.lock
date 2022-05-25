@@ -11391,6 +11391,11 @@ rollup-plugin-typescript2@^0.29.0:
     resolve "1.17.0"
     tslib "2.0.1"
 
+rollup-plugin-watcher@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/rollup-plugin-watcher/-/rollup-plugin-watcher-1.0.1.tgz#20f3b396ded9e86ec1d2af7d61fb18660e7502df"
+  integrity sha512-GoMcKKNXQ4oAuRYE6cJhBk1VQ5VmohI2izpcaZr9bjqAYRYWPhk5uBQ89YGVGA4qomQTgIo1y59Vw8VHz6nbgw==
+
 rollup-pluginutils@^1.3.1:
   version "1.5.2"
   resolved "https://registry.yarnpkg.com/rollup-pluginutils/-/rollup-pluginutils-1.5.2.tgz#1e156e778f94b7255bfa1b3d0178be8f5c552408"

@@ -16,7 +16,7 @@
 // =============================================================================
 
 import { css, FlattenSimpleInterpolation } from "styled-components";
-import sassVars from "./typography.module.scss";
+import sassVars from "../../scss/typography/_variables.scss";
 
 export const TYPOGRAPHY_LEVELS = [
   "Sans12",

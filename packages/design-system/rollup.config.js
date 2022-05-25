@@ -26,6 +26,7 @@ import externals from "rollup-plugin-node-externals";
 import styles from "rollup-plugin-styles";
 import copy from "rollup-plugin-copy";
 import cleaner from "rollup-plugin-cleaner";
+import watcher from "rollup-plugin-watcher";
 
 const packageJson = require("./package.json");
 
@@ -35,6 +36,9 @@ if (process.env.ANALYZE === "true") {
   optionalPlugins.push(analyze({ summaryOnly: true }));
 }
 
+if (process.env.ROLLUP_WATCH === "true") {
+  optionalPlugins.push(watcher(["src/scss/**/*.scss"]));
+}
 export default {
   input: "src/index.ts",
   output: [
@@ -54,6 +58,7 @@ export default {
     externals(),
     postcss({
       plugins: [url({ url: "inline" })],
+      modules: true,
     }),
     resolve(),
     commonjs(),
@@ -62,7 +67,14 @@ export default {
     typescript({ clean: true, useTsconfigDeclarationDir: true }),
     styles({ modules: true }),
     copy({
-      targets: [{ src: "src/**/*.scss", dest: "dist/scss" }],
+      targets: [
+        {
+          src: "src/scss/**/*.scss",
+          dest: "dist",
+        },
+      ],
+      flatten: false,
+      verbose: true,
     }),
     ...optionalPlugins,
   ],
