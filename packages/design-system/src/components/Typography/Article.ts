@@ -16,54 +16,54 @@
 // =============================================================================
 
 import styled from "styled-components";
-import { styles } from "./styles";
+import { typography } from "../../styles";
 
 export const Header88 = styled.div`
-  ${styles.Header88}
+  ${typography.Header88}
 `;
 Header88.displayName = "Header88";
 
 export const Header56 = styled.div`
-  ${styles.Header56}
+  ${typography.Header56}
 `;
 Header56.displayName = "Header56";
 
 export const Header34 = styled.div`
-  ${styles.Header34}
+  ${typography.Header34}
 `;
 Header34.displayName = "Header34";
 
 export const Header24 = styled.div`
-  ${styles.Header24}
+  ${typography.Header24}
 `;
 Header24.displayName = "Header24";
 
 export const Body48 = styled.div`
-  ${styles.Body48}
+  ${typography.Body48}
 `;
 Body48.displayName = "Body48";
 
 export const Body32 = styled.div`
-  ${styles.Body32}
+  ${typography.Body32}
 `;
 Body32.displayName = "Body32";
 
 export const Body24 = styled.div`
-  ${styles.Body24}
+  ${typography.Body24}
 `;
 Body24.displayName = "Body24";
 
 export const Body19 = styled.div`
-  ${styles.Body19}
+  ${typography.Body19}
 `;
 Body19.displayName = "Body19";
 
 export const Body16 = styled.div`
-  ${styles.Body16}
+  ${typography.Body16}
 `;
 Body16.displayName = "Body16";
 
 export const Body14 = styled.div`
-  ${styles.Body14}
+  ${typography.Body14}
 `;
 Body14.displayName = "Body14";

@@ -23,8 +23,7 @@ import prettier from "prettier";
 import parserPostCSS from "prettier/parser-postcss";
 import * as UITypographyComponents from "./UI";
 import * as ArticleTypographyComponents from "./Article";
-import { palette } from "../../styles";
-import { styles, TypographyStyles } from "./styles";
+import { palette, typography, TypographyStyles } from "../../styles";
 
 export default {
   title: "Design System/Pages/Typography",
@@ -88,7 +87,7 @@ const TypographyComponentsTemplate: React.FC<{
           <ComponentAttributes
             dangerouslySetInnerHTML={{
               __html: displayStyles(
-                styles[Component.displayName as keyof typeof styles]
+                typography[Component.displayName as keyof typeof typography]
               ),
             }}
           />

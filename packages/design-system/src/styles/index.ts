@@ -19,3 +19,4 @@ export * from "./fonts";
 export * from "./palette";
 export * from "./spacing";
 export * from "./zindex";
+export * from "./typography";
