@@ -16,34 +16,34 @@
 // =============================================================================
 
 import styled from "styled-components";
-import { styles } from "./styles";
+import { typography } from "../../styles";
 
 export const Sans12 = styled.div`
-  ${styles.Sans12}
+  ${typography.Sans12}
 `;
 Sans12.displayName = "Sans12";
 
 export const Sans14 = styled.div`
-  ${styles.Sans14}
+  ${typography.Sans14}
 `;
 Sans14.displayName = "Sans14";
 
 export const Sans16 = styled.div`
-  ${styles.Sans16}
+  ${typography.Sans16}
 `;
 Sans16.displayName = "Sans16";
 
 export const Sans24 = styled.div`
-  ${styles.Sans24}
+  ${typography.Sans24}
 `;
 Sans24.displayName = "Sans24";
 
 export const Serif24 = styled.div`
-  ${styles.Serif24}
+  ${typography.Serif24}
 `;
 Serif24.displayName = "Serif24";
 
 export const Serif34 = styled.div`
-  ${styles.Serif34}
+  ${typography.Serif34}
 `;
 Serif34.displayName = "Serif34";

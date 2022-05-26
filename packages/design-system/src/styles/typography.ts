@@ -16,9 +16,9 @@
 // =============================================================================
 
 import { css, FlattenSimpleInterpolation } from "styled-components";
-import sassVars from "../../scss/typography/_variables.scss";
+import sassVars from "../scss/typography/_variables.scss";
 
-export const TYPOGRAPHY_LEVELS = [
+const TYPOGRAPHY_LEVELS = [
   "Sans12",
   "Sans14",
   "Sans16",
@@ -43,7 +43,7 @@ export type TypographyStyles = Record<
   FlattenSimpleInterpolation
 >;
 
-export const styles: TypographyStyles = TYPOGRAPHY_LEVELS.reduce(
+export const typography: TypographyStyles = TYPOGRAPHY_LEVELS.reduce(
   (accumulatedStyles, level) => {
     let additionalStyles = css``;
 
