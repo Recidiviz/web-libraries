@@ -17,8 +17,7 @@
 import { createGlobalStyle } from "styled-components";
 import { rem } from "polished";
 import { palette, spacing } from "../../styles";
-import "@fontsource/public-sans";
-import "@fontsource/public-sans/500.css";
+import "@fontsource/public-sans/variable.css";
 import "@fontsource/libre-franklin";
 import "@fontsource/libre-franklin/500.css";
 import "@fontsource/libre-baskerville";
