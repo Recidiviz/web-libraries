@@ -18,5 +18,5 @@
 export enum AVAILABLE_FONTS {
   LIBRE_BASKERVILLE = "'Libre Baskerville', serif",
   LIBRE_FRANKLIN = "'Libre Franklin', sans-serif",
-  PUBLIC_SANS = "'Public Sans', sans-serif",
+  PUBLIC_SANS = "'Public SansVariable', sans-serif",
 }
