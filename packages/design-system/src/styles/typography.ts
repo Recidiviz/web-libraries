@@ -60,6 +60,7 @@ export const typography: TypographyStyles = TYPOGRAPHY_LEVELS.reduce(
 
         a {
           color: ${sassVars.linkColorBody};
+          text-decoration: underline;
         }
 
         ul {
@@ -77,6 +78,11 @@ export const typography: TypographyStyles = TYPOGRAPHY_LEVELS.reduce(
     if (level.startsWith("Header")) {
       additionalStyles = css`
         margin-bottom: ${sassVars.paragraphSpacingHeader};
+
+        a {
+          color: ${sassVars.linkColorBody};
+          text-decoration: underline;
+        }
       `;
     }
 
