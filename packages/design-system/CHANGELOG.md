@@ -1,4 +1,11 @@
 # Changelog
+
+## v3.3.2
+
+### Fixed
+
+- `Tooltip` component uses font-family from theme.
+
 ## v3.3.1
 
 ### Fixed
@@ -24,7 +31,7 @@
 - `iconToDataURI` helper which converts `<Icon/>`s into data URIs for use in background images.
 
 ```tsx
-iconToDataURI(<Icon kind={IconSVG.Edit} fill={palette.slate} />)
+iconToDataURI(<Icon kind={IconSVG.Edit} fill={palette.slate} />);
 ```
 
 ## v3.1.0
