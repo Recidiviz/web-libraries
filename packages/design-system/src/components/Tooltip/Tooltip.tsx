@@ -21,6 +21,7 @@ import { palette, spacing, zindex } from "../../styles";
 export const tooltipStyles = css`
   display: block;
   position: fixed;
+  font-family: ${(props) => props.theme.fonts.sans};
   font-size: ${rem("14px")};
   padding: ${rem(spacing.sm)};
   border-radius: 4px;
