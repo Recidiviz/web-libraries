@@ -1,6 +1,6 @@
 {
   "name": "@recidiviz/tsconfig",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Typescript config bases for Recidiviz web applications",
   "author": "Recidiviz <team@recidiviz.org>",
   "files": [
@@ -9,9 +9,9 @@
   ],
   "license": "GPL-3.0-only",
   "engines": {
-    "node": ">=12.x.x"
+    "node": ">=16.x.x"
   },
   "dependencies": {
-    "@tsconfig/node12": "^1.0.7"
+    "@tsconfig/node16": "^1.0.2"
   }
 }
