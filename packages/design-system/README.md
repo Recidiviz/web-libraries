@@ -16,7 +16,7 @@ Use the `yarn dev` will run Storybook. Source files will be watched and automati
 
 The component library can be developed directly alongside dependent projects. The easiest way to do this is with [yalc](https://github.com/wclr/yalc) (which you should probably install globally).
 
-Running `yarn watch` will rebuild the application bundle and publish it to yalc whenever you make changes. In the dependent project(s), there is a one-time step of running `yalc add @recidiviz/design-system` (and `yarn install`) before starting the development server for that application; once this is done, your changes here should be picked up automatically and trigger a reload. Run `yalc remove @recidiviz/design-system` to restore the project's dependencies to their previous state.
+Running `yarn watch` will rebuild the application bundle and publish it to yalc whenever you make changes. In the dependent project(s), there is a one-time step of running `yalc add --link @recidiviz/design-system` (and `yarn install`) before starting the development server for that application; once this is done, your changes here should be picked up automatically and trigger a reload. Run `yalc remove @recidiviz/design-system` to restore the project's dependencies to their previous state.
 
 The scripts `yarn dev-link` and `yarn dev-unlink` will do this for you, e.g., `yarn dev-link ~/path/to/project`
 

@@ -7,5 +7,5 @@ else
   exit 1
 fi
 cd $1
-yalc add @recidiviz/design-system
+yalc add --link @recidiviz/design-system
 yarn
