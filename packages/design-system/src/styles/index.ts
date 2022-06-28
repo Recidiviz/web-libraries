@@ -15,7 +15,6 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 // =============================================================================
 export * from "./animation";
-export * from "./fonts";
 export * from "./palette";
 export * from "./spacing";
 export * from "./zindex";
