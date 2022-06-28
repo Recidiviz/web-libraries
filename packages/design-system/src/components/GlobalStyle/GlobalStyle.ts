@@ -17,8 +17,10 @@
 import { createGlobalStyle } from "styled-components";
 import { rem } from "polished";
 import { palette, spacing } from "../../styles";
-import "@fontsource/public-sans";
+import "@fontsource/public-sans/400.css";
 import "@fontsource/public-sans/500.css";
+import "@fontsource/public-sans/600.css";
+import "@fontsource/public-sans/700.css";
 import "@fontsource/libre-franklin";
 import "@fontsource/libre-franklin/500.css";
 import "@fontsource/libre-baskerville";
@@ -59,6 +61,6 @@ export const GlobalStyle = createGlobalStyle`
   }
   
   strong {
-    font-weight: 500;
+    font-weight: 700;
   }
 `;

@@ -1,5 +1,5 @@
 // Recidiviz - a data platform for criminal justice reform
-// Copyright (C) 2020 Recidiviz, Inc.
+// Copyright (C) 2021 Recidiviz, Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -23,6 +23,10 @@ import typescript from "rollup-plugin-typescript2";
 import sourcemaps from "rollup-plugin-sourcemaps";
 import analyze from "rollup-plugin-analyzer";
 import externals from "rollup-plugin-node-externals";
+import styles from "rollup-plugin-styles";
+import copy from "rollup-plugin-copy";
+import cleaner from "rollup-plugin-cleaner";
+import watcher from "rollup-plugin-watcher";
 
 const packageJson = require("./package.json");
 
@@ -32,6 +36,9 @@ if (process.env.ANALYZE === "true") {
   optionalPlugins.push(analyze({ summaryOnly: true }));
 }
 
+if (process.env.ROLLUP_WATCH === "true") {
+  optionalPlugins.push(watcher(["src/scss/**/*.scss"]));
+}
 export default {
   input: "src/index.ts",
   output: [
@@ -47,15 +54,28 @@ export default {
     },
   ],
   plugins: [
+    cleaner({ targets: ["./dist"] }),
     externals(),
     postcss({
       plugins: [url({ url: "inline" })],
+      modules: true,
     }),
     resolve(),
     commonjs(),
     svg({ base64: true }),
     sourcemaps(),
     typescript({ clean: true, useTsconfigDeclarationDir: true }),
+    styles({ modules: true }),
+    copy({
+      targets: [
+        {
+          src: "src/scss/**/*.scss",
+          dest: "dist",
+        },
+      ],
+      flatten: false,
+      verbose: true,
+    }),
     ...optionalPlugins,
   ],
 };
