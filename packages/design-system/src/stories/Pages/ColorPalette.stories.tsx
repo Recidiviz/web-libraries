@@ -18,8 +18,8 @@ import * as React from "react";
 import styled from "styled-components";
 import { Meta, Story } from "@storybook/react";
 import { rem } from "polished";
-import { H1, H4 } from "../../components/Typography";
-import { palette, spacing } from "../../styles";
+import { palette, spacing, typography } from "../../styles";
+import { Header56 } from "../../components/Typography";
 
 interface SwatchProps {
   color: string;
@@ -86,7 +86,8 @@ const Swatch = ({ name, color }: SwatchProps) => (
   </SwatchContainer>
 );
 
-const CaptionHeading = styled(H4)`
+const CaptionHeading = styled.h4`
+  ${typography.Header24}
   color: ${palette.slate85};
   border-bottom: 1px solid ${palette.slate20};
   margin-bottom: ${rem(spacing.sm)};
@@ -113,7 +114,7 @@ export default {
 
 const Template: Story = () => (
   <div>
-    <H1>Color Palette</H1>
+    <Header56>Color Palette</Header56>
 
     <PaletteGrid>
       <Palette>
