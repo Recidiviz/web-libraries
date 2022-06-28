@@ -16,13 +16,13 @@
 // =============================================================================
 import styled from "styled-components";
 import { rem } from "polished";
-import { palette, spacing } from "../../styles";
+import { palette, spacing, typography } from "../../styles";
 
 import { Icon, IconSVG } from "../Icon";
 
 export const SearchContainer = styled.div`
   display: flex;
-  flex-directions: row;
+  flex-direction: row;
   align-items: center;
 
   max-width: ${rem(408)};
@@ -34,6 +34,7 @@ export const SearchContainer = styled.div`
 export const SearchInput = styled.input.attrs({
   type: "search",
 })`
+  ${typography.Sans14}
   background-color: ${palette.marble3};
   border: 1px solid ${palette.slate20};
   height: ${rem(48)};
@@ -43,9 +44,6 @@ export const SearchInput = styled.input.attrs({
   outline: 0;
   padding-left: ${rem(spacing.lg)};
 
-  font-family: ${(props) => props.theme.fonts.body};
-  font-size: ${rem(14)};
-  font-weight: 500;
   color: ${palette.slate70};
 
   &::-webkit-search-cancel-button {

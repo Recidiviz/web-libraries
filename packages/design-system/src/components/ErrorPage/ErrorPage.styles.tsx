@@ -16,7 +16,7 @@
 // =============================================================================
 import styled from "styled-components";
 import { rem } from "polished";
-import { spacing } from "../../styles";
+import { spacing, typography } from "../../styles";
 
 export const OuterErrorPageContainer = styled.div`
   display: flex;
@@ -30,16 +30,11 @@ export const InnerErrorPageContainer = styled.div`
 `;
 
 export const ErrorPageHeader = styled.h1`
-  font-family: ${(props) => props.theme.fonts.heading};
-  font-weight: normal;
-  font-style: normal;
-  font-size: ${rem(34)};
+  ${typography.Header34}
 
   margin: ${rem(spacing.xl)} 0;
 `;
 
 export const ErrorPageBody = styled.div`
-  font-family: ${(props) => props.theme.fonts.body};
-  font-size: ${rem(19)};
-  line-height: ${rem(32)};
+  ${typography.Body19}
 `;

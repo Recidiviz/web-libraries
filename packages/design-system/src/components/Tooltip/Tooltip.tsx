@@ -16,13 +16,12 @@
 // =============================================================================
 import { rem } from "polished";
 import styled, { css } from "styled-components";
-import { palette, spacing, zindex } from "../../styles";
+import { palette, spacing, typography, zindex } from "../../styles";
 
 export const tooltipStyles = css`
+  ${typography.Sans14}
   display: block;
   position: fixed;
-  font-family: ${(props) => props.theme.fonts.sans};
-  font-size: ${rem("14px")};
   padding: ${rem(spacing.sm)};
   border-radius: 4px;
   color: ${palette.white};

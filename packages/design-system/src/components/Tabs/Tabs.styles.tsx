@@ -42,7 +42,6 @@ export const Tab = styled(ReactTabs.Tab).attrs({
   border-bottom: ${rem(spacing.xs)} solid transparent;
   color: ${palette.slate80};
   cursor: pointer;
-  font-weight: 500;
   list-style: none;
   margin: 0 ${rem(spacing.md)};
   padding: ${rem(spacing.sm)} 0;

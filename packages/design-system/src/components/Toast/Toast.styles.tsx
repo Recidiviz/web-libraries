@@ -20,7 +20,7 @@ import {
   DefaultToastContainer,
 } from "react-toast-notifications";
 import { rem } from "polished";
-import { palette, spacing, zindex } from "../../styles";
+import { palette, spacing, typography, zindex } from "../../styles";
 
 export const ToastBackgroundColors = {
   success: "#d5f6ee",
@@ -62,12 +62,9 @@ export const BaseToastDiv = styled.div<{ appearance: AppearanceTypes }>(
 );
 
 export const BaseToastContent = styled.div`
+  ${typography.Body14}
   color: ${palette.text.normal};
-  font-size: ${rem("15px")};
-  font-weight: normal;
-  font-family: ${(props) => props.theme.fonts.body};
-  line-height: 120%;
-
+  margin: 0;
   padding: 0px ${rem(spacing.xl)};
 `;
 

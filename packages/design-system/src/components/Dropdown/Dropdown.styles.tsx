@@ -16,13 +16,14 @@
 // =============================================================================
 import { rem } from "polished";
 import styled, { css } from "styled-components";
-import { palette, spacing } from "../../styles";
+import { palette, spacing, typography } from "../../styles";
 import { Button } from "../Button";
 
 export const MenuItemElement = styled.button.attrs({
   type: "button",
   role: "menuitem",
 })`
+  ${typography.Sans14}
   color: ${palette.pine3};
   list-style: none;
   height: ${rem(32)};
@@ -36,8 +37,6 @@ export const MenuItemElement = styled.button.attrs({
   width: 100%;
   text-align: left;
   white-space: nowrap;
-  font-size: ${rem(14)};
-  font-family: ${(props) => props.theme.fonts.body};
 
   &:focus {
     outline: none;
@@ -66,6 +65,7 @@ export const MenuItemElement = styled.button.attrs({
 `;
 
 export const MenuLabelElement = styled.div`
+  ${typography.Sans14}
   color: ${palette.slate70};
   height: ${rem(32)};
   line-height: ${rem(32)};
@@ -95,9 +95,9 @@ export interface MenuElementProps {
 export const MenuElement = styled.div.attrs({
   role: "menubar",
 })<MenuElementProps>`
+  ${typography.Sans14}
   display: flex;
   flex-direction: column;
-  font-family: ${(props) => props.theme.fonts.sans};
   position: absolute;
   min-width: 193px;
   padding: 0;
@@ -108,7 +108,6 @@ export const MenuElement = styled.div.attrs({
   box-shadow: 0px 15px 40px rgba(53, 83, 98, 0.3),
     inset 0px -1px 1px rgba(19, 44, 82, 0.2);
   border-radius: 8px;
-  font-size: ${rem(14)};
 
   transition: 0.15s ease-in-out;
   transition-property: opacity, transform;
