@@ -19,7 +19,17 @@ import { when } from "mobx";
 import { observer } from "mobx-react-lite";
 import React, { useEffect } from "react";
 
-const AuthWall: React.FC<React.ReactNode> = ({
+import { AuthStore } from "./AuthStore";
+
+type AuthWallProps = {
+  authStore: AuthStore;
+  Loading: () => JSX.Element;
+  UnauthorizedPage: () => JSX.Element;
+  EmailVerificationPage: () => JSX.Element;
+  children: React.ReactNode;
+};
+
+const AuthWall: React.FC<AuthWallProps> = ({
   authStore,
   Loading,
   UnauthorizedPage,
