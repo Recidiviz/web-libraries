@@ -38,6 +38,8 @@ export class AuthStore {
 
   isLoading: boolean;
 
+  hasError: boolean;
+
   user?: User;
 
   constructor({ authSettings }: AuthStoreProps) {

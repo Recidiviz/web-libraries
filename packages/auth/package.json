@@ -5,6 +5,11 @@
   "author": "Recidiviz <team@recidiviz.org>",
   "license": "GPL-3.0-only",
   "main": "index.ts",
+  "scripts": {
+    "build": "rollup -c",
+    "analyze": "rollup -c --environment ANALYZE",
+    "lint": "tsc && eslint --ext .js,.ts,.tsx src/"
+  },
   "dependencies": {
     "@auth0/auth0-spa-js": "^1.22.1",
     "mobx": "^6.6.1",
