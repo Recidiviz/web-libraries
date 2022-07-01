@@ -26,6 +26,7 @@ type AuthWallProps = {
   Loading: () => JSX.Element;
   UnauthorizedPage: () => JSX.Element;
   EmailVerificationPage: () => JSX.Element;
+  handleTargetUrl?: (targetUrl: string) => void;
   children: React.ReactNode;
 };
 
@@ -34,6 +35,7 @@ const AuthWall: React.FC<AuthWallProps> = ({
   Loading,
   UnauthorizedPage,
   EmailVerificationPage,
+  handleTargetUrl,
   children,
 }): React.ReactElement | null => {
   useEffect(
@@ -41,7 +43,7 @@ const AuthWall: React.FC<AuthWallProps> = ({
       // return when's disposer so it is cleaned up if it never runs
       when(
         () => !authStore.isAuthorized,
-        () => authStore.authenticate()
+        () => authStore.authenticate(handleTargetUrl)
       ),
     [authStore]
   );

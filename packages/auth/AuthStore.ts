@@ -53,7 +53,9 @@ export class AuthStore {
     return createAuth0Client(this.authSettings as Auth0ClientOptions);
   }
 
-  async authenticate(): Promise<void> {
+  async authenticate(
+    handleTargetUrl?: (targetUrl: string) => void
+  ): Promise<void> {
     const auth0 = await this.auth0Client;
 
     runInAction(() => {
@@ -86,6 +88,10 @@ export class AuthStore {
       }
 
       window.history.replaceState({}, document.title, replacementUrl);
+
+      if (handleTargetUrl) {
+        handleTargetUrl(replacementUrl);
+      }
     }
 
     if (await auth0.isAuthenticated()) {
