@@ -33,7 +33,7 @@ if (process.env.ANALYZE === "true") {
 }
 
 export default {
-  input: "index.ts",
+  input: "src/index.ts",
   output: [
     {
       file: packageJson.main,

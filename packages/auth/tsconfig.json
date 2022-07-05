@@ -5,9 +5,9 @@
       "declarationDir": "dist",
       "sourceMap": true
     },
-    "include": ["./**/*"],
+    "include": ["src/**/*"],
     "exclude": [
+      "build",
       "node_modules",
-      "build"
     ]
-  }
+}

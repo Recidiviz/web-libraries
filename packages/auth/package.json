@@ -4,6 +4,11 @@
   "description": "Auth0-Powered Authentication Component",
   "author": "Recidiviz <team@recidiviz.org>",
   "license": "GPL-3.0-only",
+  "engines": {
+    "node": ">=12.x.x"
+  },
+  "main": "dist/index.js",
+  "module": "dist/index.es.js",
   "files": [
     "dist"
   ],
