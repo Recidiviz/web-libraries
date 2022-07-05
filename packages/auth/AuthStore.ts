@@ -53,7 +53,14 @@ export class AuthStore {
   }
 
   private get auth0Client(): Promise<Auth0Client> {
-    return createAuth0Client(this.authSettings as Auth0ClientOptions);
+    if (!this.authSettings) {
+      runInAction(() => {
+        this.hasError = true;
+      });
+      return Promise.reject(new Error("No auth settings detected."));
+    } else {
+      return createAuth0Client(this.authSettings);
+    }
   }
 
   async authenticate(
