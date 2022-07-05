@@ -4,7 +4,9 @@
   "description": "Auth0-Powered Authentication Component",
   "author": "Recidiviz <team@recidiviz.org>",
   "license": "GPL-3.0-only",
-  "main": "index.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "rollup -c",
     "analyze": "rollup -c --environment ANALYZE",

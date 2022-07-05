@@ -123,13 +123,13 @@ export class AuthStore {
   }
 
   async getToken(options?: GetTokenSilentlyOptions): Promise<string | Error> {
-    try {
-      if (this.authClient) {
+    if (this.authClient) {
+      try {
         return this.authClient.getTokenSilently(options);
+      } catch (error) {
+        throw new Error(`Unable to retrieve token - ${error}`);
       }
-      return Promise.reject(new Error("No auth client initialized."));
-    } catch (error) {
-      throw new Error(`Unable to retrieve token - ${error}`);
     }
+    throw new Error("No auth client initialized.");
   }
 }
