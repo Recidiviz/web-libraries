@@ -1,6 +1,6 @@
 {
   "name": "@recidiviz/design-system",
-  "version": "3.3.2",
+  "version": "4.0.0",
   "description": "UI components and styles for Recidiviz web products.",
   "author": "Recidiviz <team@recidiviz.org>",
   "license": "GPL-3.0-only",
@@ -10,7 +10,8 @@
   "main": "dist/index.js",
   "module": "dist/index.es.js",
   "files": [
-    "dist"
+    "dist",
+    "scss"
   ],
   "scripts": {
     "dev": "start-storybook -p 60006 -s public",
@@ -28,7 +29,6 @@
   },
   "dependencies": {
     "@fontsource/libre-baskerville": "^4.1.0",
-    "@fontsource/libre-franklin": "^4.1.0",
     "@fontsource/public-sans": "^4.5.3",
     "@types/react-tabs": "^2.3.2",
     "body-scroll-lock": "^3.1.5",
@@ -57,6 +57,7 @@
     "@storybook/addon-links": "^6.1.15",
     "@storybook/addons": "^6.1.15",
     "@storybook/node-logger": "^6.1.15",
+    "@storybook/preset-scss": "^1.0.3",
     "@storybook/react": "^6.1.15",
     "@storybook/storybook-deployer": "^2.8.10",
     "@types/body-scroll-lock": "^2.6.1",
@@ -72,6 +73,7 @@
     "@visx/mock-data": "^1.7.0",
     "babel-eslint": "^10.0.0",
     "babel-loader": "^8.0.0",
+    "css-loader": "^5.0.0",
     "eslint": "^7.15.0",
     "eslint-config-react-app": "^6.0.0",
     "eslint-import-resolver-typescript": "^2.3.0",
@@ -95,12 +97,19 @@
     "react-modal": "^3.12.1",
     "rollup": "^2.36.1",
     "rollup-plugin-analyzer": "^4.0.0",
+    "rollup-plugin-cleaner": "^1.0.0",
+    "rollup-plugin-copy": "^3.4.0",
     "rollup-plugin-node-externals": "^4.0.0",
     "rollup-plugin-postcss": "^4.0.0",
     "rollup-plugin-sourcemaps": "^0.6.3",
+    "rollup-plugin-styles": "^4.0.0",
     "rollup-plugin-svg": "^2.0.0",
     "rollup-plugin-typescript2": "^0.29.0",
+    "rollup-plugin-watcher": "^1.0.1",
+    "sass": "^1.52.1",
+    "sass-loader": "^10.1.1",
     "semiotic": "^1.20.6",
+    "style-loader": "^2.0.0",
     "typescript": "^4.1.2",
     "yalc": "^1.0.0-pre.53"
   },

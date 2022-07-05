@@ -1,5 +1,15 @@
 # Changelog
 
+## v4.0.0
+
+### Breaking changes
+
+**Typography v2**
+
+- Bundle includes SCSS variables and mixins for typography
+- New typography styles and components using Libre Baskerville and Public Sans
+- New styles/components replace themed fonts and some older Headings components
+
 ## v3.3.2
 
 ### Fixed

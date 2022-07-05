@@ -17,7 +17,7 @@
 
 import * as React from "react";
 import styled from "styled-components";
-import { palette } from "../../styles";
+import { palette, typography } from "../../styles";
 import { tooltipStyles } from "../Tooltip";
 
 const SemioticWrapper = styled.div`
@@ -40,22 +40,18 @@ const SemioticWrapper = styled.div`
 
     .axis-label,
     .ordinal-labels {
+      ${typography.Sans12}
       fill: ${palette.text.caption};
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: -0.01em;
     }
 
     .axis-title {
+      ${typography.Sans14}
       fill: ${palette.text.caption};
-      font-size: 13px;
-      font-weight: 600;
-      letter-spacing: -0.01em;
     }
 
     .frame-title {
+      ${typography.Sans16}
       fill: ${palette.text.normal};
-      font-size: 16px;
     }
 
     .pieces {

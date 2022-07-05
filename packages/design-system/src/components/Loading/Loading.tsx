@@ -19,7 +19,7 @@ import { rem } from "polished";
 import React, { FunctionComponent } from "react";
 import styled, { keyframes } from "styled-components";
 
-import { animation, palette } from "../../styles";
+import { animation, palette, typography } from "../../styles";
 
 const RING_SIZE = 75;
 
@@ -54,8 +54,7 @@ const LoadingRingCircle = styled.div`
   border-radius: 50%;
   animation: ${rotate} ${animation.extendedDurationMs}ms
     cubic-bezier(0.5, 0, 0.5, 1) infinite;
-  border-color: ${palette.pine3} ${palette.data.teal1} ${palette.data.teal1}
-    ${palette.data.teal1};
+  border-color: ${palette.pine3} ${palette.data.teal1} ${palette.data.teal1};
   width: ${rem(RING_SIZE * 0.8)};
   height: ${rem(RING_SIZE * 0.8)};
   margin: ${rem(RING_SIZE * 0.065)};
@@ -73,12 +72,9 @@ const LoadingRingCircle = styled.div`
 `;
 
 const LoadingSpinnerText = styled.div`
+  ${typography.Sans14}
   color: ${palette.slate70};
-  font-size: ${rem(14)};
   text-align: center;
-  font-weight: 500;
-  line-height: 1.5;
-  letter-spacing: -0.01em;
 `;
 
 export const Loading: FunctionComponent = () => {

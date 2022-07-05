@@ -20,8 +20,7 @@ import { rgba } from "polished";
 import * as React from "react";
 import styled from "styled-components";
 import ReactModal from "react-modal";
-import { H3 } from "../Typography";
-import { animation, palette, zindex } from "../../styles";
+import { animation, palette, typography, zindex } from "../../styles";
 
 // Reset default `react-modal` styles
 ReactModal.defaultStyles.content = {};
@@ -31,7 +30,8 @@ export interface ModalProps extends Omit<ReactModal.Props, "contentRef"> {
   className?: string;
 }
 
-export const ModalHeading = styled(H3)`
+export const ModalHeading = styled.h3`
+  ${typography.Header24};
   margin-top: 0;
 `;
 

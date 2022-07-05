@@ -18,6 +18,7 @@ import { rem } from "polished";
 import styled, { css } from "styled-components";
 import { ButtonProps } from "./Button.types";
 import { animation, palette, spacing } from "../../styles";
+import { typography } from "../../styles/typography";
 
 const pillStyles = css`
   min-width: ${rem(129)};
@@ -91,11 +92,11 @@ const borderlessStyles = css`
 `;
 
 export const BaseButton = styled.button<Pick<ButtonProps, "kind" | "shape">>`
+  ${typography.Sans14}
+
   align-items: center;
   cursor: pointer;
   display: flex;
-  font-family: ${(props) => props.theme.fonts.body};
-  font-size: ${rem(14)};
   justify-content: center;
   transition-duration: ${animation.defaultDurationMs}ms;
   transition-property: color, background-color, border-color;
@@ -130,11 +131,11 @@ export const BaseButton = styled.button<Pick<ButtonProps, "kind" | "shape">>`
 `;
 
 export const LinkButton = styled.button<ButtonProps>`
+  ${typography.Sans14}
   background: transparent;
   border: none;
   color: ${palette.signal.links};
   cursor: pointer;
-  font-family: ${(props) => props.theme.fonts.body};
   padding: 0;
 
   &:active,

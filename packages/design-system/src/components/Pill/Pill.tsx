@@ -17,7 +17,7 @@
 
 import { rem } from "polished";
 import styled from "styled-components";
-import { palette, spacing } from "../../styles";
+import { palette, spacing, typography } from "../../styles";
 
 export type PillProps = {
   color: string;
@@ -38,12 +38,12 @@ const pillPropsToStyles = ({ color, filled, textColor }: PillProps): string => {
 };
 
 export const Pill = styled.span<PillProps>`
+  ${typography.Sans14}
   align-items: center;
   border-radius: ${rem(16)};
   border: 1px solid transparent;
   box-sizing: border-box;
   display: inline-flex;
-  font-size: ${rem(14)};
   height: ${rem(32)};
   justify-content: center;
   margin-right: ${rem(spacing.xs)};
