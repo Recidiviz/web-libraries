@@ -38,7 +38,7 @@ export class AuthStore {
 
   isLoading: boolean;
 
-  hasError: boolean;
+  error: Error | {};
 
   user?: User;
 
@@ -49,15 +49,16 @@ export class AuthStore {
     this.authClient = undefined;
     this.isAuthorized = false;
     this.isLoading = true;
-    this.hasError = false;
+    this.error = {};
   }
 
   private get auth0Client(): Promise<Auth0Client> {
+    const noAuthSettingsError = new Error("No auth settings detected.");
     if (!this.authSettings) {
       runInAction(() => {
-        this.hasError = true;
+        this.error = noAuthSettingsError;
       });
-      return Promise.reject(new Error("No auth settings detected."));
+      return Promise.reject(noAuthSettingsError);
     } else {
       return createAuth0Client(this.authSettings);
     }
