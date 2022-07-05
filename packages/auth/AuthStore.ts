@@ -49,6 +49,7 @@ export class AuthStore {
     this.authClient = undefined;
     this.isAuthorized = false;
     this.isLoading = true;
+    this.hasError = false;
   }
 
   private get auth0Client(): Promise<Auth0Client> {

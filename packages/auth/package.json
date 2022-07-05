@@ -8,6 +8,9 @@
   "scripts": {
     "build": "rollup -c",
     "analyze": "rollup -c --environment ANALYZE",
+    "watch": "run-p watch:build watch:sync",
+    "watch:build": "rollup -c -w",
+    "watch:sync": "nodemon --watch dist --exec 'yalc push'",
     "lint": "tsc && eslint --ext .js,.ts,.tsx src/"
   },
   "dependencies": {
@@ -20,16 +23,21 @@
     "@babel/core": "^7.0.0",
     "@recidiviz/eslint-config": "^1.0.0",
     "@recidiviz/tsconfig": "^1.0.0",
-    "@types/react": "^17.0.0",
     "@rollup/plugin-commonjs": "^17.0.0",
     "@rollup/plugin-node-resolve": "^11.1.0",
+    "@types/qs": "^6.9.7",
+    "@types/react": "^17.0.0",
+    "nodemon": "^2.0.15",
+    "npm-run-all": "^4.1.5",
+    "postcss": "^8.2.4",
+    "postcss-url": "^10.1.1",
     "rollup": "^2.75.7",
     "rollup-plugin-analyzer": "^4.0.0",
     "rollup-plugin-node-externals": "^4.0.0",
     "rollup-plugin-postcss": "^4.0.0",
     "rollup-plugin-sourcemaps": "^0.6.3",
-    "rollup-plugin-svg": "^2.0.0",
-    "rollup-plugin-typescript2": "^0.29.0"
+    "rollup-plugin-typescript2": "^0.29.0",
+    "typescript": "^4.7.4"
   },
   "peerDependencies": {
     "react": "^17.0.0"
