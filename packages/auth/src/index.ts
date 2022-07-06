@@ -16,4 +16,4 @@
 // =============================================================================
 
 export * from "./AuthStore";
-export * from "./AuthWall";
+export { default as AuthWall } from "./AuthWall";
