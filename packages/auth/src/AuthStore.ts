@@ -27,6 +27,7 @@ import qs from "qs";
 interface AuthStoreProps {
   authSettings: Auth0ClientOptions | undefined;
 }
+
 export class AuthStore {
   readonly authSettings: Auth0ClientOptions | undefined;
 
