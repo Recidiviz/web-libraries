@@ -18,13 +18,18 @@
     "watch": "run-p watch:build watch:sync",
     "watch:build": "rollup -c -w",
     "watch:sync": "nodemon --watch dist --exec 'yalc push'",
-    "lint": "tsc && eslint --ext .js,.ts,.tsx src/"
+    "lint": "tsc && eslint --ext .js,.ts,.tsx src/",
+    "test": "react-scripts test"
   },
   "dependencies": {
     "@auth0/auth0-spa-js": "^1.22.1",
     "mobx": "^6.6.1",
     "mobx-react-lite": "^3.4.0",
-    "qs": "^6.11.0"
+    "qs": "^6.11.0",
+    "@testing-library/dom": "^8.11.3",
+    "@testing-library/jest-dom": "^5.14.1",
+    "@testing-library/react": "^12.0.0",
+    "react-scripts": "5.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
