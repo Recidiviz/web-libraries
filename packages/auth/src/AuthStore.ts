@@ -123,7 +123,7 @@ export class AuthStore {
     }
   }
 
-  async logoutUser() {
+  async logout() {
     runInAction(() => {
       this.isAuthorized = false;
       this.isLoading = true;
@@ -132,7 +132,9 @@ export class AuthStore {
     return this.authClient?.logout({ returnTo: window.location.origin });
   }
 
-  async getToken(options?: GetTokenSilentlyOptions): Promise<string | Error> {
+  async getTokenSilently(
+    options?: GetTokenSilentlyOptions
+  ): Promise<string | Error> {
     if (this.authClient) {
       try {
         return this.authClient.getTokenSilently(options);
