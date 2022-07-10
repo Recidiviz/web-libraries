@@ -54,12 +54,11 @@ export class AuthStore {
   }
 
   private get auth0Client(): Promise<Auth0Client> {
-    const noAuthSettingsError = new Error("No auth settings detected.");
     if (!this.authSettings) {
       runInAction(() => {
-        this.error = noAuthSettingsError;
+        this.error = new Error("No auth settings detected.");
       });
-      return Promise.reject(noAuthSettingsError);
+      return Promise.reject(new Error("No auth settings detected."));
     } else {
       return createAuth0Client(this.authSettings);
     }
