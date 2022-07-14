@@ -39,7 +39,7 @@ export class AuthStore {
 
   isLoading: boolean;
 
-  error: Error | {};
+  error: Error | Record<string, unknown>;
 
   user?: User;
 
@@ -59,11 +59,10 @@ export class AuthStore {
         this.error = new Error("No auth settings detected.");
       });
       return Promise.reject(new Error("No auth settings detected."));
-    } else {
-      return this.authClient
-        ? this.authClient
-        : createAuth0Client(this.authSettings);
     }
+    return this.authClient
+      ? this.authClient
+      : createAuth0Client(this.authSettings);
   }
 
   async authenticate(
@@ -123,7 +122,7 @@ export class AuthStore {
     }
   }
 
-  async logout() {
+  async logout(): Promise<void> {
     runInAction(() => {
       this.isAuthorized = false;
       this.isLoading = true;

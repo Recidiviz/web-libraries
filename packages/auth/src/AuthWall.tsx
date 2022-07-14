@@ -45,6 +45,7 @@ const AuthWall: React.FC<AuthWallProps> = ({
         () => !authStore.isAuthorized,
         () => authStore.authenticate(handleTargetUrl)
       ),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [authStore]
   );
 
