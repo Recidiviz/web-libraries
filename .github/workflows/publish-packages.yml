@@ -78,3 +78,29 @@ jobs:
         run: yarn run deploy-storybook
         env:
           GH_TOKEN: ${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}
+  publish-auth:
+    name: Publish auth package
+    runs-on: ubuntu-latest
+    if: ${{ startsWith(github.ref, 'refs/tags/auth@') }}
+    defaults:
+      run:
+        working-directory: packages/auth
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node 14
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14.x
+          registry-url: https://registry.npmjs.org
+          scope: "@recidiviz"
+      - name: Yarn install with cache
+        uses: bahmutov/npm-install@v1
+        with:
+          working-directory: packages/auth
+          install-command: yarn --frozen-lockfile
+      - name: Yarn build
+        run: yarn build
+      - name: Publish
+        run: npm publish --verbose --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

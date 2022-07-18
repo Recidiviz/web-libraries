@@ -46,3 +46,66 @@ jobs:
           install-command: yarn --frozen-lockfile
       - name: Yarn build
         run: yarn build
+  build-auth:
+    name: Build auth package
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: packages/auth
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node 14
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14.x
+          registry-url: https://registry.npmjs.org
+          scope: "@recidiviz"
+      - name: Yarn install with cache
+        uses: bahmutov/npm-install@v1
+        with:
+          working-directory: packages/auth
+          install-command: yarn --frozen-lockfile
+      - name: Yarn build
+        run: yarn build
+  lint-auth:
+    name: Lint auth package
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: packages/auth
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node 14
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14.x
+          registry-url: https://registry.npmjs.org
+          scope: "@recidiviz"
+      - name: Yarn install with cache
+        uses: bahmutov/npm-install@v1
+        with:
+          working-directory: packages/auth
+          install-command: yarn --frozen-lockfile
+      - name: Yarn lint
+        run: yarn lint
+  test-auth:
+    name: Test auth package
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: packages/auth
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node 14
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14.x
+          registry-url: https://registry.npmjs.org
+          scope: "@recidiviz"
+      - name: Yarn install with cache
+        uses: bahmutov/npm-install@v1
+        with:
+          working-directory: packages/auth
+          install-command: yarn --frozen-lockfile
+      - name: Yarn test
+        run: yarn test

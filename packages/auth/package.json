@@ -1,0 +1,71 @@
+{
+  "name": "@recidiviz/auth",
+  "version": "1.0.0",
+  "description": "Auth0-Powered Authentication Module",
+  "author": "Recidiviz <team@recidiviz.org>",
+  "license": "GPL-3.0-only",
+  "engines": {
+    "node": ">=12.x.x"
+  },
+  "main": "dist/index.js",
+  "module": "dist/index.es.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "rollup -c",
+    "analyze": "rollup -c --environment ANALYZE",
+    "watch": "run-p watch:build watch:sync",
+    "watch:build": "rollup -c -w",
+    "watch:sync": "nodemon --watch dist --exec 'yalc push'",
+    "lint": "tsc && eslint --ext .js,.ts,.tsx src/",
+    "test": "react-scripts test"
+  },
+  "devDependencies": {
+    "@auth0/auth0-spa-js": "^1.22.1",
+    "@babel/core": "^7.0.0",
+    "@recidiviz/eslint-config": "^1.0.0",
+    "@recidiviz/tsconfig": "^1.0.0",
+    "@rollup/plugin-commonjs": "^17.0.0",
+    "@rollup/plugin-node-resolve": "^11.1.0",
+    "@testing-library/dom": "^8.11.3",
+    "@testing-library/jest-dom": "^5.14.1",
+    "@testing-library/react": "^12.0.0",
+    "@types/qs": "^6.9.7",
+    "@types/react": "^17.0.0",
+    "@typescript-eslint/eslint-plugin": "4.10.0",
+    "@typescript-eslint/parser": "4.10.0",
+    "babel-eslint": "^10.0.0",
+    "eslint": "^7.15.0",
+    "eslint-config-react-app": "^6.0.0",
+    "eslint-import-resolver-typescript": "^2.3.0",
+    "eslint-plugin-flowtype": "^5.2.0",
+    "eslint-plugin-header": "^3.1.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-react": "^7.30.1",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "eslint-plugin-simple-import-sort": "^7.0.0",
+    "mobx": "^6.6.1",
+    "mobx-react-lite": "^3.4.0",
+    "nodemon": "^2.0.15",
+    "npm-run-all": "^4.1.5",
+    "postcss": "^8.2.4",
+    "postcss-url": "^10.1.1",
+    "qs": "^6.11.0",
+    "react-scripts": "5.0.0",
+    "rollup": "^2.75.7",
+    "rollup-plugin-analyzer": "^4.0.0",
+    "rollup-plugin-node-externals": "^4.0.0",
+    "rollup-plugin-postcss": "^4.0.0",
+    "rollup-plugin-sourcemaps": "^0.6.3",
+    "rollup-plugin-typescript2": "^0.29.0",
+    "typescript": "4.1.2",
+    "yalc": "^1.0.0-pre.53",
+    "react": "^17.0.0"
+  },
+  "peerDependencies": {
+    "react": "^17.0.0"
+  }
+}
