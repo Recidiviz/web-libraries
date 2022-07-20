@@ -55,7 +55,7 @@ VerifyEmailPage.args = {
       <p>
         If you have reached this page by mistake, please try to log in again. If
         you are still having trouble, please reach out to{" "}
-        <Link href="mailto:web-support@recidiviz.org?subject=Trouble logging in">
+        <Link href="mailto:feedback@recidiviz.org?subject=Trouble logging in">
           Recidiviz Support
         </Link>
         .
@@ -71,7 +71,7 @@ UnauthorizedPage.args = {
   children: (
     <p>
       This page is currently unavailable for your account. Please reach out to{" "}
-      <Link href="mailto:web-support@recidiviz.org?subject=Access to Recidiviz app">
+      <Link href="mailto:feedback@recidiviz.org?subject=Access to Recidiviz app">
         Recidiviz Support
       </Link>{" "}
       with any questions.
