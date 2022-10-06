@@ -60,8 +60,13 @@ export const DropdownMenu = ({
   React.useEffect(() => {
     const handleFocus = (event: FocusEvent) => {
       const target = event.target as HTMLElement;
-
-      if (!focusManager.dropdown?.current?.contains(target)) {
+      if (
+        !focusManager.dropdown?.current?.contains(target) &&
+        // Do not close the dropdown if the event target is modal content,
+        // otherwise dropdowns inside of modals are broken.
+        // This allows the event to propagate down to the correct input component.
+        !target.className.includes("ReactModal__Content")
+      ) {
         setShown(false);
       }
     };
