@@ -29,6 +29,8 @@ export interface DropdownMenuItemProps {
   onClick: React.MouseEventHandler<HTMLButtonElement>;
 }
 
+export const DROPDOWN_PREVENT_CLOSE = 1;
+
 export const DropdownMenuItem = ({
   className,
   label,
@@ -57,9 +59,12 @@ export const DropdownMenuItem = ({
       }
       onMouseEnter={onMouseEnter}
       onClick={(event: React.MouseEvent<HTMLButtonElement>) => {
-        onClick(event);
-        setShown(false);
-        focusManager.focusToggle();
+        const preventClose = onClick(event) === DROPDOWN_PREVENT_CLOSE;
+
+        if (!preventClose) {
+          setShown(false);
+          focusManager.focusToggle();
+        }
       }}
       disabled={!shown}
       tabIndex={-1}
