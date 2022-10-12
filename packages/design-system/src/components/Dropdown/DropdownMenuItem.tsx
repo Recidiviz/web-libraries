@@ -19,8 +19,6 @@ import * as React from "react";
 import { MenuItemElement } from "./Dropdown.styles";
 import DropdownContext from "./DropdownContext";
 
-export const DROPDOWN_PREVENT_DEFAULT = 1;
-
 export interface DropdownMenuItemProps {
   className?: string;
   /**
@@ -29,6 +27,7 @@ export interface DropdownMenuItemProps {
   label?: string;
   children?: React.ReactNode;
   onClick: React.MouseEventHandler<HTMLButtonElement>;
+  preventCloseOnClickEvent?: boolean;
 }
 
 export const DropdownMenuItem = ({
@@ -36,6 +35,7 @@ export const DropdownMenuItem = ({
   label,
   children,
   onClick,
+  preventCloseOnClickEvent,
 }: DropdownMenuItemProps): JSX.Element => {
   const { focusManager, shown, setShown } = useContext(DropdownContext);
   const ref = useRef<HTMLButtonElement>(null);
@@ -59,10 +59,8 @@ export const DropdownMenuItem = ({
       }
       onMouseEnter={onMouseEnter}
       onClick={(event: React.MouseEvent<HTMLButtonElement>) => {
-        // To prevent closing of the dropdown when selecting an item, return DROPDOWN_PREVENT_DEFAULT from the onClick of the item
-        const preventClose =
-          (onClick(event) as void | number) === DROPDOWN_PREVENT_DEFAULT;
-        if (!preventClose) {
+        onClick(event);
+        if (!preventCloseOnClickEvent) {
           setShown(false);
           focusManager.focusToggle();
         }
