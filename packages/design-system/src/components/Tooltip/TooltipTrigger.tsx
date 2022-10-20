@@ -80,20 +80,35 @@ export const TooltipTrigger: React.FC<TooltipTriggerProps> = ({
   });
 
   let frame: number;
+  const pointerOffset = 15;
   const updateTooltipPosition = (x: number, y: number) => {
     if (typeof frame !== "undefined") {
       window.cancelAnimationFrame(frame);
     }
+
+    let offsetLeft = x;
+    // if tooltip doesn't have enough space on the right move it to the left relative to pointer. Works only when maxWidth is specified
+    if (
+      maxWidth &&
+      window.innerWidth - x < maxWidth &&
+      x - maxWidth > pointerOffset
+    ) {
+      offsetLeft = x - maxWidth - (pointerOffset + 5);
+    }
+
     frame = window.requestAnimationFrame(() => {
       setOffset({
-        left: `${x}px`,
+        left: `${offsetLeft}px`,
         top: `${y}px`,
       });
     });
   };
 
   const onMouseMove: React.MouseEventHandler<HTMLDivElement> = (event) => {
-    updateTooltipPosition(event.clientX + 15, event.clientY + 15);
+    updateTooltipPosition(
+      event.clientX + pointerOffset,
+      event.clientY + pointerOffset
+    );
   };
 
   const onMouseEnter = () => {
@@ -108,7 +123,7 @@ export const TooltipTrigger: React.FC<TooltipTriggerProps> = ({
     // if someone clicked on a hovered item don't override mouse position
     if (!showTooltip) {
       const bounds = event.target.getBoundingClientRect();
-      updateTooltipPosition(bounds.right + 15, bounds.top);
+      updateTooltipPosition(bounds.right + pointerOffset, bounds.top);
     }
     setShowTooltip(true);
   };
