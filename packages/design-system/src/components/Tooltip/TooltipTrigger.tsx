@@ -65,6 +65,7 @@ export const TooltipTrigger: React.FC<TooltipTriggerProps> = ({
   const [offset, setOffset] = React.useState({ top: "0px", left: "0px" });
   // Event handlers should not be
   const [showTooltip, setShowTooltip] = useTooltipState(contents);
+  const tooltipRef = React.useRef<HTMLDivElement>(null);
 
   const transitions = useTransition(showTooltip, {
     from: { opacity: 0 },
@@ -87,13 +88,22 @@ export const TooltipTrigger: React.FC<TooltipTriggerProps> = ({
     }
 
     let offsetLeft = x;
-    // if tooltip doesn't have enough space on the right move it to the left relative to pointer. Works only when maxWidth is specified
+    let offsetWidth = 0;
+
+    if (tooltipRef.current) {
+      offsetWidth = tooltipRef.current.offsetWidth;
+
+      if (maxWidth) offsetWidth = maxWidth;
+      if (offsetWidth > 300) offsetWidth = 300;
+    }
+
+    // if tooltip doesn't have enough space on the right move it to the left relative to pointer.
     if (
-      maxWidth &&
-      window.innerWidth - x < maxWidth &&
-      x - maxWidth > pointerOffset
+      offsetWidth &&
+      window.innerWidth - x < offsetWidth &&
+      x - offsetWidth > pointerOffset
     ) {
-      offsetLeft = x - maxWidth - (pointerOffset + 5);
+      offsetLeft = x - offsetWidth - (pointerOffset + 5);
     }
 
     frame = window.requestAnimationFrame(() => {
@@ -135,6 +145,7 @@ export const TooltipTrigger: React.FC<TooltipTriggerProps> = ({
           (styles, item) =>
             item && (
               <AnimatedTooltip
+                ref={tooltipRef}
                 maxWidth={maxWidth}
                 style={{ ...styles, top: offset.top, left: offset.left }}
               >
