@@ -65,6 +65,7 @@ export const TooltipTrigger: React.FC<TooltipTriggerProps> = ({
   const [offset, setOffset] = React.useState({ top: "0px", left: "0px" });
   // Event handlers should not be
   const [showTooltip, setShowTooltip] = useTooltipState(contents);
+  const tooltipRef = React.useRef<HTMLDivElement>(null);
 
   const transitions = useTransition(showTooltip, {
     from: { opacity: 0 },
@@ -80,20 +81,44 @@ export const TooltipTrigger: React.FC<TooltipTriggerProps> = ({
   });
 
   let frame: number;
+  const pointerOffset = 15;
   const updateTooltipPosition = (x: number, y: number) => {
     if (typeof frame !== "undefined") {
       window.cancelAnimationFrame(frame);
     }
+
+    let offsetLeft = x;
+    let offsetWidth = 0;
+
+    if (tooltipRef.current) {
+      offsetWidth = tooltipRef.current.offsetWidth;
+
+      if (maxWidth) offsetWidth = maxWidth;
+      if (offsetWidth > 300) offsetWidth = 300;
+    }
+
+    // if tooltip doesn't have enough space on the right move it to the left relative to pointer.
+    if (
+      offsetWidth &&
+      window.innerWidth - x < offsetWidth &&
+      x - offsetWidth > pointerOffset
+    ) {
+      offsetLeft = x - offsetWidth - (pointerOffset + 5);
+    }
+
     frame = window.requestAnimationFrame(() => {
       setOffset({
-        left: `${x}px`,
+        left: `${offsetLeft}px`,
         top: `${y}px`,
       });
     });
   };
 
   const onMouseMove: React.MouseEventHandler<HTMLDivElement> = (event) => {
-    updateTooltipPosition(event.clientX + 15, event.clientY + 15);
+    updateTooltipPosition(
+      event.clientX + pointerOffset,
+      event.clientY + pointerOffset
+    );
   };
 
   const onMouseEnter = () => {
@@ -108,7 +133,7 @@ export const TooltipTrigger: React.FC<TooltipTriggerProps> = ({
     // if someone clicked on a hovered item don't override mouse position
     if (!showTooltip) {
       const bounds = event.target.getBoundingClientRect();
-      updateTooltipPosition(bounds.right + 15, bounds.top);
+      updateTooltipPosition(bounds.right + pointerOffset, bounds.top);
     }
     setShowTooltip(true);
   };
@@ -120,6 +145,7 @@ export const TooltipTrigger: React.FC<TooltipTriggerProps> = ({
           (styles, item) =>
             item && (
               <AnimatedTooltip
+                ref={tooltipRef}
                 maxWidth={maxWidth}
                 style={{ ...styles, top: offset.top, left: offset.left }}
               >
