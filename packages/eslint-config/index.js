@@ -1,5 +1,5 @@
 // Recidiviz - a data platform for criminal justice reform
-// Copyright (C) 2021 Recidiviz, Inc.
+// Copyright (C) 2022 Recidiviz, Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -19,7 +19,12 @@ module.exports = {
   env: {
     browser: true,
   },
-  extends: ["react-app", "airbnb", "plugin:prettier/recommended"],
+  extends: [
+    "react-app",
+    "airbnb",
+    "airbnb/hooks",
+    "plugin:prettier/recommended",
+  ],
   ignorePatterns: ["node_modules/", "build/", "public/"],
   plugins: ["simple-import-sort"],
   rules: {
@@ -49,6 +54,11 @@ module.exports = {
       },
     ],
     "no-new": 1,
+    // the return value is harmless (it is ignored) and we use this pattern a lot in tests,
+    // in the form of one-line arrow functions. Would add unnecessary verbosity
+    "no-promise-executor-return": "off",
+    // "default" is restricted but we use that pattern a lot in index files
+    "no-restricted-exports": "off",
     "no-restricted-imports": [
       "error",
       {
@@ -78,6 +88,8 @@ module.exports = {
 
     // we are only targeting es5 environments so we don't have to pass 10
     radix: ["error", "as-needed"],
+    // this rule has poor Typescript compatibility
+    "react/function-component-definition": "off",
     // conflicts with prettier
     "react/jsx-curly-newline": 0,
     "react/jsx-filename-extension": ["error", { extensions: [".tsx", ".js"] }],
@@ -91,7 +103,7 @@ module.exports = {
       { declaration: false, assignment: false },
     ],
     "simple-import-sort/imports": "error",
-    "simple-import-sort/exports": "error"
+    "simple-import-sort/exports": "error",
   },
   overrides: [
     {
@@ -106,6 +118,8 @@ module.exports = {
         "@typescript-eslint/no-shadow": "error",
         "no-use-before-define": "off",
         "@typescript-eslint/no-use-before-define": ["error"],
+        // common workaround for strict return types
+        "react/jsx-no-useless-fragment": ["error", { allowExpressions: true }],
         // TypeScript makes these redundant
         "react/prop-types": "off",
         "react/require-default-props": "off",
