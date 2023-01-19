@@ -131,9 +131,7 @@ export class AuthStore {
     return this.authClient?.logout({ returnTo: window.location.origin });
   }
 
-  async getTokenSilently(
-    options?: GetTokenSilentlyOptions
-  ): Promise<string | Error> {
+  async getTokenSilently(options?: GetTokenSilentlyOptions): Promise<string> {
     if (this.authClient) {
       try {
         return this.authClient.getTokenSilently(options);
