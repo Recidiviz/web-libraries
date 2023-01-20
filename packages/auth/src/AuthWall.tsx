@@ -1,5 +1,5 @@
 // Recidiviz - a data platform for criminal justice reform
-// Copyright (C) 2022 Recidiviz, Inc.
+// Copyright (C) 2023 Recidiviz, Inc.
 //
 // This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
@@ -17,24 +17,24 @@
 
 import { when } from "mobx";
 import { observer } from "mobx-react-lite";
-import React, { useEffect } from "react";
+import React, { ReactNode, useEffect } from "react";
 
 import { AuthStore } from "./AuthStore";
 
 type AuthWallProps = {
   authStore: AuthStore;
-  Loading: () => JSX.Element;
-  UnauthorizedPage: () => JSX.Element;
-  EmailVerificationPage: () => JSX.Element;
+  loading: ReactNode;
+  unauthorizedPage: ReactNode;
+  emailVerificationPage: ReactNode;
   handleTargetUrl?: (targetUrl: string) => void;
-  children: React.ReactNode;
+  children: ReactNode;
 };
 
 const AuthWall: React.FC<AuthWallProps> = ({
   authStore,
-  Loading,
-  UnauthorizedPage,
-  EmailVerificationPage,
+  loading,
+  unauthorizedPage,
+  emailVerificationPage,
   handleTargetUrl,
   children,
 }): React.ReactElement | null => {
@@ -50,15 +50,15 @@ const AuthWall: React.FC<AuthWallProps> = ({
   );
 
   if (authStore.isLoading) {
-    return <Loading />;
+    return <>{loading}</>;
   }
 
   if (!authStore.isAuthorized) {
-    return <UnauthorizedPage />;
+    return <>{unauthorizedPage}</>;
   }
 
   if (!authStore.emailVerified) {
-    return <EmailVerificationPage />;
+    return <>{emailVerificationPage}</>;
   }
 
   return authStore.isAuthorized ? <>{children}</> : null;

@@ -40,9 +40,9 @@ Initialize the AuthStore by providing it with `{ authSettings }` (see [Auth0Clie
 ```
 <AuthWall 
   authStore
-  Loading
-  UnauthorizedPage
-  EmailVerificationPage
+  loading
+  unauthorizedPage
+  emailVerificationPage
   handleTargetUrl
 >
   <ProtectedComponent />
@@ -52,9 +52,9 @@ Initialize the AuthStore by providing it with `{ authSettings }` (see [Auth0Clie
 | Required Props | Description |
 | -: | - |
 | authStore | initialized AuthStore |
-| Loading | component that renders the loading page/state |
-| UnauthorizedPage | component that renders the page for an unauthorized user logging in |
-| EmailVerificationPage | component that renders the page for a user who has not verified their email address |
+| loading | contents to render for loading page/state |
+| unauthorizedPage | contents to render for an unauthorized user logging in |
+| emailVerificationPage | contents to render for a user who has not verified their email address |
 
 <br />
 
