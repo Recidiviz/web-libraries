@@ -1,6 +1,6 @@
 {
   "name": "@recidiviz/auth",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Auth0-Powered Authentication Module",
   "author": "Recidiviz <team@recidiviz.org>",
   "license": "GPL-3.0-only",
