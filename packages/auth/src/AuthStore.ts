@@ -24,12 +24,13 @@ import createAuth0Client, {
 import { makeAutoObservable, runInAction } from "mobx";
 import qs from "qs";
 
+export type AuthSettings = Auth0ClientOptions;
 interface AuthStoreProps {
-  authSettings: Auth0ClientOptions | undefined;
+  authSettings: AuthSettings | undefined;
 }
 
 export class AuthStore {
-  readonly authSettings: Auth0ClientOptions | undefined;
+  readonly authSettings: AuthSettings | undefined;
 
   private authClient: Auth0Client | undefined;
 
