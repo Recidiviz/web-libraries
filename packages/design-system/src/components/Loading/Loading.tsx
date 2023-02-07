@@ -16,10 +16,12 @@
 // =============================================================================
 
 import { rem } from "polished";
-import React, { FunctionComponent } from "react";
+import React from "react";
+
 import styled, { keyframes } from "styled-components";
 
 import { animation, palette, typography } from "../../styles";
+import { LoadingProps } from "./Loading.types";
 
 const RING_SIZE = 75;
 
@@ -77,7 +79,10 @@ const LoadingSpinnerText = styled.div`
   text-align: center;
 `;
 
-export const Loading: FunctionComponent = () => {
+export const Loading: React.FC<LoadingProps> = ({
+  message = "Loading data...",
+  showMessage = true,
+}: LoadingProps) => {
   return (
     <LoadingWrapper role="status">
       <LoadingRing>
@@ -86,7 +91,7 @@ export const Loading: FunctionComponent = () => {
         <LoadingRingCircle />
         <LoadingRingCircle />
       </LoadingRing>
-      <LoadingSpinnerText>Loading data...</LoadingSpinnerText>
+      {showMessage ? <LoadingSpinnerText>{message}</LoadingSpinnerText> : null}
     </LoadingWrapper>
   );
 };
