@@ -15,7 +15,7 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 // =============================================================================
 
-export interface LoadingProps extends React.HTMLAttributes<any> {
+export interface LoadingProps extends React.HTMLAttributes<unknown> {
   showMessage?: boolean;
   message?: string;
 }
