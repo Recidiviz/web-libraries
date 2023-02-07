@@ -1,5 +1,11 @@
 # Changelog
 
+## v4.3.0
+
+### Added
+
+- Support for showing/hiding/customizing text for the Loading component
+
 ## v4.0.0
 
 ### Breaking changes
