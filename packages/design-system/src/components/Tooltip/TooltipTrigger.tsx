@@ -88,10 +88,13 @@ export const TooltipTrigger: React.FC<TooltipTriggerProps> = ({
     }
 
     let offsetLeft = x;
+    let offsetTop = y;
     let offsetWidth = 0;
+    let offsetHeight = 0;
 
     if (tooltipRef.current) {
       offsetWidth = tooltipRef.current.offsetWidth;
+      offsetHeight = tooltipRef.current.offsetHeight;
 
       if (maxWidth) offsetWidth = maxWidth;
       if (offsetWidth > 300) offsetWidth = 300;
@@ -106,10 +109,15 @@ export const TooltipTrigger: React.FC<TooltipTriggerProps> = ({
       offsetLeft = x - offsetWidth - (pointerOffset + 5);
     }
 
+    // If tooltip doesn't have enough space on the bottom move it to the top right of the pointer.
+    if (offsetHeight && offsetHeight + y > window.innerHeight) {
+      offsetTop = y - offsetHeight - 15;
+    }
+
     frame = window.requestAnimationFrame(() => {
       setOffset({
         left: `${offsetLeft}px`,
-        top: `${y}px`,
+        top: `${offsetTop}px`,
       });
     });
   };
