@@ -129,8 +129,12 @@ export const TooltipTrigger: React.FC<TooltipTriggerProps> = ({
     );
   };
 
-  const onMouseEnter = () => {
+  const onMouseEnter: React.MouseEventHandler<HTMLDivElement> = (event) => {
     setShowTooltip(true);
+    updateTooltipPosition(
+      event.clientX + pointerOffset,
+      event.clientY + pointerOffset
+    );
   };
 
   const onMouseLeave = () => {
