@@ -1,5 +1,12 @@
 # Changelog
 
+## v4.3.1
+
+### Fixed
+
+- Tooltip positioning at the bottom of a page
+- Tooltip appearing at the top left corner of the page on load
+
 ## v4.3.0
 
 ### Added
