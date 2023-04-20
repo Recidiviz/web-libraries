@@ -16,11 +16,7 @@
 // =============================================================================
 import Assets from "./assets";
 
-import polyfill from "./polyfill";
-
 export { Assets };
-
-polyfill();
 
 export * from "./styles";
 
