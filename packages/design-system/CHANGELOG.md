@@ -1,5 +1,11 @@
 # Changelog
 
+## v5.0.0
+
+### Breaking changes
+
+- Drops explicit IE11 support via Element.matches polyfill
+
 ## v4.3.1
 
 ### Fixed
