@@ -1,5 +1,12 @@
 # Changelog
 
+## v5.2.0
+
+### Added
+
+- `Leave` and `Users` SVG icons (#175)
+- Customizable background color on `Tooltip` (#176)
+
 ## v5.0.0
 
 ### Breaking changes
