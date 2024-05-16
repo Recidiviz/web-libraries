@@ -18,6 +18,7 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react";
 import { Tooltip } from "./Tooltip";
+import { palette } from "../../styles";
 
 export default {
   title: "Design System/Components/Tooltip",
@@ -33,8 +34,12 @@ export default {
   },
 } as Meta;
 
-const Template: Story = ({ contents, maxWidth }) => (
-  <Tooltip maxWidth={maxWidth} dangerouslySetInnerHTML={{ __html: contents }} />
+const Template: Story = ({ contents, maxWidth, backgroundColor }) => (
+  <Tooltip
+    backgroundColor={backgroundColor}
+    maxWidth={maxWidth}
+    dangerouslySetInnerHTML={{ __html: contents }}
+  />
 );
 
 export const DefaultStory = Template.bind({});
@@ -46,4 +51,10 @@ TooltipWithMaxWidth.args = {
   contents:
     "This is a tooltip with contents that are too long to fit one on line",
   maxWidth: 250,
+};
+
+export const TooltipWithCustomBackgroundColor = Template.bind({});
+TooltipWithCustomBackgroundColor.args = {
+  contents: "This is a tooltip with custom background color",
+  backgroundColor: palette.pine1,
 };

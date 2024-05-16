@@ -25,13 +25,13 @@ export const tooltipStyles = css`
   padding: ${rem(spacing.sm)};
   border-radius: 4px;
   color: ${palette.white};
-  background-color: ${palette.signal.tooltip};
   pointer-events: none;
   z-index: ${zindex.modal.content + 1};
 `;
 
-export const Tooltip = styled.div<{ maxWidth?: number }>`
+export const Tooltip = styled.div<{ maxWidth?: number; backgroundColor?: string }>`
   ${tooltipStyles}
 
   max-width: ${({ maxWidth }) => (maxWidth ? `${rem(maxWidth)}` : "none")};
+  background-color: ${({ backgroundColor }) => backgroundColor ?? palette.signal.tooltip};
 `;
