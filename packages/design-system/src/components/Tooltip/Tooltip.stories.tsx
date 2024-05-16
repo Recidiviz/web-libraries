@@ -31,6 +31,10 @@ export default {
       description: "Force tooltip to wrap at this width",
       control: "number",
     },
+    backgroundColor: {
+      control: "color",
+      defaultValue: palette.signal.tooltip,
+    },
   },
 } as Meta;
 
