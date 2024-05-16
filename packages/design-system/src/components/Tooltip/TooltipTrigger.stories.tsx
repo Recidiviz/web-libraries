@@ -19,6 +19,7 @@ import React from "react";
 import { Story, Meta } from "@storybook/react";
 import { TooltipTrigger } from "./TooltipTrigger";
 import { Button } from "../Button";
+import { palette } from "../../styles";
 
 export default {
   title: "Design System/Components/Tooltip Trigger",
@@ -32,14 +33,19 @@ export default {
       description: "Force tooltip to wrap at this width",
       control: "number",
     },
+    backgroundColor: {
+      control: "color",
+      defaultValue: palette.signal.tooltip,
+    },
   },
 } as Meta;
 
-const Template: Story = ({ contents, maxWidth }) => (
+const Template: Story = ({ contents, maxWidth, backgroundColor }) => (
   <TooltipTrigger
     // eslint-disable-next-line react/no-danger
     contents={<span dangerouslySetInnerHTML={{ __html: contents }} />}
     maxWidth={maxWidth}
+    backgroundColor={backgroundColor}
   >
     <Button>Hover me</Button>
   </TooltipTrigger>
@@ -54,4 +60,10 @@ TooltipTriggerWithMaxWidth.args = {
   contents:
     "This is a tooltip with contents that are too long to fit one on line",
   maxWidth: 250,
+};
+
+export const TooltipTriggerWithCustomBackgroundColor = Template.bind({});
+TooltipTriggerWithCustomBackgroundColor.args = {
+  contents: "This is a tooltip with custom background color",
+  backgroundColor: palette.pine1,
 };
