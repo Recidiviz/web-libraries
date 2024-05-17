@@ -37,14 +37,29 @@ export class AuthStore {
 
   private authClient: Auth0Client | undefined;
 
+  /**
+   * indicates whether the user has verified their email address
+   */
   emailVerified?: boolean;
 
+  /**
+   * indicates whether the user has successfully authenticated
+   */
   isAuthorized: boolean;
 
+  /**
+   * indicates whether there is an active loading state (an auth check is still pending)
+   */
   isLoading: boolean;
 
+  /**
+   * Error(s) occurring during auth
+   */
   error: Error | Record<string, unknown>;
 
+  /**
+   * stores information about the logged-in user
+   */
   user?: User;
 
   constructor({ authSettings }: AuthStoreProps) {
@@ -57,6 +72,11 @@ export class AuthStore {
     this.error = {};
   }
 
+  /**
+   * Asynchronously creates the Auth0Client instance and returns it.
+   * If a client is already stored on this instance it will return that
+   * rather than creating a new one.
+   */
   private async getAuth0Client(): Promise<Auth0Client> {
     if (!this.authSettings) {
       runInAction(() => {
@@ -138,6 +158,9 @@ export class AuthStore {
     return this.isAuthorized;
   }
 
+  /**
+   * Redirects to the Auth0 login flow
+   */
   async loginWithRedirect(): Promise<void> {
     const client = await this.getAuth0Client();
 
@@ -158,6 +181,9 @@ export class AuthStore {
     }
   }
 
+  /**
+   * clears the Auth0 session and performs a redirect to  `/v2/logout`
+   */
   async logout(): Promise<void> {
     runInAction(() => {
       this.isAuthorized = false;
@@ -167,6 +193,9 @@ export class AuthStore {
     return this.authClient?.logout({ returnTo: window.location.origin });
   }
 
+  /**
+   * Gets an Auth0 access token silently, if allowed. Throws otherwise
+   */
   async getTokenSilently(options?: GetTokenSilentlyOptions): Promise<string> {
     if (this.authClient) {
       try {

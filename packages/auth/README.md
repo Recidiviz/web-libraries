@@ -13,27 +13,9 @@ This module contains two components:
 
 **AuthStore**
 
-Initialize the AuthStore by providing it with `{ authSettings }` (see [Auth0ClientOptions](https://auth0.github.io/auth0-spa-js/interfaces/auth0clientoptions.html)):
+Initialize the AuthStore by providing it with `{ authSettings }` (see [Auth0ClientOptions](https://auth0.github.io/auth0-spa-js/interfaces/Auth0ClientOptions.html)):
 
 `const authStore = new AuthStore({ authSettings });`
-
-| Functions | Description |
-| -: | - |
-| auth0Client | asynchronously creates the Auth0Client instance |
-| authenticate | initializes Auth0Client, handles redirect, sets the user object and authentication state  |
-| logout | clears the Auth0 session and performs a redirect to  `/v2/logout` |
-| getTokenSilently | calls Auth0's [getTokenSilently](https://auth0.github.io/auth0-spa-js/classes/auth0client.html#gettokensilently) function to fetch a new access token with no interaction |
-
-<br />
-
-| &nbsp; &nbsp;  &nbsp;  &nbsp;  &nbsp; Properties | Description |
-| -: | - |
-| emailVerified | indicates whether the user has verified their email address |
-| isAuthorized | indicates whether the user has successfully authenticated |
-| isLoading | indicates whether there is an active loading state |
-| error | stores active error |
-| user | stores information about the logged-in user |
-
 
 **AuthWall**
 
