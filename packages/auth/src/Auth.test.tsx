@@ -25,12 +25,16 @@ const mockGetUser = jest.fn();
 const mockIsAuthenticated = jest.fn();
 const mockLoginWithRedirect = jest.fn();
 
+let store: AuthStore;
+
 beforeEach(() => {
   mockCreateAuth0Client.mockResolvedValue({
     getUser: mockGetUser,
     isAuthenticated: mockIsAuthenticated,
     loginWithRedirect: mockLoginWithRedirect,
   });
+
+  store = new AuthStore({ authSettings: testAuthSettings });
 });
 
 afterEach(() => {
@@ -42,8 +46,6 @@ const testAuthSettings = {
   client_id: "testclientid",
   redirect_url: window.location.href,
 };
-
-const store = new AuthStore({ authSettings: testAuthSettings });
 
 test("authorization pending when required", async () => {
   expect(store.isAuthorized).toBe(false);
@@ -84,4 +86,40 @@ test("redirect to Auth0 when unauthenticated", async () => {
   });
 
   expect.hasAssertions();
+});
+
+test("check authentication", async () => {
+  mockIsAuthenticated.mockResolvedValue(true);
+
+  await store.checkForAuthentication();
+  expect(mockLoginWithRedirect.mock.calls.length).toBe(0);
+  expect(store.isAuthorized).toBe(true);
+  expect(store.isLoading).toBe(false);
+});
+
+test("re-check authentication", async () => {
+  mockIsAuthenticated.mockResolvedValue(true);
+
+  await store.checkForAuthentication();
+  expect(store.isAuthorized).toBe(true);
+
+  mockIsAuthenticated.mockResolvedValue(false);
+  await store.checkForAuthentication();
+  expect(store.isAuthorized).toBe(false);
+});
+
+test("check authentication without redirecting", async () => {
+  mockIsAuthenticated.mockResolvedValue(false);
+
+  await store.checkForAuthentication();
+
+  expect(mockLoginWithRedirect.mock.calls.length).toBe(0);
+
+  expect(store.isAuthorized).toBe(false);
+  expect(store.isLoading).toBe(false);
+});
+
+test("login with redirect", async () => {
+  await store.loginWithRedirect();
+  expect(mockLoginWithRedirect.mock.calls.length).toBe(1);
 });

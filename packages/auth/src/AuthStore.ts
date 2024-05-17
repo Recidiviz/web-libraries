@@ -25,6 +25,9 @@ import { makeAutoObservable, runInAction } from "mobx";
 import qs from "qs";
 
 export type AuthSettings = Auth0ClientOptions;
+
+type UrlHandler = (targetUrl: string) => void;
+
 interface AuthStoreProps {
   authSettings: AuthSettings | undefined;
 }
@@ -54,26 +57,34 @@ export class AuthStore {
     this.error = {};
   }
 
-  private get auth0Client(): Auth0Client | Promise<Auth0Client> {
+  private async getAuth0Client(): Promise<Auth0Client> {
     if (!this.authSettings) {
       runInAction(() => {
         this.error = new Error("No auth settings detected.");
       });
       return Promise.reject(new Error("No auth settings detected."));
     }
-    return this.authClient
-      ? this.authClient
-      : createAuth0Client(this.authSettings);
+
+    if (!this.authClient) {
+      const client = await createAuth0Client(this.authSettings);
+      runInAction(() => {
+        this.authClient = client;
+      });
+      return client;
+    }
+
+    return this.authClient;
   }
 
-  async authenticate(
-    handleTargetUrl?: (targetUrl: string) => void
-  ): Promise<void> {
-    const auth0 = await this.auth0Client;
-
-    runInAction(() => {
-      this.authClient = auth0;
-    });
+  /**
+   * Checks authentication status with Auth0 and updates other observable properties
+   * accordingly.
+   * @param handleTargetUrl optional function that receives post-redirect target URL.
+   * Useful as a hook for your application, does not affect auth behavior (unless it throws).
+   * @returns flag indicating whether user is currently authenticated
+   */
+  async checkForAuthentication(handleTargetUrl?: UrlHandler): Promise<boolean> {
+    const auth0 = await this.getAuth0Client();
 
     /**
      * @remarks
@@ -117,9 +128,33 @@ export class AuthStore {
         this.emailVerified = Boolean(user?.email_verified);
       });
     } else {
-      await auth0.loginWithRedirect({
-        appState: { targetUrl: window.location.href },
+      runInAction(() => {
+        this.isLoading = false;
+        this.isAuthorized = false;
+        this.user = undefined;
+        this.emailVerified = undefined;
       });
+    }
+    return this.isAuthorized;
+  }
+
+  async loginWithRedirect(): Promise<void> {
+    const client = await this.getAuth0Client();
+
+    return client.loginWithRedirect({
+      appState: { targetUrl: window.location.href },
+    });
+  }
+
+  /**
+   * Checks authentication status with Auth0 and updates other observable properties
+   * accordingly. If not authorized, immediately redirects to Auth0 login.
+   * @param handleTargetUrl optional function that receives post-redirect target URL.
+   * Useful as a hook for your application, does not affect auth behavior (unless it throws).
+   */
+  async authenticate(handleTargetUrl?: UrlHandler): Promise<void> {
+    if (!(await this.checkForAuthentication(handleTargetUrl))) {
+      await this.loginWithRedirect();
     }
   }
 
