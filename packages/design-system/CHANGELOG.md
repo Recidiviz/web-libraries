@@ -1,5 +1,11 @@
 # Changelog
 
+## v5.3.0
+
+### Added
+
+- `ArrowCircled` SVG icon (#179)
+
 ## v5.2.0
 
 ### Added
