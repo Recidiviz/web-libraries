@@ -1,6 +1,6 @@
 # Changelog
 
-## v5.3.0
+## v5.4.0
 
 ### Added
 
