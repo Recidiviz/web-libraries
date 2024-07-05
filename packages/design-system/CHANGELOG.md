@@ -1,5 +1,11 @@
 # Changelog
 
+## v5.4.0
+
+### Added
+
+- Support for `contentRef` prop on `Modal`
+
 ## v5.3.0
 
 ### Added
