@@ -26,7 +26,7 @@ import { animation, palette, typography, zindex } from "../../styles";
 ReactModal.defaultStyles.content = {};
 ReactModal.defaultStyles.overlay = {};
 
-export interface ModalProps extends Omit<ReactModal.Props, "contentRef"> {
+export interface ModalProps extends ReactModal.Props {
   className?: string;
 }
 
@@ -40,6 +40,7 @@ const UnstyledModal: React.FC<ModalProps> = ({
   className,
   onAfterOpen,
   onAfterClose,
+  contentRef,
   ...rest
 }) => {
   const modalContentRef = React.useRef<HTMLDivElement | null>(null);
@@ -49,6 +50,7 @@ const UnstyledModal: React.FC<ModalProps> = ({
       closeTimeoutMS={300}
       {...rest}
       contentRef={(node) => {
+        if (contentRef) contentRef(node);
         if (node) modalContentRef.current = node;
       }}
       onAfterClose={() => {
