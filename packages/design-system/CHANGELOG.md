@@ -1,5 +1,11 @@
 # Changelog
 
+## v5.5.0
+
+### Added
+
+- Support for `positionX` and `positionY` prop on `TooltipTrigger`
+
 ## v5.4.0
 
 ### Added
