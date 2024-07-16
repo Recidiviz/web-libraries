@@ -27,6 +27,11 @@ type TooltipTriggerProps = {
   contents: React.ReactNode;
   maxWidth?: number;
   backgroundColor?: string;
+
+  // if positionX or positionY are provided, it will
+  // override the autopositioning for that axis
+  positionX?: "right" | "left";
+  positionY?: "top" | "bottom";
 };
 
 const AnimatedTooltip = animated(Tooltip);
@@ -63,6 +68,8 @@ export const TooltipTrigger: React.FC<TooltipTriggerProps> = ({
   contents,
   maxWidth,
   backgroundColor,
+  positionX,
+  positionY,
 }: TooltipTriggerProps) => {
   const [offset, setOffset] = React.useState({ top: "0px", left: "0px" });
   // Event handlers should not be
@@ -106,13 +113,17 @@ export const TooltipTrigger: React.FC<TooltipTriggerProps> = ({
     if (
       offsetWidth &&
       window.innerWidth - x < offsetWidth &&
-      x - offsetWidth > pointerOffset
+      x - offsetWidth > pointerOffset &&
+      positionX !== "right"
     ) {
       offsetLeft = x - offsetWidth - (pointerOffset + 5);
     }
 
     // If tooltip doesn't have enough space on the bottom move it to the top right of the pointer.
-    if (offsetHeight && offsetHeight + y > window.innerHeight) {
+    if (
+      (offsetHeight && offsetHeight + y > window.innerHeight) ||
+      positionY === "top"
+    ) {
       offsetTop = y - offsetHeight - 15;
     }
 
