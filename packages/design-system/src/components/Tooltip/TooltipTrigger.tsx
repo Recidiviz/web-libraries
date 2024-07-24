@@ -111,10 +111,10 @@ export const TooltipTrigger: React.FC<TooltipTriggerProps> = ({
 
     // if tooltip doesn't have enough space on the right move it to the left relative to pointer.
     if (
-      offsetWidth &&
+      (offsetWidth &&
       window.innerWidth - x < offsetWidth &&
-      x - offsetWidth > pointerOffset &&
-      positionX !== "right"
+      x - offsetWidth > pointerOffset) ||
+      positionX === "left"
     ) {
       offsetLeft = x - offsetWidth - (pointerOffset + 5);
     }
