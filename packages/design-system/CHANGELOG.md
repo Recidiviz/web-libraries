@@ -1,5 +1,11 @@
 # Changelog
 
+## v5.6.0
+
+### Added
+
+- `Insights` SVG icon
+
 ## v5.5.0
 
 ### Added
