@@ -1,6 +1,6 @@
 {
   "name": "@recidiviz/design-system",
-  "version": "5.6.0",
+  "version": "5.7.0",
   "description": "UI components and styles for Recidiviz web products.",
   "author": "Recidiviz <team@recidiviz.org>",
   "license": "GPL-3.0-only",
