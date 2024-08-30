@@ -1,5 +1,11 @@
 # Changelog
 
+## v5.7.0
+
+### Added
+
+- `Paper`, `Todo` and `PencilRuler` SVG icons
+
 ## v5.6.0
 
 ### Added
