@@ -372,6 +372,48 @@ IconSVG.Insights = () => (
   </FillSVG>
 );
 
+IconSVG.PencilRuler = () => (
+  <StrokeSVG viewBox="0 0 32 32">
+    <path d="m23.5 28.5 6-6m-17-17-6 6" strokeMiterlimit="10" />
+    <path
+      d="M10 15 3.5 8.5l6-6L16 9m7 7 6.5 6.5 1 7-7-1L17 22"
+      strokeMiterlimit="10"
+      strokeLinecap="square"
+    />
+    <path
+      d="m22.5 2.5-20 20 7 7 19.999-20-7-7Zm-10 10 3 3m-6 0 2 2m7-11 3 3m-6 0 2 2m-11 7 3 3"
+      strokeMiterlimit="10"
+      strokeLinecap="square"
+    />
+  </StrokeSVG>
+);
+
+IconSVG.Todo = () => (
+  <StrokeSVG viewBox="0 0 32 32">
+    <path
+      d="m12.5 19.5 3 3 6-6m-2-12a3 3 0 1 0-6 0h-3v4h12v-4h-3Z"
+      strokeMiterlimit="10"
+      strokeLinecap="square"
+    />
+    <path d="M25.5 5.5h3v26h-24v-26h3" strokeMiterlimit="10" />
+  </StrokeSVG>
+);
+
+IconSVG.Paper = () => (
+  <StrokeSVG viewBox="0 0 32 32">
+    <path
+      d="M26.5 22.5v-21h-23v27a3 3 0 0 0 3 3h2"
+      strokeMiterlimit="10"
+      strokeLinecap="square"
+    />
+    <path
+      d="M9.5 28.5a3 3 0 0 1-3 3h21a3 3 0 0 0 3-3v-2h-21v2Zm0-21h11m-11 6h11m-11 6h11"
+      strokeMiterlimit="10"
+      strokeLinecap="square"
+    />
+  </StrokeSVG>
+);
+
 /* eslint-enable max-len */
 
 export { IconSVG };
