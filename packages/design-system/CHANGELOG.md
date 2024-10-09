@@ -1,5 +1,11 @@
 # Changelog
 
+## v5.8.0
+
+### Added
+
+- `Lightbulb` SVG icon
+
 ## v5.7.0
 
 ### Added
