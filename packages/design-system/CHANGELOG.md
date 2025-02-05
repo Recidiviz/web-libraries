@@ -1,5 +1,12 @@
 # Changelog
 
+## v5.9.0
+
+### Added
+
+- Moved `styled-components` into peerDependencies
+- Removed `react-is` from dependencies (we don't use it in this package)
+
 ## v5.8.0
 
 ### Added
