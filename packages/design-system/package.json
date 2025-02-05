@@ -34,16 +34,15 @@
     "body-scroll-lock": "^3.1.5",
     "polished": "^4.1.0",
     "prop-types": "^15.7.2",
-    "react-is": "^17.0.2",
     "react-modal": "^3.12.1",
     "react-spring": "^9.4.3",
     "react-tabs": "^3.2.2",
-    "react-toast-notifications": "^2.4.3",
-    "styled-components": "^5.2.1"
+    "react-toast-notifications": "^2.4.3"
   },
   "peerDependencies": {
     "react": "^17.0.0",
-    "react-dom": "^17.0.0"
+    "react-dom": "^17.0.0",
+    "styled-components": "^5.2.1"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
@@ -110,6 +109,7 @@
     "sass-loader": "^10.1.1",
     "semiotic": "^1.20.6",
     "style-loader": "^2.0.0",
+    "styled-components": "^5.2.1",
     "typescript": "^4.1.2",
     "yalc": "^1.0.0-pre.53"
   },
