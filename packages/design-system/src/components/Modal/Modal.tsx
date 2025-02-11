@@ -82,8 +82,11 @@ const UnstyledModal: React.FC<ModalProps> = ({
  * This component is a wrapper around the
  * [React Modal]({https://www.npmjs.com/package/react-modal) package.
  * It expects to be controlled by its parent component.
+ *
  * It will dim and blur the page behind it while open, and prevent the page from scrolling
  * using the [Body Scroll Lock](https://www.npmjs.com/package/body-scroll-lock) package.
+ * To override these settings, apply different styles to `.ReactModal__Overlay` and
+ * set the `disableBackgroundScroll` prop to `false`, respectively.
  *
  * The `isOpen` prop controls modal visibility, and the `onRequestClose`
  * prop is a hook that should set `isOpen` to `false`.
