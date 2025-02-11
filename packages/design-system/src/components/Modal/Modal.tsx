@@ -28,6 +28,7 @@ ReactModal.defaultStyles.overlay = {};
 
 export interface ModalProps extends ReactModal.Props {
   className?: string;
+  disableBackgroundScroll?: boolean;
 }
 
 export const ModalHeading = styled.h3`
@@ -41,6 +42,7 @@ const UnstyledModal: React.FC<ModalProps> = ({
   onAfterOpen,
   onAfterClose,
   contentRef,
+  disableBackgroundScroll = true,
   ...rest
 }) => {
   const modalContentRef = React.useRef<HTMLDivElement | null>(null);
@@ -54,7 +56,7 @@ const UnstyledModal: React.FC<ModalProps> = ({
         if (node) modalContentRef.current = node;
       }}
       onAfterClose={() => {
-        if (modalContentRef.current) {
+        if (modalContentRef.current && disableBackgroundScroll) {
           enableBodyScroll(modalContentRef.current);
         }
         if (onAfterClose) {
@@ -62,7 +64,7 @@ const UnstyledModal: React.FC<ModalProps> = ({
         }
       }}
       onAfterOpen={(opts) => {
-        if (modalContentRef.current) {
+        if (modalContentRef.current && disableBackgroundScroll) {
           disableBodyScroll(modalContentRef.current);
         }
         if (onAfterOpen) {
