@@ -1,5 +1,11 @@
 # Changelog
 
+## v5.10.0
+
+### Added
+
+- Optional `disableBackgroundScroll` prop to Modal component, true by default
+
 ## v5.9.0
 
 ### Added
