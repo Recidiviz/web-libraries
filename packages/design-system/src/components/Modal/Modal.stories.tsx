@@ -40,6 +40,9 @@ export default {
       control: "boolean",
     },
     onRequestClose: { action: "requested close" },
+    disableBackgroundScroll: {
+      table: { disable: true },
+    },
     as: { table: { disable: true } },
     className: { table: { disable: true } },
     theme: { table: { disable: true } },
@@ -89,7 +92,9 @@ const Template: Story<ModalProps> = ({ isOpen, onRequestClose }) => (
       <ModalHeading>This is a modal.</ModalHeading>
       <Description>
         The background should not scroll while this modal is open; when the
-        modal is closed, it should scroll freely up and down.
+        modal is closed, it should scroll freely up and down. Background
+        scrolling can be enabled by setting the disableBackgroundScroll prop to
+        false.
       </Description>
     </ModalComponent>
   </TexturedBackground>
