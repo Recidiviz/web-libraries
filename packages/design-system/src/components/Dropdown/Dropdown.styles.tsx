@@ -96,7 +96,6 @@ export const MenuElement = styled.div.attrs({
   role: "menubar",
 })<MenuElementProps>`
   ${typography.Sans14}
-  display: flex;
   flex-direction: column;
   position: absolute;
   min-width: 193px;
@@ -116,10 +115,12 @@ export const MenuElement = styled.div.attrs({
   opacity: 0;
   pointer-events: none;
   transform: translateY(-25%);
+  display: none;
 
   ${(props: MenuElementProps) =>
     props.shown &&
     css`
+      display: flex;
       z-index: 1;
       opacity: 1;
       pointer-events: all;
