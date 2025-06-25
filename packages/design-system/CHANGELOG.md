@@ -1,5 +1,11 @@
 # Changelog
 
+## v5.11.0
+
+### Added
+
+- Support for `Tooltip` menu items in the `Dropdown`
+
 ## v5.10.0
 
 ### Added
