@@ -18,6 +18,7 @@ import * as React from "react";
 import { Meta, Story } from "@storybook/react";
 import { Dropdown } from "./Dropdown";
 import { ToastProvider, useToasts } from "../Toast";
+import { TooltipTrigger } from "../Tooltip";
 import { IconSVG } from "../Icon";
 import { DropdownToggle, DropdownToggleProps } from "./DropdownToggle";
 import { DropdownMenu, DropdownMenuProps } from "./DropdownMenu";
@@ -103,10 +104,12 @@ const Template: Story<CombinedArgs> = ({
             label="14 days"
             onClick={() => addToast("14 days")}
           />
-          <DropdownMenuItem
-            label="30 days"
-            onClick={() => addToast("30 days")}
-          />
+          <TooltipTrigger contents="One Month">
+            <DropdownMenuItem
+              label="30 days"
+              onClick={() => addToast("30 days")}
+            />
+          </TooltipTrigger>
           <DropdownMenuLabel>Other Actions</DropdownMenuLabel>
           <DropdownMenuItem onClick={() => addToast("Recidiviz")}>
             Say “Recidiviz”
