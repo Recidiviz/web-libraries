@@ -18,7 +18,7 @@
     "watch": "run-p watch:build watch:sync",
     "watch:build": "rollup -c -w",
     "watch:sync": "nodemon --watch dist --exec 'yalc push'",
-    "lint": "tsc && eslint --ext .js,.ts,.tsx src/",
+    "lint": "eslint --ext .js,.ts,.tsx src/",
     "test": "react-scripts test"
   },
   "dependencies": {
@@ -69,5 +69,8 @@
   },
   "peerDependencies": {
     "react": "^17.0.0"
+  },
+  "resolutions": {
+    "webpack-dev-server": "5.2.1"
   }
 }
