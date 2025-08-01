@@ -2,6 +2,9 @@ name: CI Tests
 
 on: push
 
+permissions:
+  contents: read
+
 jobs:
   lint-design-system:
     name: Lint design-system package
@@ -10,15 +13,20 @@ jobs:
       run:
         working-directory: packages/design-system
     steps:
-      - uses: actions/checkout@v2
+      - name: Harden the runner (Audit all outbound calls)
+        uses: step-security/harden-runner@ec9f2d5744a09debf3a187a3f4f675c53b671911 # v2.13.0
+        with:
+          egress-policy: audit
+
+      - uses: actions/checkout@ee0669bd1cc54295c223e0bb666b733df41de1c5 # v2.7.0
       - name: Use Node 14
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@f1f314fca9dfce2769ece7d933488f076716723e # v1.4.6
         with:
           node-version: 14.x
           registry-url: https://registry.npmjs.org
           scope: "@recidiviz"
       - name: Yarn install with cache
-        uses: bahmutov/npm-install@v1
+        uses: bahmutov/npm-install@6bbff949458c1dd99b20e185cee8c4d6fcf1212a # v1.10.9
         with:
           working-directory: packages/design-system
           install-command: yarn --frozen-lockfile
@@ -32,15 +40,20 @@ jobs:
       run:
         working-directory: packages/design-system
     steps:
-      - uses: actions/checkout@v2
+      - name: Harden the runner (Audit all outbound calls)
+        uses: step-security/harden-runner@ec9f2d5744a09debf3a187a3f4f675c53b671911 # v2.13.0
+        with:
+          egress-policy: audit
+
+      - uses: actions/checkout@ee0669bd1cc54295c223e0bb666b733df41de1c5 # v2.7.0
       - name: Use Node 14
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@f1f314fca9dfce2769ece7d933488f076716723e # v1.4.6
         with:
           node-version: 14.x
           registry-url: https://registry.npmjs.org
           scope: "@recidiviz"
       - name: Yarn install with cache
-        uses: bahmutov/npm-install@v1
+        uses: bahmutov/npm-install@6bbff949458c1dd99b20e185cee8c4d6fcf1212a # v1.10.9
         with:
           working-directory: packages/design-system
           install-command: yarn --frozen-lockfile
@@ -53,15 +66,20 @@ jobs:
       run:
         working-directory: packages/auth
     steps:
-      - uses: actions/checkout@v2
+      - name: Harden the runner (Audit all outbound calls)
+        uses: step-security/harden-runner@ec9f2d5744a09debf3a187a3f4f675c53b671911 # v2.13.0
+        with:
+          egress-policy: audit
+
+      - uses: actions/checkout@ee0669bd1cc54295c223e0bb666b733df41de1c5 # v2.7.0
       - name: Use Node 14
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@f1f314fca9dfce2769ece7d933488f076716723e # v1.4.6
         with:
           node-version: 14.x
           registry-url: https://registry.npmjs.org
           scope: "@recidiviz"
       - name: Yarn install with cache
-        uses: bahmutov/npm-install@v1
+        uses: bahmutov/npm-install@6bbff949458c1dd99b20e185cee8c4d6fcf1212a # v1.10.9
         with:
           working-directory: packages/auth
           install-command: yarn --frozen-lockfile
@@ -74,15 +92,20 @@ jobs:
       run:
         working-directory: packages/auth
     steps:
-      - uses: actions/checkout@v2
+      - name: Harden the runner (Audit all outbound calls)
+        uses: step-security/harden-runner@ec9f2d5744a09debf3a187a3f4f675c53b671911 # v2.13.0
+        with:
+          egress-policy: audit
+
+      - uses: actions/checkout@ee0669bd1cc54295c223e0bb666b733df41de1c5 # v2.7.0
       - name: Use Node 14
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@f1f314fca9dfce2769ece7d933488f076716723e # v1.4.6
         with:
           node-version: 14.x
           registry-url: https://registry.npmjs.org
           scope: "@recidiviz"
       - name: Yarn install with cache
-        uses: bahmutov/npm-install@v1
+        uses: bahmutov/npm-install@6bbff949458c1dd99b20e185cee8c4d6fcf1212a # v1.10.9
         with:
           working-directory: packages/auth
           install-command: yarn --frozen-lockfile
@@ -95,15 +118,20 @@ jobs:
       run:
         working-directory: packages/auth
     steps:
-      - uses: actions/checkout@v2
+      - name: Harden the runner (Audit all outbound calls)
+        uses: step-security/harden-runner@ec9f2d5744a09debf3a187a3f4f675c53b671911 # v2.13.0
+        with:
+          egress-policy: audit
+
+      - uses: actions/checkout@ee0669bd1cc54295c223e0bb666b733df41de1c5 # v2.7.0
       - name: Use Node 14
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@f1f314fca9dfce2769ece7d933488f076716723e # v1.4.6
         with:
           node-version: 14.x
           registry-url: https://registry.npmjs.org
           scope: "@recidiviz"
       - name: Yarn install with cache
-        uses: bahmutov/npm-install@v1
+        uses: bahmutov/npm-install@6bbff949458c1dd99b20e185cee8c4d6fcf1212a # v1.10.9
         with:
           working-directory: packages/auth
           install-command: yarn --frozen-lockfile
