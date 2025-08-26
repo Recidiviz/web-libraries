@@ -184,13 +184,16 @@ export class AuthStore {
   /**
    * clears the Auth0 session and performs a redirect to  `/v2/logout`
    */
-  async logout(): Promise<void> {
+  async logout(federated: boolean = false): Promise<void> {
     runInAction(() => {
       this.isAuthorized = false;
       this.isLoading = true;
     });
 
-    return this.authClient?.logout({ returnTo: window.location.origin });
+    return this.authClient?.logout({
+      returnTo: window.location.origin,
+      federated,
+    });
   }
 
   /**
