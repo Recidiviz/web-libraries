@@ -139,5 +139,8 @@
     "src/**/*.{js,tsx,ts}": [
       "eslint --fix --quiet"
     ]
+  },
+  "resolutions": {
+    "shell-quote": "1.12.0"
   }
 }
