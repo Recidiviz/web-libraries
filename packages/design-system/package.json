@@ -3,6 +3,11 @@
   "version": "5.11.0",
   "description": "UI components and styles for Recidiviz web products.",
   "author": "Recidiviz <team@recidiviz.org>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Recidiviz/web-libraries.git",
+    "directory": "packages/design-system"
+  },
   "license": "GPL-3.0-only",
   "engines": {
     "node": ">=12.x.x"

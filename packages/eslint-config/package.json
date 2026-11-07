@@ -3,6 +3,11 @@
   "version": "3.0.0",
   "description": "Shared ESLint config for Recidiviz web applications",
   "author": "Recidiviz <team@recidiviz.org>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Recidiviz/web-libraries.git",
+    "directory": "packages/eslint-config"
+  },
   "main": "index.js",
   "license": "GPL-3.0-only",
   "dependencies": {

@@ -3,6 +3,11 @@
   "version": "1.2.0",
   "description": "Auth0-Powered Authentication Module",
   "author": "Recidiviz <team@recidiviz.org>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Recidiviz/web-libraries.git",
+    "directory": "packages/auth"
+  },
   "license": "GPL-3.0-only",
   "engines": {
     "node": ">=12.x.x"

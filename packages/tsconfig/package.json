@@ -3,6 +3,11 @@
   "version": "2.0.0",
   "description": "Typescript config bases for Recidiviz web applications",
   "author": "Recidiviz <team@recidiviz.org>",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Recidiviz/web-libraries.git",
+    "directory": "packages/tsconfig"
+  },
   "files": [
     "react.json",
     "e2e.json"

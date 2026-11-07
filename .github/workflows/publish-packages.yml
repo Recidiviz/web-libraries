@@ -4,11 +4,17 @@ on:
   release:
     types: [published]
 
+permissions:
+  contents: read
+
 jobs:
   publish-eslint-config:
     name: Publish eslint-config package
     runs-on: ubuntu-latest
     if: ${{ startsWith(github.ref, 'refs/tags/eslint-config@') }}
+    permissions:
+      contents: read
+      id-token: write
     defaults:
       run:
         working-directory: packages/eslint-config
@@ -30,14 +36,24 @@ jobs:
         with:
           working-directory: packages/eslint-config
           install-command: yarn --frozen-lockfile
+      # npm trusted publishing (OIDC) needs npm 11.5.1 or later.
+      - name: Use Node 24 for publishing
+        uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6.5.0
+        with:
+          node-version: 24.x
+          registry-url: https://registry.npmjs.org
+          scope: "@recidiviz"
+      - name: Update npm
+        run: npm install -g npm@latest
       - name: Publish
-        run: npm publish --verbose --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: npm publish --verbose --provenance --access public
   publish-tsconfig:
     name: Publish tsconfig package
     runs-on: ubuntu-latest
     if: ${{ startsWith(github.ref, 'refs/tags/tsconfig@') }}
+    permissions:
+      contents: read
+      id-token: write
     defaults:
       run:
         working-directory: packages/tsconfig
@@ -54,14 +70,25 @@ jobs:
           node-version: 14.x
           registry-url: https://registry.npmjs.org
           scope: "@recidiviz"
+      # npm trusted publishing (OIDC) needs npm 11.5.1 or later.
+      - name: Use Node 24 for publishing
+        uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6.5.0
+        with:
+          node-version: 24.x
+          registry-url: https://registry.npmjs.org
+          scope: "@recidiviz"
+      - name: Update npm
+        run: npm install -g npm@latest
       - name: Publish
-        run: npm publish --verbose --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: npm publish --verbose --provenance --access public
   publish-design-system:
     name: Publish design-system package
     runs-on: ubuntu-latest
     if: ${{ startsWith(github.ref, 'refs/tags/design-system@') }}
+    permissions:
+      # The Storybook deploy pushes to the gh-pages branch.
+      contents: write
+      id-token: write
     defaults:
       run:
         working-directory: packages/design-system
@@ -85,18 +112,30 @@ jobs:
           install-command: yarn --frozen-lockfile
       - name: Yarn build
         run: yarn build
+      # npm trusted publishing (OIDC) needs npm 11.5.1 or later.
+      - name: Use Node 24 for publishing
+        uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6.5.0
+        with:
+          node-version: 24.x
+          registry-url: https://registry.npmjs.org
+          scope: "@recidiviz"
+      - name: Update npm
+        run: npm install -g npm@latest
       - name: Publish
-        run: npm publish --verbose --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: npm publish --verbose --provenance --access public
       - name: Deploy Storybook
         run: yarn run deploy-storybook
         env:
           GH_TOKEN: ${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}
+          # Storybook 6 uses webpack 4, which needs the legacy OpenSSL provider on Node 17+.
+          NODE_OPTIONS: --openssl-legacy-provider
   publish-auth:
     name: Publish auth package
     runs-on: ubuntu-latest
     if: ${{ startsWith(github.ref, 'refs/tags/auth@') }}
+    permissions:
+      contents: read
+      id-token: write
     defaults:
       run:
         working-directory: packages/auth
@@ -120,7 +159,14 @@ jobs:
           install-command: yarn --frozen-lockfile
       - name: Yarn build
         run: yarn build
+      # npm trusted publishing (OIDC) needs npm 11.5.1 or later.
+      - name: Use Node 24 for publishing
+        uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6.5.0
+        with:
+          node-version: 24.x
+          registry-url: https://registry.npmjs.org
+          scope: "@recidiviz"
+      - name: Update npm
+        run: npm install -g npm@latest
       - name: Publish
-        run: npm publish --verbose --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: npm publish --verbose --provenance --access public
